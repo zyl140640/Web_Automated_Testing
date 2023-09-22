@@ -26,3 +26,13 @@
 >#### 如: 变量名称(web) = WebStart.start('浏览器名称')
 >#### 调用封装的元素Page页面方法
 >#### login = Login(传入初始化变量-web)
+
+#### *环境配置*
+
+> `pip install playwright`   #安装定位元素库#
+>
+> `python -m playwright install`  #安装浏览器驱动#
+>
+> `playwright codegen https://www.baidu.com/ ` 启动脚本录制
+>
+> `page.page.pause()`   启动调试功能
