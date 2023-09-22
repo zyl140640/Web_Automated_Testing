@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Project
-
-=======
 # *GitLab-UI*
 
 ## *御控工业云平台*
@@ -30,4 +26,3 @@
 >#### 如: 变量名称(web) = WebStart.start('浏览器名称')
 >#### 调用封装的元素Page页面方法
 >#### login = Login(传入初始化变量-web)
->>>>>>> 47498a4 (添加到GitHub)
