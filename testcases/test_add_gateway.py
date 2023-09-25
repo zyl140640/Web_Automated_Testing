@@ -14,7 +14,7 @@ class TestAddGateway:
 
     @allure.title("创建网关")
     @pytest.mark.run(order=2)
-    def test_add_gateway(self, page):
+    def test_add_gateway(self, init, page):
         self.sidebar = SidebarPage(page)
         self.gateway = GatewayPage(page)
         a = random.randint(1000000000000000, 9999999999999999)

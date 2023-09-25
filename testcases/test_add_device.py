@@ -12,7 +12,7 @@ class TestAddDevice:
 
     @allure.title("创建设备")
     @pytest.mark.run(order=5)
-    def test_add_device(self, page):
+    def test_add_device(self, init, page):
         self.sidebar = SidebarPage(page)
         self.device = DevicePage(page)
         with allure.step("进入设备管理页面"):

@@ -16,6 +16,7 @@ class GatewayPage:
             self.page.get_by_role("textbox", name="请选择项目名称").click()
             self.page.get_by_label("选择项目").get_by_placeholder("请选择项目名称").fill(project)
             self.page.get_by_label("选择项目").get_by_role("button", name=" 查询").click()
+            self.page.wait_for_timeout(3000)
             self.page.get_by_role("radio").click()
             self.page.get_by_label("选择项目").get_by_role("button", name="确 定").click()
             self.page.get_by_placeholder("请输入网关别名").fill(gateway)

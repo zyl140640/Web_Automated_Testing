@@ -9,7 +9,7 @@ from page.SidebarPage import SidebarPage
 class TestUpdateProject:
     @allure.title("修改项目信息")
     @pytest.mark.run(order=7)
-    def test_updata_project(self, page):
+    def test_updata_project(self, init, page):
         self.update = ProjectPage(page)
         with allure.step("从首页进入项目中心"):
             self.sidebar = SidebarPage(page)

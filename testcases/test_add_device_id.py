@@ -13,7 +13,7 @@ class TestAddDeviceId:
 
     @allure.title("创建设备点表")
     @pytest.mark.run(order=6)
-    def test_add_device_id(self, page):
+    def test_add_device_id(self, init, page):
         self.sidebar = SidebarPage(page)
         self.device_id = DeviceIdPage(page)
         with allure.step("进入电表管理页面"):

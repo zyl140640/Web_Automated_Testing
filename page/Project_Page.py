@@ -1,4 +1,3 @@
-import re
 import time
 
 import allure
@@ -11,7 +10,7 @@ class ProjectPage:
 
     def add_project(self, project, project_id, gateway):
         time.sleep(2)
-        with allure.step("点击新增"):
+        with allure.step("点击新增项目"):
             self.page.get_by_role("button", name="新增").click()
         with allure.step("输入项目名称"):
             self.page.get_by_label("新增项目").get_by_placeholder("请输入项目名称").fill(f"{project}")
@@ -21,15 +20,12 @@ class ProjectPage:
             self.page.get_by_placeholder("请点击地图选择位置").click()
             time.sleep(3)
             self.page.locator(".BMap_mask").click()
+            time.sleep(3)
             self.page.get_by_role("button", name="确 定").click()
         with allure.step("输入负责人信息"):
             self.page.get_by_placeholder("请输入负责人").fill("张三")
         with allure.step("输入电话信息"):
             self.page.get_by_placeholder("请输入电话").fill("15533065391")
-        # self.page.get_by_placeholder("请选择组织").click()
-        # self.page.get_by_text("宁波高新区安立特电气科技有限公司").nth(3).click()
-        # self.page.get_by_placeholder("请选择区域").click()
-        # self.page.get_by_text("区域", exact=True).click()
         with allure.step("点击下一步"):
             self.page.get_by_role("button", name="下一步").click()
         with allure.step("输入网关别名"):

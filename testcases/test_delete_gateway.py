@@ -13,7 +13,7 @@ class TestDeleteGateway:
 
     @allure.title("删除网关")
     @pytest.mark.run(order=3)
-    def test_delete_gateway(self, page):
+    def test_delete_gateway(self, init, page):
         self.sidebar = SidebarPage(page)
         self.gateway = GatewayPage(page)
         with allure.step("执行删除网关步骤"):

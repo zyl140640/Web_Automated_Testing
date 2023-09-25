@@ -12,7 +12,7 @@ class TestDeleteDevice:
 
     @allure.title("删除设备")
     @pytest.mark.run(order=4)
-    def test_delete_device(self, page):
+    def test_delete_device(self, init, page):
         self.sidebar = SidebarPage(page)
         self.device = DevicePage(page)
         with allure.step("执行删除设备步骤"):
