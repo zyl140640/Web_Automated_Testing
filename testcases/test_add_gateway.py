@@ -17,8 +17,6 @@ class TestAddGateway:
         self.sidebar = SidebarPage(page)
         self.gateway = GatewayPage(page)
         a = random.randint(1000000000000000, 9999999999999999)
-        with allure.step("进入网关管理页面"):
-            self.sidebar.click_project_max()
-            self.sidebar.click_gateway()
-        with allure.step("添加网关"):
-            self.gateway.add_gateway("云平台项目", "云平台网关别名", f"{a}")
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.gateway.add_gateway("云平台项目", "云平台网关别名", f"{a}")

@@ -18,7 +18,6 @@ class TestAddProject:
         a = random.randint(1000000000000000, 9999999999999999)
         self.sidebar = SidebarPage(page)
         self.project = ProjectPage(page)
-        with allure.step("从首页进入项目中心"):
-            self.sidebar.click_project_max()
-            self.sidebar.click_project()
+        self.sidebar.click_project_max()
+        self.sidebar.click_project()
         self.project.add_project("云平台项目", "00100", f"{a}")

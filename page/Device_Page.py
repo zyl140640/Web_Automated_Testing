@@ -2,42 +2,38 @@ import re
 import time
 
 import allure
-from playwright.sync_api import Page
+
+from common.BasePages import BasePage
 
 
-class DevicePage:
-    def __init__(self, page: Page):
-        self.page = page
+class DevicePage(BasePage):
 
     def add_device(self, project, device):
-        time.sleep(4)
-        with allure.step("进行新增设备操作"):
-            self.page.get_by_role("button", name="新增").click()
-        time.sleep(2)
-        with allure.step("输入设备信息"):
-            self.page.get_by_placeholder("请选择项目名称").first.click()
-            time.sleep(1)
-            self.page.get_by_placeholder("请选择项目名称").fill(f"{project}")
-            time.sleep(2)
-            self.page.locator("li").filter(has_text=project).click()
+        self.wait_for_timeouts(4000)
+        self.click(self.page.get_by_role("button", name="新增"), "新增设备按钮")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_placeholder("请选择项目名称").first, "选择项目名称")
+        self.wait_for_timeouts(1000)
+        self.input_data(self.page.get_by_placeholder("请选择项目名称"), f"{project}", "项目名称输入框")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.locator("li").filter(has_text=project), "项目")
+        self.input_data(
             self.page.locator("div").filter(has_text=re.compile(r"^项目名称设备名称$")).get_by_role("textbox").nth(
-                1).fill(
-                device)
-        # self.page.get_by_placeholder("请选择组织").click()
-        # self.page.locator("div:nth-child(2) > .el-tree-node__content").first.click()
-        # self.page.get_by_placeholder("请选择区域").click()
-        # self.page.get_by_role("treeitem", name=" 区域").locator("div").first.click()
-        self.page.locator("div").filter(has_text=re.compile(r"^设备别名序列号$")).get_by_role("textbox").first.fill(
-            "设备别名")
-        self.page.locator("div").filter(has_text=re.compile(r"^设备别名序列号$")).get_by_role("textbox").nth(1).fill(
-            "123456")
-        self.page.locator("div").filter(has_text=re.compile(r"^安装位置联系电话$")).get_by_role("textbox").first.fill(
-            "山东省青岛市李沧区")
-        self.page.locator("div").filter(has_text=re.compile(r"^安装位置联系电话$")).get_by_role("textbox").nth(1).fill(
-            "15533065391")
-        with allure.step("保存设备信息"):
-            self.page.get_by_role("button", name="确 定").click()
-        allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
+                1), f"{device}", "设备输入框")
+        self.input_data(
+            self.page.locator("div").filter(has_text=re.compile(r"^设备别名序列号$")).get_by_role("textbox").first,
+            "设备别名", "设备别名输入框")
+        self.input_data(
+            self.page.locator("div").filter(has_text=re.compile(r"^设备别名序列号$")).get_by_role("textbox").nth(1),
+            "123456", "序列号输入框")
+        self.input_data(
+            self.page.locator("div").filter(has_text=re.compile(r"^安装位置联系电话$")).get_by_role("textbox").first,
+            "山东省青岛市李沧区", "安装位置输入框")
+        self.input_data(
+            self.page.locator("div").filter(has_text=re.compile(r"^安装位置联系电话$")).get_by_role("textbox").nth(1),
+            "15533065391", "联系电话输入框")
+        self.click(self.page.get_by_role("button", name="确 定"), "保存按钮")
+        self.cut_out("添加设备信息")
 
     def delete_device(self):
         time.sleep(2)
@@ -45,7 +41,6 @@ class DevicePage:
         self.page.get_by_role("button", name="删除").click()
         self.page.get_by_role("button", name="确认").click()
         allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
-
 
     def update_device(self, project):
         time.sleep(2)

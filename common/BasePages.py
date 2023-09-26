@@ -31,10 +31,11 @@ class BasePage:
         """
         self.locator = locator
         try:
-            with allure.step(f"点击页面{text}"):
+            with allure.step(f"点击{text}"):
                 self.locator.click()
                 self.logger.info(f"使用{locator}元素定位方法点击{text},元素路径{locator}")
         except Exception as e:
+            self.cut_out(f"{text}---报错截图")
             self.logger.error(f"进行{text}操作时,元素{locator}未找到")
             raise e
 
@@ -47,7 +48,7 @@ class BasePage:
         """
         self.locator = locator
         try:
-            with allure.step(f"在{text}内输入{data}"):
+            with allure.step(f"在{text}内输入数据: {data}"):
                 self.locator.fill(f"{data}")
                 self.logger.info(f"使用{locator}元素定位方法点击{text},输入{data},元素路径是: {locator}")
         except Exception as e:
@@ -60,7 +61,16 @@ class BasePage:
         再通过使用allure获取缓存图片，上传至allure测试报告内
         :param image_name: 图片名称
         """
-        allure.attach(self.page.screenshot(timeout=2000), image_name, allure.attachment_type.PNG)
+        with allure.step(f"截取{image_name}功能的结果图"):
+            allure.attach(self.page.screenshot(timeout=2000), image_name, allure.attachment_type.PNG)
 
     def path_video(self, name):
         allure.attach(self.page.video.path(), name, attachment_type="WEBM")
+
+    def wait_for_timeouts(self, time):
+        """
+         静态等待时间, 跟time.sleep一样
+        :param time: 需要等待的时间  单位: 毫秒
+        """
+        with allure.step(f"等待{time}毫秒后执行下一步操作"):
+            self.page.wait_for_timeout(time)
