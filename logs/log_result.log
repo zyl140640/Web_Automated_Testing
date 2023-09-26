@@ -1,0 +1,1 @@
+INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>

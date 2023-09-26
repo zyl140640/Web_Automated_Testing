@@ -11,6 +11,7 @@ from playwright.sync_api import Page
 
 class BasePage:
     def __init__(self, page: Page):
+        self.locator = None
         self.page = page
         self.logger = logging
 
@@ -22,56 +23,35 @@ class BasePage:
     def all_text(self, locator, text):
         return self.page.get_attribute(locator, text)  # 获取元素文本
 
-    def find_element(self, locator, content):
+    def click(self, locator, text):
         """
-        封装定位元素
-        :param locator: 选择定位的方式，如:css  xpath  id text 等
-        :param content: 元素路径
-        :return: 返回元素内容
+         封装点击方法
+        :param locator: 定位方法
+        :param text:   步骤名字，在Allure内显示
         """
-        try:
-            el = None
-            if locator == "locator":
-                el = self.page.locator(content)
-            elif locator == "get_by_role":
-                el = self.page.get_by_role(content)  # 通过显式和隐式可访问性属性进行定位。
-            elif locator == "get_by_text":
-                el = self.page.get_by_text(content)  # 通过文本内容定位。
-            elif locator == "get_by_label":
-                el = self.page.get_by_label(content)  # 通过关联标签的文本定位表单控件。
-            elif locator == "get_by_placeholder":
-                el = self.page.get_by_placeholder(content)  # 按占位符定位输入。
-            elif locator == "get_by_alt_text":
-                el = self.page.get_by_alt_text(content)  # 通过替代文本定位元素，通常是图像。
-            elif locator == "get_by_test_id":
-                el = self.page.get_by_test_id(content)  # 根据data-test-id属性定位元素（可以配置其他属性）。
-            elif locator == "get_by_title":
-                el = self.page.get_by_title(content)  # 通过标题属性定位元素。
-            if el is not None:
-                return el
-            self.logger.info("<{}>,元素<{}>定位成功")
-        except Exception as e:
-            self.logger.error("<{}>元素<{}>定位失败！")
-            raise e
-
-    def click(self, locator, content, text):
+        self.locator = locator
         try:
             with allure.step(f"点击页面{text}"):
-                self.page.wait_for_load_state("networkidle")
-                self.find_element(locator, content).click()
-                self.logger.info(f"使用{locator}元素定位方法点击{text},元素路径{content}")
+                self.locator.click()
+                self.logger.info(f"使用{locator}元素定位方法点击{text},元素路径{locator}")
         except Exception as e:
-            self.logger.error(f"进行{text}操作时,元素{content}未找到")
+            self.logger.error(f"进行{text}操作时,元素{locator}未找到")
             raise e
 
-    def input_data(self, locator, content, data, text):
+    def input_data(self, locator, data, text):
+        """
+        封装输入方法
+        :param locator: 定位方法 比如 get_by_placeholder("请输入用户名")  get_by_role("button", name="登 录")  这种都可以 百搭
+        :param data: 要输入的内容
+        :param text: 步骤名字，在Allure内显示, 效果：在[姓名输入框]内输入[张院龙]
+        """
+        self.locator = locator
         try:
-            with allure.step(f"在{text}输入{data}"):
-                self.page.wait_for_load_state("networkidle")
-                self.find_element(locator, content).fill(data)
-                self.logger.info(f"使用{locator}元素定位方法点击{text},输入{data},元素路径是: {content}")
+            with allure.step(f"在{text}内输入{data}"):
+                self.locator.fill(f"{data}")
+                self.logger.info(f"使用{locator}元素定位方法点击{text},输入{data},元素路径是: {locator}")
         except Exception as e:
-            self.logger.error(f"进行{text}操作时,元素{content}未找到")
+            self.logger.error(f"进行{text}操作时,元素{locator}未找到")
             raise e
 
     def cut_out(self, image_name):
@@ -84,6 +64,3 @@ class BasePage:
 
     def path_video(self, name):
         allure.attach(self.page.video.path(), name, attachment_type="WEBM")
-
-    def pp(self):
-        self.page.close()

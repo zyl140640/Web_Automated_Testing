@@ -11,6 +11,8 @@ Playwright Selenium Puppeteer Cypress
 
 ## 关键对比
 
+通过各个维度方向去进行比较
+
 ### 支持语言
 
 - Playwright 支持主流语言：javaScript&TypeScript\Python\C#\GO\Java
@@ -85,7 +87,7 @@ Playwright Selenium Puppeteer Cypress
 | 工具         | 说明      |
 |------------|---------|
 | Python     | 编写语言    |
-| Pytest     | 测试框架    |
+| Pytest     | 单元测试框架  |
 | Playwright | UI 自动化库 |
 | Yaml       | 存储测试数据  |
 | Allure     | 测试报告    |
@@ -93,16 +95,21 @@ Playwright Selenium Puppeteer Cypress
 ### 为什么选择 Playwright
 
 1. 其他需要通过 WebDriver(浏览器驱动)操作浏览器；Playwright 内置浏览器驱动，不需要再次配置
-
 2. Playwright 几乎支持所有语言，且不依赖于各种 Driver，通过调用内置浏览器所以启动速度更快。
 3. Playwright 基于 Websocket（双向通讯）可自动获取浏览器实际情况。
-4. Playwright 定位页面元素时会自动等待，并且 API 友好不需要再次封装。
+4. Playwright 定位页面元素时会自动等待,能增加脚本的稳定性 。
 5. Playwright 可以在测试执行中时，拦截网络活动(接口)
 6. Playwright 带有用于选定移动设备的设备参数注册表，可用于模拟移动设备上的浏览器行为
-7. Playwright 调试功能很赞，可进行单步执行，并且运行速度也快
+7. Playwright 自带调试工具，可进行逐步执行进行查看和排查问题
+8. Playwright 拥有捕获功能，在执行测试用例时可捕获所有信息以调查测试失败。（截屏、录屏、DOM、测试源等）
 
-搭建环境需要：
-Docker，Jenkins，Pytest，github，allure
+- 注： Pytest+Allure 都是目前自动化测试使用率最高的插件库 所以只讲为什么选择 Playwright
+
+###环境资源：
+
+- Docker、Jenkins、github、allure
+- 注: 要使用Ubuntu 22.04 LTS 为何要用? 用于拉取Docker镜像
+- 原: Firefox 和 WebKit 的浏览器构建是为 glibc 库构建的。不支持 Alpine Linux 和其他基于 musl 标准库的发行版。
 
 ### 接口自动化
 
@@ -113,3 +120,12 @@ Docker，Jenkins，Pytest，github，allure
 - [Docker+Jenkins持续集成](https://zhuanlan.zhihu.com/p/615302968 "Docker+Jenkins持续集成")
 - [Jenkins部署](https://blog.csdn.net/Faith_Lzt/article/details/126897268?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-126897268-blog-124362259.235^v38^pc_relevant_sort_base2&spm=1001.2101.3001.4242.2&utm_relevant_index=2 "Jenkins部署")
 - [Playwright官网-GitLab持续集成](https://playwright.dev/python/docs/docker "Playwright官网-GitLab持续集成")
+- [教程](https://www.bilibili.com/video/BV1jm4y1J7YY/?spm_id_from=333.788&vd_source=5f7b140343bf40195148b657c47941e4 "教程")
+
+###禅道
+
+1. 与禅道的兼容性是指？
+   1.1. web自动化也好，接口自动化也好，跟禅道无任何关联项
+   1.2. 如果需要与禅道进行关联，比如：自动化测试时测出问题，然后自动提交到禅道这个功能
+   需要去查看禅道提交BugApi去封装、去实现。 但目前禅道官方API只维护到了禅道12版本（禅道开源版12.5.3、禅道企业版
+   4.1.3及以下版本适用）。

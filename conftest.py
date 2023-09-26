@@ -34,6 +34,8 @@ def context(
         request: pytest.FixtureRequest,
 ) -> Generator[BrowserContext, None, None]:
     pages: List[Page] = []
+    # 用例重试
+    rerun_count = pytestconfig.getoption("--reruns")
     context = browser.new_context(**browser_context_args, storage_state="./auto/cookies.json")
     context.on("page", lambda page: pages.append(page))
     # 开启跟踪器
@@ -58,9 +60,11 @@ def context(
                 failed and tracing_option == "retain-on-failure"
         )
         if retain_trace:
-            context.tracing.stop(path="trace.zip")
+            tracing_path = os.path.join(pytestconfig, request.node.name, "trace.zip")
+            context.tracing.stop(path=tracing_path)
+            allure.attach.file(tracing_path, "trace.playwright.dev", extension="zip")
         else:
-            context.tracing.stop()
+            context.tracing.stop(path="trace.zip")
 
     screenshot_option = pytestconfig.getoption("--screenshot")
     capture_screenshot = screenshot_option == "on" or (
@@ -74,6 +78,7 @@ def context(
             )
             try:
                 page.screenshot(timeout=5000, path=screenshot_path)
+                allure.attach.file(screenshot_path, "最终截图", allure.attachment_type.PNG)
             except Error:
                 pass
 
