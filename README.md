@@ -40,7 +40,7 @@
 
 #### *Allure测试报告*
 
-![Allure测试报告结果](common/allure.png)
+![Allure测试报告结果](common/Allure.png)
 
 #### 问题
 
