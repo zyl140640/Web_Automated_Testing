@@ -13,7 +13,7 @@ from playwright.sync_api import (
 from slugify import slugify
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def page(context: BrowserContext) -> Generator[Page, None, None]:
     page = context.new_page()
     yield page
@@ -26,7 +26,7 @@ def _build_artifact_test_folder(
     return os.path.join(output_dir, slugify(request.node.nodeid), folder_or_file_name)
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def context(
         browser: Browser,
         browser_context_args: Dict,
@@ -107,11 +107,11 @@ def context(
                 pass
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def init(page):
     page.goto("http://36.134.46.91:7070/dashboard")
     time.sleep(8)
-    page.pause()
+    # page.pause()
     title = str(page.context.pages)
     if title.find("login") != -1:
         page.get_by_placeholder("请输入用户名").wait_for()
@@ -129,11 +129,8 @@ def init(page):
         page.mouse.up()
         page.get_by_role("button", name="登 录").click()
         page.context.storage_state(path="auto/cookies.json")
-        page.wait_for_timeout(9000)
         page.get_by_label("Close", exact=True).wait_for()
         page.get_by_label("Close", exact=True).click()
     else:
-        print("走这里了")
-        page.wait_for_timeout(9000)
         page.get_by_label("Close", exact=True).wait_for()
         page.get_by_label("Close", exact=True).click()
