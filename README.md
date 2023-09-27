@@ -36,3 +36,16 @@
 > `playwright codegen https://www.baidu.com/ ` 启动脚本录制
 >
 > `page.page.pause()`   启动调试功能
+> `playwright show-trace trace.zip`  查看跟踪日志 或者打开 https://trace.playwright.dev/ 去传入文件 trace.zip
+
+#### *Allure测试报告*
+
+![Allure测试报告结果](common/allure.png)
+
+#### 问题
+
+##### 提交Git不上时，请使用
+
+> `git config --global --unset http.proxy`
+>
+> `git config --global --unset https.proxy`
