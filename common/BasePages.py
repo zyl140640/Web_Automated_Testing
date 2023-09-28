@@ -62,7 +62,7 @@ class BasePage:
         :param image_name: 图片名称
         """
         with allure.step(f"截取{image_name}功能的结果图"):
-            allure.attach(self.page.screenshot(timeout=2000), image_name, allure.attachment_type.PNG)
+            allure.attach(self.page.screenshot(timeout=3000), image_name, allure.attachment_type.PNG)
 
     def path_video(self, name):
         allure.attach(self.page.video.path(), name, attachment_type="WEBM")

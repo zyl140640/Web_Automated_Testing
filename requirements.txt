@@ -1,9 +1,9 @@
-playwright~=1.38.0
-pytest~=7.2.0
+playwright
+pytest
 allure-pytest
 pytest-playwright
 pytest-ordering
-ffmpy~=0.3.1
-jsonpath~=0.82.2
-loguru~=0.7.2
-python-slugify~=8.0.1
+jsonpath
+loguru
+python-slugify
+allure-python-commons

@@ -48,8 +48,8 @@ class ProjectPage(BasePage):
         self.input_data(self.page.get_by_placeholder("请输入负责人"), "李四", "负责人输入框")
         self.input_data(self.page.get_by_placeholder("请输入电话"), "15533065392", "电话输入框")
         self.click(self.page.get_by_role("button", name="结束并保存"), "结束并保存按钮")
-        self.cut_out("修改项目")
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
+        self.cut_out("修改项目")
 
     def detect_project(self, project):
         self.wait_for_timeouts(5000)
@@ -57,5 +57,5 @@ class ProjectPage(BasePage):
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), f"{project}", "输入项目名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(2), "删除按钮")
-        self.cut_out("删除项目")
         self.click(self.page.get_by_role("button", name="确认"), "确认按钮")
+        self.cut_out("删除项目")

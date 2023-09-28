@@ -35,13 +35,6 @@ class DevicePage(BasePage):
         self.click(self.page.get_by_role("button", name="确 定"), "保存按钮")
         self.cut_out("添加设备信息")
 
-    def delete_device(self):
-        time.sleep(2)
-        self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1).click()
-        self.page.get_by_role("button", name="删除").click()
-        self.page.get_by_role("button", name="确认").click()
-        allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
-
     def update_device(self, project):
         time.sleep(2)
         self.page.get_by_role("menu").get_by_role("link", name="设备管理").click()
@@ -55,4 +48,11 @@ class DevicePage(BasePage):
             "div:nth-child(3) > .el-dialog > .el-dialog__body > .el-form > div > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner").first.fill(
             "修改测试设备")
         self.page.get_by_role("button", name="确 定").click()
+        allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
+
+    def delete_device(self):
+        time.sleep(2)
+        self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1).click()
+        self.page.get_by_role("button", name="删除").click()
+        self.page.get_by_role("button", name="确认").click()
         allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)

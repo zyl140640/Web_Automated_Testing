@@ -1,5 +1,3 @@
-import allure
-
 from common.BasePages import BasePage
 
 
@@ -42,7 +40,7 @@ class GatewayPage(BasePage):
 
     def delete_gateway(self):
         self.wait_for_timeouts(5000)
-        self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1).click()
-        self.page.get_by_role("button", name="删除").click()
-        allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
-        self.page.get_by_role("button", name="确认").click()
+        self.click(self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1), "勾选网关")
+        self.click(self.page.get_by_role("button", name="删除"), "删除按钮")
+        self.click(self.page.get_by_role("button", name="确认"), "确认删除按钮")
+        self.cut_out("删除网关结果")

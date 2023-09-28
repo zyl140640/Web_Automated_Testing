@@ -111,7 +111,6 @@ def context(
 def init(page):
     page.goto("http://36.134.46.91:7070/dashboard")
     time.sleep(8)
-    # page.pause()
     title = str(page.context.pages)
     if title.find("login") != -1:
         page.get_by_placeholder("请输入用户名").wait_for()
@@ -129,6 +128,7 @@ def init(page):
         page.mouse.up()
         page.get_by_role("button", name="登 录").click()
         page.context.storage_state(path="auto/cookies.json")
+        time.sleep(8)
         page.get_by_label("Close", exact=True).wait_for()
         page.get_by_label("Close", exact=True).click()
     else:
