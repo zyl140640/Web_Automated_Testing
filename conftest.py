@@ -34,8 +34,6 @@ def context(
         request: pytest.FixtureRequest,
 ) -> Generator[BrowserContext, None, None]:
     pages: List[Page] = []
-    # 用例重试
-    rerun_count = pytestconfig.getoption("--reruns")
     context = browser.new_context(**browser_context_args, storage_state="./auto/cookies.json")
     context.on("page", lambda page: pages.append(page))
     # 开启跟踪器
