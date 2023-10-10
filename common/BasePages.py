@@ -16,9 +16,14 @@ class BasePage:
         self.logger = logging
 
     def go_url(self, url):
-        with allure.step(f"访问网站:{url}"):
-            self.page.goto(url, wait_until='networkidle')
-            self.logger.info(f"访问网站:{url}")
+        try:
+            with allure.step(f"访问网站:{url}"):
+                self.page.goto(url, wait_until='networkidle')
+                self.logger.info(f"访问网站:{url}")
+        except Exception as e:
+            self.cut_out("网站未访问成功截图")
+            self.logger.error(f"访问网站：{url}时，访问超时")
+            raise e
 
     def all_text(self, locator, text):
         return self.page.get_attribute(locator, text)  # 获取元素文本
@@ -33,10 +38,10 @@ class BasePage:
         try:
             with allure.step(f"点击{text}"):
                 self.locator.click()
-                self.logger.info(f"使用{locator}元素定位方法点击{text},元素路径{locator}")
+                self.logger.info(f"点击{text}")
         except Exception as e:
             self.cut_out(f"{text}---报错截图")
-            self.logger.error(f"进行{text}操作时,元素{locator}未找到")
+            self.logger.error(f"进行{text}操作时,元素未找到")
             raise e
 
     def input_data(self, locator, data, text):
@@ -50,9 +55,9 @@ class BasePage:
         try:
             with allure.step(f"在{text}内输入数据: {data}"):
                 self.locator.fill(f"{data}")
-                self.logger.info(f"使用{locator}元素定位方法点击{text},输入{data},元素路径是: {locator}")
+                self.logger.info(f"在{text}内,输入数据: {data}")
         except Exception as e:
-            self.logger.error(f"进行{text}操作时,元素{locator}未找到")
+            self.logger.error(f"进行{text}操作时,元素未找到")
             raise e
 
     def cut_out(self, image_name):
