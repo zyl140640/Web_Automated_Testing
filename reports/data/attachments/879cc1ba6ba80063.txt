@@ -1,0 +1,4 @@
+2023-10-10 15:07:26 INFO 访问网站:http://36.134.46.91:7070/dashboard
+2023-10-10 15:07:43 INFO 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
+2023-10-10 15:07:43 INFO 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
+2023-10-10 15:07:44 INFO 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=link[name="设备管理"i]'>元素定位方法点击设备管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=link[name="设备管理"i]'>
