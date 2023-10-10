@@ -1,85 +1,75 @@
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/login?id='> selector='internal:attr=[placeholder="请输入用户名"i]'>元素定位方法点击输入账号信息,输入zhangyuanlong,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/login?id='> selector='internal:attr=[placeholder="请输入用户名"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/login?id='> selector='internal:attr=[placeholder="请输入登录密码"i]'>元素定位方法点击输入密码信息,输入123456,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/login?id='> selector='internal:attr=[placeholder="请输入登录密码"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/login?id='> selector='internal:role=button[name="登 录"i]'>元素定位方法点击登录按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/login?id='> selector='internal:role=button[name="登 录"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=link[name="项目管理"i]'>元素定位方法点击项目管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=link[name="项目管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="新增"i]'>元素定位方法点击新增项目按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="新增"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:label="\\u65b0\\u589e\\u9879\\u76ee"i >> internal:attr=[placeholder="请输入项目名称"i]'>元素定位方法点击输入项目名称,输入云平台项目,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:label="\\u65b0\\u589e\\u9879\\u76ee"i >> internal:attr=[placeholder="请输入项目名称"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入项目编码"i]'>元素定位方法点击输入项目编码,输入00100,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入项目编码"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请点击地图选择位置"i]'>元素定位方法点击打开地图,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请点击地图选择位置"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='.BMap_mask'>元素定位方法点击地图位置,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='.BMap_mask'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="确 定"i]'>元素定位方法点击确定按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="确 定"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入负责人"i]'>元素定位方法点击负责人输入框,输入张三,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入负责人"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入电话"i]'>元素定位方法点击电话输入框,输入15533065391,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入电话"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="下一步"i]'>元素定位方法点击下一步按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="下一步"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入网关别名"i]'>元素定位方法点击网关别名输入框,输入张三,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入网关别名"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入网关SN"i]'>元素定位方法点击网关SN输入框,输入4360776004143758,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入网关SN"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请选择网关类型"i]'>元素定位方法点击请选择网关类型,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请选择网关类型"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:text="YC-5300N"i'>元素定位方法点击选择YC-5300N,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:text="YC-5300N"i'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:text="\\u6dfb\\u52a0\\u7f51\\u53e3"i'>元素定位方法点击添加网口按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:text="\\u6dfb\\u52a0\\u7f51\\u53e3"i'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请选择"s] >> nth=2'>元素定位方法点击请选择,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请选择"s] >> nth=2'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:text="Modbus TCP"i'>元素定位方法点击协议,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:text="Modbus TCP"i'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入设备IP"i]'>元素定位方法点击设备IP输入框,输入192.168.30.152,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:attr=[placeholder="请输入设备IP"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="下一步"i]'>元素定位方法点击下一步按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="下一步"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="下一步"i]'>元素定位方法点击下一步按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="下一步"i]'>
-ERROR    root:BasePages.py:39 进行选择模板操作时,元素<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='label >> internal:has-text="0905\\u81ea\\u5b9a\\u4e49\\u6a21\\u677f"i >> span >> nth=1'>未找到
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=link[name="网关管理"i]'>元素定位方法点击网关管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=link[name="网关管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=button[name="新增"i]'>元素定位方法点击新增网关按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=button[name="新增"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=textbox[name="请选择项目名称"i]'>元素定位方法点击项目名称,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=textbox[name="请选择项目名称"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:label="\\u9009\\u62e9\\u9879\\u76ee"i >> internal:attr=[placeholder="请选择项目名称"i]'>元素定位方法点击输入项目名称,输入云平台项目,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:label="\\u9009\\u62e9\\u9879\\u76ee"i >> internal:attr=[placeholder="请选择项目名称"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:label="\\u9009\\u62e9\\u9879\\u76ee"i >> internal:role=button[name="\ue778 查询"i]'>元素定位方法点击查询按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:label="\\u9009\\u62e9\\u9879\\u76ee"i >> internal:role=button[name="\ue778 查询"i]'>
-ERROR    root:BasePages.py:39 进行勾选项目操作时,元素<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=radio'>未找到
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=link[name="网关管理"i]'>元素定位方法点击网关管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=link[name="网关管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=row[name="1"s] >> label span >> nth=1'>元素定位方法点击勾选网关,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=row[name="1"s] >> label span >> nth=1'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=button[name="删除"i]'>元素定位方法点击删除按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=button[name="删除"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=button[name="确认"i]'>元素定位方法点击确认删除按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/gatewayManagement'> selector='internal:role=button[name="确认"i]'>
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=link[name="设备管理"i]'>元素定位方法点击设备管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=link[name="设备管理"i]'>
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=link[name="设备管理"i]'>元素定位方法点击设备管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=link[name="设备管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=button[name="新增"i]'>元素定位方法点击新增设备按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:role=button[name="新增"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:attr=[placeholder="请选择项目名称"i] >> nth=0'>元素定位方法点击选择项目名称,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:attr=[placeholder="请选择项目名称"i] >> nth=0'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:attr=[placeholder="请选择项目名称"i]'>元素定位方法点击项目名称输入框,输入云平台项目,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='internal:attr=[placeholder="请选择项目名称"i]'>
-ERROR    root:BasePages.py:39 进行项目操作时,元素<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/deviceManagement'> selector='li >> internal:has-text="\\u4e91\\u5e73\\u53f0\\u9879\\u76ee"i'>未找到
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=link[name="点表管理"i]'>元素定位方法点击点表管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=link[name="点表管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="新增"s]'>元素定位方法点击新增点表按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="新增"s]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:attr=[placeholder="请选择"s] >> nth=3'>元素定位方法点击选择协议,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:attr=[placeholder="请选择"s] >> nth=3'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='li >> internal:has-text="Modbus TCP"i >> span'>元素定位方法点击选择Modbus TCP协议,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='li >> internal:has-text="Modbus TCP"i >> span'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:attr=[placeholder="请输入设备IP"i]'>元素定位方法点击设备IP输入框,输入198.120.1.1,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:attr=[placeholder="请输入设备IP"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="下一步"i]'>元素定位方法点击下一步按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="下一步"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="添加点表"i]'>元素定位方法点击添加点表按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="添加点表"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='div:nth-child(2) > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner'>元素定位方法点击输入地址框,输入1,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='div:nth-child(2) > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='div >> internal:has-text=/^名称从站号$/ >> internal:role=textbox'>元素定位方法点击点位名称,输入测试点位1,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='div >> internal:has-text=/^名称从站号$/ >> internal:role=textbox'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="确 定"i]'>元素定位方法点击确定按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="确 定"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="保存"s]'>元素定位方法点击保存按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectManagement/pointManagement'> selector='internal:role=button[name="保存"s]'>
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=link[name="项目管理"i]'>元素定位方法点击项目管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=link[name="项目管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>元素定位方法点击项目名称,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>元素定位方法点击输入项目名称,输入云平台项目,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="\ue778 查询"i]'>元素定位方法点击查询按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="\ue778 查询"i]'>
-ERROR    root:BasePages.py:39 进行编辑按钮操作时,元素<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=cell[name="\ue6ce \ue764 \ue6d7 \ue794"i] >> i >> nth=1'>未找到
-INFO     root:BasePages.py:21 访问网站:http://36.134.46.91:7070/dashboard
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>元素定位方法点击关闭首页弹窗,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='internal:label="Close"s'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>元素定位方法点击项目中心,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/dashboard'> selector='div >> internal:has-text=/^项目中心$/'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=link[name="项目管理"i]'>元素定位方法点击项目管理,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=link[name="项目管理"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>元素定位方法点击项目名称,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>
-INFO     root:BasePages.py:53 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>元素定位方法点击输入项目名称,输入云平台项目,元素路径是: <Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=textbox[name="请输入项目名称"i]'>
-INFO     root:BasePages.py:36 使用<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="\ue778 查询"i]'>元素定位方法点击查询按钮,元素路径<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=button[name="\ue778 查询"i]'>
-ERROR    root:BasePages.py:39 进行删除按钮操作时,元素<Locator frame=<Frame name= url='http://36.134.46.91:7070/projectConfig'> selector='internal:role=cell[name="\ue6ce \ue764 \ue6d7 \ue794"i] >> i >> nth=2'>未找到
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击项目管理
+INFO     root:BasePages.py:41 点击新增项目按钮
+INFO     root:BasePages.py:58 在输入项目名称内,输入数据: 云平台项目
+INFO     root:BasePages.py:58 在输入项目编码内,输入数据: 00100
+INFO     root:BasePages.py:41 点击打开地图
+INFO     root:BasePages.py:41 点击地图位置
+INFO     root:BasePages.py:41 点击确定按钮
+INFO     root:BasePages.py:58 在负责人输入框内,输入数据: 张三
+INFO     root:BasePages.py:58 在电话输入框内,输入数据: 15533065391
+INFO     root:BasePages.py:41 点击下一步按钮
+INFO     root:BasePages.py:58 在网关别名输入框内,输入数据: 张三
+INFO     root:BasePages.py:58 在网关SN输入框内,输入数据: 7694057896101894
+INFO     root:BasePages.py:41 点击请选择网关类型
+INFO     root:BasePages.py:41 点击选择YC-5300N
+INFO     root:BasePages.py:41 点击添加网口按钮
+INFO     root:BasePages.py:41 点击请选择
+INFO     root:BasePages.py:41 点击协议
+INFO     root:BasePages.py:58 在设备IP输入框内,输入数据: 192.168.30.152
+INFO     root:BasePages.py:41 点击下一步按钮
+INFO     root:BasePages.py:41 点击下一步按钮
+ERROR    root:BasePages.py:44 进行选择模板操作时,元素未找到
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击网关管理
+INFO     root:BasePages.py:41 点击新增网关按钮
+INFO     root:BasePages.py:41 点击项目名称
+INFO     root:BasePages.py:58 在输入项目名称内,输入数据: 云平台项目
+INFO     root:BasePages.py:41 点击查询按钮
+ERROR    root:BasePages.py:44 进行勾选项目操作时,元素未找到
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击网关管理
+INFO     root:BasePages.py:41 点击勾选网关
+INFO     root:BasePages.py:41 点击删除按钮
+INFO     root:BasePages.py:41 点击确认删除按钮
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击设备管理
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击设备管理
+INFO     root:BasePages.py:41 点击新增设备按钮
+INFO     root:BasePages.py:41 点击选择项目名称
+INFO     root:BasePages.py:58 在项目名称输入框内,输入数据: 云平台项目
+ERROR    root:BasePages.py:44 进行项目操作时,元素未找到
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击点表管理
+INFO     root:BasePages.py:41 点击新增点表按钮
+INFO     root:BasePages.py:41 点击选择协议
+INFO     root:BasePages.py:41 点击选择Modbus TCP协议
+INFO     root:BasePages.py:58 在设备IP输入框内,输入数据: 198.120.1.1
+INFO     root:BasePages.py:41 点击下一步按钮
+INFO     root:BasePages.py:41 点击添加点表按钮
+INFO     root:BasePages.py:58 在输入地址框内,输入数据: 1
+INFO     root:BasePages.py:58 在点位名称内,输入数据: 测试点位1
+INFO     root:BasePages.py:41 点击确定按钮
+INFO     root:BasePages.py:41 点击保存按钮
+INFO     root:BasePages.py:22 访问网站:http://36.134.46.91:7070/dashboard
+INFO     root:BasePages.py:41 点击关闭首页弹窗
+INFO     root:BasePages.py:41 点击项目中心
+INFO     root:BasePages.py:41 点击项目管理
+INFO     root:BasePages.py:41 点击项目名称
+INFO     root:BasePages.py:58 在输入项目名称内,输入数据: 云平台项目
+INFO     root:BasePages.py:41 点击查询按钮
+ERROR    root:BasePages.py:44 进行编辑按钮操作时,元素未找到
+ERROR    root:BasePages.py:25 访问网站：http://36.134.46.91:7070/dashboard时，访问超时
