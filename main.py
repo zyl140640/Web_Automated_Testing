@@ -13,6 +13,7 @@ if __name__ == '__main__':
     # 生成测试报告
     os.system("allure generate ./temps -o ./reports --clean")
     # 修改Allure测试报告标题
-    set_windows_title("御控工业云平台Web自动化测试报告")
-    report_title = get_json_data("御控工业云平台Web自动化测试报告")
-    write_json_data(report_title)
+    # set_windows_title("御控工业云平台Web自动化测试报告")
+    # report_title = get_json_data("御控工业云平台Web自动化测试报告")
+    # write_json_data(report_title)
+    # Jenkins上运行会导致出问题，找不到文件

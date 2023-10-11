@@ -22,7 +22,7 @@ class BasePage:
                 self.logger.info(f"访问网站:{url}")
         except Exception as e:
             self.cut_out("网站未访问成功截图")
-            self.logger.error(f"访问网站：{url}时，访问超时")
+            self.logger.error(f"访问网站：{url}时，访问超时,报错内容{e}")
             raise e
 
     def all_text(self, locator, text):
@@ -41,7 +41,7 @@ class BasePage:
                 self.logger.info(f"点击{text}")
         except Exception as e:
             self.cut_out(f"{text}---报错截图")
-            self.logger.error(f"进行{text}操作时,元素未找到")
+            self.logger.error(f"进行{text}操作时,元素未找到,报错内容{e}")
             raise e
 
     def input_data(self, locator, data, text):
@@ -57,7 +57,7 @@ class BasePage:
                 self.locator.fill(f"{data}")
                 self.logger.info(f"在{text}内,输入数据: {data}")
         except Exception as e:
-            self.logger.error(f"进行{text}操作时,元素未找到")
+            self.logger.error(f"进行{text}操作时,元素未找到,报错内容{e}")
             raise e
 
     def cut_out(self, image_name):

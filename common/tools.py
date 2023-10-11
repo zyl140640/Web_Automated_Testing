@@ -2,6 +2,8 @@ import os
 from os import listdir
 import json
 
+import yaml
+
 
 def detect_video():
     my_path = "./case_video/"
@@ -65,3 +67,17 @@ def write_json_data(dict):
         json.dump(dict, r, ensure_ascii=False, indent=4)
     # 关闭json写模式
     r.close()
+
+
+def read_yaml(path):
+    """
+     读取yaml文件内容
+    :param path: 文件路径
+    :return: 返回文件全部内容
+    示例:  data[""]   data[""][""]
+    """
+    # 读取YAML文件
+    with open(path, 'r') as f:
+        data = yaml.safe_load(f)
+    # 返回读取到的全部内容
+    return data

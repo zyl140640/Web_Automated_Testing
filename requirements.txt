@@ -7,3 +7,5 @@ jsonpath
 loguru
 python-slugify
 allure-python-commons
+requests
+PyYAML

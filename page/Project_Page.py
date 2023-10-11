@@ -1,7 +1,5 @@
 import time
 
-import allure
-
 from common.BasePages import BasePage
 
 
@@ -35,7 +33,7 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         self.wait_for_timeouts(3000)
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
-        self.click(self.page.locator("label").filter(has_text="0905自定义模板").locator("span").nth(1), "选择模板")
+        # self.click(self.page.locator("label").filter(has_text="0905自定义模板").locator("span").nth(1), "选择模板")
         self.click(self.page.get_by_role("button", name="保 存"), "保存按钮")
         self.cut_out("添加项目")
         self.click(self.page.get_by_role("button", name="关闭"), "关闭按钮")
