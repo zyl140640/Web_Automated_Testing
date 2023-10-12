@@ -6,15 +6,18 @@ login_host = "http://192.168.110.129:81/zentao/index.php?m=user&f=login"
 add_bug_host = "http://192.168.110.129:81/zentao/index.php?m=bug&f=create&productID=5&branch=0&extra=moduleID=0"
 
 
-def add_bug(title, assigned_to, severity, pri, steps):
+def add_bug(title, assigned_to, severity, pri, steps, image_path):
     """
     请求禅道地址-登录-填写Bug信息-指派-提交
+    如使用此方法进行上传图片等附件时    请先使用该方法去存储page.screenshot(path="logs/shouye.png", type="png")
+    去保存图片信息
+    :param image_path: 附件图片地址
     :param title: Bug标题
     :param assigned_to: Bug指派人
     :param severity:  Bug严重程度
     :param pri:  Bug优先级
     :param steps:  Bug内容(步骤图片等等)
-    示例：add_bug("自动化标题", "fangna", "4", "4", "Bug内容")
+    示例：add_bug("自动化标题", "fangna", "4", "4", "111", "logs/shouye.png")
     """
     header = {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"}  # 设置请求头
     datas = {"account": "fangna", "password": "fangna@123"}  # 定义请求的数据
@@ -41,10 +44,12 @@ def add_bug(title, assigned_to, severity, pri, steps):
         "story": "",  # 需求
         "steps": f"{steps}"  # string 重现步骤
     }
-    f = {}
-    responses = s.post(add_bug_host, headers=header, data=data)
+    f = {
+        ("files[]", ("Allure.png", open(f"{image_path}", "rb"), "image/png"))
+    }
+    responses = s.post(add_bug_host, data=data, files=f)
     print(responses.content.decode("utf-8"))
 
 
 if __name__ == '__main__':
-    add_bug("自动化标题", "fangna", "4", "4", 'Bug内容<p><img src="common/Allure.png" ></img></p>')
+    add_bug("自动化标题", "fangna", "4", "4", "111", "logs/shouye.png")
