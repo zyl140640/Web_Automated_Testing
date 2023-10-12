@@ -8,7 +8,7 @@ from common.tools import *
 if __name__ == '__main__':
     # 执行pytest
     pytest.main(['-s', '-v'])
-    # pytest.main(['-s', '-v', 'testcases/test_project.py::TestAddProject'])
+    # pytest.main(['-s', '-v', 'testcases/test_1_core/test_project.py::TestProject::test_add_project'])
     time.sleep(3)
     # 生成测试报告
     os.system("allure generate ./temps -o ./reports --clean")

@@ -39,7 +39,7 @@ def context(
     context = browser.new_context(**browser_context_args, storage_state="./auto/cookies.json")
     context.on("page", lambda page: pages.append(page))
     # 开启跟踪器
-    context.tracing.start(screenshots=True, snapshots=True, sources=True)
+    # context.tracing.start(screenshots=True, snapshots=True, sources=True)
     tracing_option = pytestconfig.getoption("--tracing")
     capture_trace = tracing_option in ["on", "retain-on-failure"]
     if capture_trace:
@@ -54,15 +54,15 @@ def context(
     # If requst.node is missing rep_call, then some error happened during execution
     # that prevented teardown, but should still be counted as a failure
     failed = request.node.rep_call.failed if hasattr(request.node, "rep_call") else True
-
     if capture_trace:
         retain_trace = tracing_option == "on" or (
                 failed and tracing_option == "retain-on-failure"
         )
         if retain_trace:
-            tracing_path = os.path.join(pytestconfig, request.node.name, "trace.zip")
-            context.tracing.stop(path=tracing_path)
-            allure.attach.file(tracing_path, "trace.playwright.dev", extension="zip")
+            # tracing_path = os.path.join(pytestconfig, request.node.name, "trace.zip")
+            trace_path = _build_artifact_test_folder(pytestconfig, request, "trace.zip")
+            context.tracing.stop(path=trace_path)
+            allure.attach.file(trace_path, "trace.playwright.dev", extension="zip")
         else:
             context.tracing.stop(path="trace.zip")
 
