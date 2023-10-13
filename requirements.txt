@@ -1,7 +1,7 @@
-playwright==1.16.1
+playwright
 pytest
 allure-pytest
-pytest-playwright==0.2.2
+pytest-playwright
 pytest-ordering
 jsonpath
 loguru
