@@ -33,7 +33,7 @@
 >
 > `python -m playwright install`  #安装浏览器驱动#
 >
-> `playwright codegen https://www.baidu.com/ ` 启动脚本录制
+> `playwright codegen http://36.134.46.91:7070/ ` 启动脚本录制
 >
 > `page.page.pause()`   启动调试功能
 > `playwright show-trace trace.zip`  查看跟踪日志 或者打开 https://trace.playwright.dev/ 去传入文件 trace.zip

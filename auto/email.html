@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>WEB自动化测试报告</title>
+</head>
+
+<body>
+<div style="background: #F0F2F5; padding: 35px; font-size: 14px;">
+    <div style="width: 1000px; margin: 0 auto; background: url('https://www.henghost.com/images/hc_email_background.png') no-repeat center; background-size: cover;">
+        <div style="padding: 0 15px; padding-bottom: 20px;">
+            <div style="height: 80px; display: flex; justify-content: space-between; position: relative;">
+                <div>
+                    <h1 style="margin-top: 20px; width: 150px; height: 70px; color: #FFFFFF;padding-left: 10px;letter-spacing: 3px">
+                        荏原电产</h1>
+                </div>
+                <div>
+                    <div style="font-size: 14px; color: #bddaff; margin-top: 17px;">日期: 2023-10-13</div>
+                    <div style="height: 30px; color: #006eff; line-height: 30px; padding: 0 10px; background: #FFFFFF; position: absolute; bottom: 0px; right: 0px;">
+                        Web端自动化测试报告
+                    </div>
+                </div>
+            </div>
+            <div style="background: #fff; padding: 0 15px; padding-bottom: 50px;">
+                <div style="padding: 0 9px; display: flex; justify-content: space-between; align-items: center; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #DBDBDB;">
+                    <div style="display: flex;">
+                        <a style="color: #333; text-decoration: none;" href="x" target="_blank"
+                           rel="noopener"><span class="nav-title" style="margin-right: 50px;">荏原电产</span></a>
+
+                    </div>
+                    <div style="display: flex;">
+                        <div style="cursor: pointer; background: #006EFF; color: #fff; height: 30px; line-height: 30px; padding: 0 10px; box-sizing: border-box; margin-left: 10px;">
+                            <a style="text-decoration: none; height: 100%; display: inline-block; color: inherit;"
+                               href="https://my.henghost.com/clientarea.php?s_url=https://my.henghost.com/clientarea.php?emailbanner"
+                               target="_blank" rel="noopener"> 御控工业云平台</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="color: #41bf71; border: 1px solid #41BF71; background: #E0FFEC; padding: 14px 15px; display: flex; margin-top: 20px; margin-bottom: 30px;">
+                    <img style="width: 42px !important; height: 42px !important;"
+                         src="https://www.henghost.com/images/hc_console_normal.png" width="42">
+                    <div style="margin-left: 14px;">
+                        <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">
+                            Web自动化测试报告已生成，请注意查收~！
+                        </div>
+                        <div style="width: 600px; line-height: 24px;">
+                            请登录Jenkins控制台，查看测试报告详情。
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div><span
+                            style="font-size: 16px; font-weight: bold; position: relative; top: -4px;">测试信息</span>
+                    </div>
+                    <table style="width: 100%; border-spacing: 0px; border-collapse: collapse; border: none; margin-top: 20px;">
+                        <tbody>
+                        <tr style="height: 40px; background: #F6F6F6;">
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                项目名称
+                            </th>
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                项目地址
+                            </th>
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                测试环境
+                            </th>
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                Allure测试报告地址
+                            </th>
+                        </tr>
+                        <tr style="height: 40px;">
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                御控工业云平台
+                            </td>
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                http://36.134.46.91:7070
+                            </td>
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                正式环境
+                            </td>
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                <a
+                                        href="${PROJECT_URL}/${BUILD_NUMBER}/allure">${PROJECT_URL}/${BUILD_NUMBER}/allure </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 30px;">
+                    <div><span
+                            style="font-size: 16px; font-weight: bold; position: relative; top: -4px;">构建信息</span>
+                    </div>
+                    <table style="width: 100%; border-spacing: 0px; border-collapse: collapse; border: none; margin-top: 20px;">
+                        <tbody>
+                        <tr style="height: 40px; background: #F6F6F6;">
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                构建编号
+                            </th>
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                触发原因
+                            </th>
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                构建状态
+                            </th>
+                            <th style="border: 1px solid #DBDBDB; color: #666666; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                构建地址
+                            </th>
+                        </tr>
+                        <tr style="height: 40px;">
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                第${BUILD_NUMBER}次构建
+                            </td>
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                ${CAUSE}
+                            </td>
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                ${BUILD_STATUS}
+                            <td style="border: 1px solid #DBDBDB; font-size: 14px; font-weight: normal; text-align: left; padding-left: 14px;">
+                                <a href="${PROJECT_URL}">${PROJECT_URL}</a>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 30px;">
+                    <div><span
+                            style="font-size: 16px; font-weight: bold; position: relative; top: -4px;">注意事项：</span>
+                    </div>
+                    <div style="border: 1px solid #DBDBDB; padding: 10px; padding-bottom: 20px; margin-top: 20px;">
+                        <div style="line-height: 30px;">
+                            目前暂无想说的
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 30px;"><span style="font-size: 14px; font-weight: bold;">温馨提示</span>
+                    <div style="line-height: 24px; margin-top: 10px;">
+                        <div>使用过程中如有任何问题，请随时联络我。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="responsive-table"
+           style="text-size-adjust: 100%; margin-top: 18px; border-collapse: collapse !important; width: 100%;"
+           border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <td style="font-size: 12px; -webkit-font-smoothing: subpixel-antialiased; text-size-adjust: 100%;"
+                align="center" valign="top">
+                <p style="line-height: 20.4px; text-size-adjust: 100%; font-family: 'Microsoft YaHei'!important; padding: 0px !important; margin: 0px !important; color: #7e8890 !important;">
+                    <span class="appleLinks"> Copyright © 2019 荏原电产（青岛）科技有限公司 版权所有   鲁ICP备14005795号  </span>
+
+                </p>
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px; font-size: 0px; line-height: 0;">
+            <td style="font-size: 12px; -webkit-font-smoothing: subpixel-antialiased; text-size-adjust: 100%;">&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; -webkit-font-smoothing: subpixel-antialiased; text-size-adjust: 100%;"
+                align="center" valign="top">
+                <p style="line-height: 20.4px; text-size-adjust: 100%; font-family: 'Microsoft YaHei'!important; padding: 0px !important; margin: 0px !important; color: #7e8890 !important;">
+                    <span class="appleLinks">邮件由系统自动发送，请勿直接回复本邮件！</span></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

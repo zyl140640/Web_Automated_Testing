@@ -52,4 +52,5 @@ def add_bug(title, assigned_to, severity, pri, steps, image_path):
 
 
 if __name__ == '__main__':
+
     add_bug("自动化标题", "fangna", "4", "4", "111", "logs/shouye.png")

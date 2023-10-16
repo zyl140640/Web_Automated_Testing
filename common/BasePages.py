@@ -1,5 +1,4 @@
 import allure
-# from playwright.async_api import Page
 import logging
 
 from playwright.sync_api import Page
