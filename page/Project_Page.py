@@ -1,7 +1,6 @@
 import time
 
 from common.BasePages import BasePage
-from common.ZenTao_Api import add_bug
 
 
 class ProjectPage(BasePage):
@@ -58,3 +57,26 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(2), "删除按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认按钮")
         self.cut_out("删除项目")
+
+    def copy_project(self, project, gate):
+        self.wait_for_timeouts(3000)
+        # self.page.pause()
+        self.page.locator(
+            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
+        self.wait_for_timeouts(1000)
+        # 研究出来的
+        self.page.locator("li:has-text('复制')").last.click()
+
+        self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
+        self.input_data(self.page.get_by_placeholder("请输入项目名称，40字内"), f"{project}", "输入项目名称")
+        self.click(self.page.get_by_role("button", name="下一步"), "基础信息下一步")
+        self.click(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), "网关sn")
+        self.input_data(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), f"{gate}", "输入网关sn")
+        self.click(self.page.get_by_role("button", name="下一步"), "映射网关下一步")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_label("项目复制").get_by_role("textbox"), "输入设备名称")
+        self.click(self.page.get_by_role("button", name="下一步"), "映射设备下一步")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_role("button", name="下一步"), "点表复查下一步")
+        self.click(self.page.get_by_role("button", name="提交"), "提交")
+        self.cut_out("复制项目")
