@@ -38,8 +38,6 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="保 存"), "保存按钮")
         self.cut_out("添加项目")
         self.click(self.page.get_by_role("button", name="关闭"), "关闭按钮")
-        self.page.screenshot(path="logs/shouye.png")
-        add_bug("自动化标题", "fangna", "4", "4", "111", "logs/shouye.png")
 
     def update_project(self, project):
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称")

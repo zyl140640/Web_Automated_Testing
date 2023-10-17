@@ -1,20 +1,17 @@
-import os
-from os import listdir
 import json
 
 import yaml
 
-
-def detect_video():
-    my_path = "./case_video/"
-
-    for file_name in listdir(my_path):
-
-        if file_name.endswith('.webm'):
-            os.remove(my_path + file_name)
+import os
 
 
-# 需要转换格式的视频文件，文件真实存在
+def clear_directory():
+    # 指定要清空的目录路径
+    directory = 'auto/couout'
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
 
 
 # 设置报告窗口的标题

@@ -36,7 +36,9 @@ def context(
         request: pytest.FixtureRequest,
 ) -> Generator[BrowserContext, None, None]:
     pages: List[Page] = []
-    context = browser.new_context(**browser_context_args, storage_state="./auto/cookies.json")
+    # context = browser.new_context(**browser_context_args, storage_state="./auto/cookies.json")
+    context = browser.new_context(**browser_context_args)
+
     context.on("page", lambda page: pages.append(page))
     # 开启跟踪器
     # context.tracing.start(screenshots=True, snapshots=True, sources=True)
@@ -112,7 +114,7 @@ def init(page):
     bs_init = BasePage(page)
     login_data = read_yaml("auto/config.yaml")
     bs_init.go_url(login_data["formal_login"]["url"])
-    bs_init.wait_for_timeouts(8000)
+    # bs_init.wait_for_timeouts(8000)
     title = str(bs_init.page.context.pages)
     if title.find("login") != -1:
         bs_init.page.get_by_placeholder("请输入用户名").wait_for()
@@ -131,10 +133,9 @@ def init(page):
         page.mouse.move(mov_x, box['y'] + box['height'] / 2)
         page.mouse.up()
         page.get_by_role("button", name="登 录").click()
-        page.context.storage_state(path="auto/cookies.json")
         bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
-        page.context.storage_state(path="auto/cookies.json")
         bs_init.wait_for_timeouts(8000)
+        page.context.storage_state(path="auto/cookies.json")
         bs_init.click(page.get_by_label("Close", exact=True), "关闭首页弹窗")
     else:
         bs_init.wait_for_timeouts(8000)

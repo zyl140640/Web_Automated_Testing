@@ -3,6 +3,8 @@ import logging
 
 from playwright.sync_api import Page
 
+from common.ZenTao_Api import add_bug
+
 """
 封装常用API
 """
@@ -40,6 +42,8 @@ class BasePage:
                 self.logger.info(f"点击{text}")
         except Exception as e:
             self.cut_out(f"{text}---报错截图")
+            self.page.screenshot(path=f"auto/couout/{text}.png")
+            # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
             self.logger.error(f"进行{text}操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -56,6 +60,9 @@ class BasePage:
                 self.locator.fill(f"{data}")
                 self.logger.info(f"在{text}内,输入数据: {data}")
         except Exception as e:
+            self.page.screenshot(path=f"auto/couout/{text}.png")
+            self.cut_out(f"{text}---报错截图")
+            # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
             self.logger.error(f"进行{text}操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -77,4 +84,5 @@ class BasePage:
         :param time: 需要等待的时间  单位: 毫秒
         """
         with allure.step(f"等待{time}毫秒后执行下一步操作"):
+            self.logger.info(f"等待{time}毫秒后执行下一步操作")
             self.page.wait_for_timeout(time)
