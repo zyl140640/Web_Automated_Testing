@@ -49,7 +49,7 @@ class TestProject:
     @pytest.mark.run(order=8)
     @allure.description("测试复制项目功能是否正常")
     @allure.severity("critical")
-    def test_copy_project(self, init, page):
+    def test_copy_project(self, init, page): 
         a = random.randint(5400000000000000, 5499999999999999)
         self.copy = ProjectPage(page)
         self.sidebar = SidebarPage(page)

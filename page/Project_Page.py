@@ -60,11 +60,11 @@ class ProjectPage(BasePage):
 
     def copy_project(self, project, gate):
         self.wait_for_timeouts(3000)
-        # self.page.pause()
+
         self.page.locator(
             ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
         self.wait_for_timeouts(1000)
-        # 研究出来的
+        #项目-复制
         self.page.locator("li:has-text('复制')").last.click()
 
         self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
