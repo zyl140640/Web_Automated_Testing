@@ -4,6 +4,13 @@ from common.BasePages import BasePage
 class GatewayPage(BasePage):
 
     def add_gateway(self, project, gateway, gateway_id):
+        """
+       新增网关
+        Args:
+            project:
+            gateway:
+            gateway_id:
+        """
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="新增"), "新增网关按钮")
         self.click(self.page.get_by_role("textbox", name="请选择项目名称"), "项目名称")
@@ -25,6 +32,11 @@ class GatewayPage(BasePage):
         self.cut_out("结果图")
 
     def update_gateway(self, project):
+        """
+        根据项目名称修改项目信息
+        Args:
+            project: 项目名称
+        """
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("link", name="网关管理"), "网关管理")
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询框")
@@ -39,16 +51,68 @@ class GatewayPage(BasePage):
         self.cut_out("修改网关结果")
 
     def delete_gateway(self):
+        """
+        删除网关信息
+        """
         self.wait_for_timeouts(5000)
         self.click(self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1), "勾选网关")
         self.click(self.page.get_by_role("button", name="删除"), "删除按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认删除按钮")
         self.cut_out("删除网关结果")
 
-    def get_gateway(self, project):
+    def get_project_gateway(self, project):
+        """
+         根据项目查询网关信息
+        Args:
+            project: 项目名称
+        """
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
         self.get_text(self.page.locator(
             "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
             "查询w网关数量")
+
+    def get_sn_gateway(self, sn):
+        """
+        根据网关sn查询
+        Args:
+            sn:714005F36924F9C7
+        """
+        self.click(self.page.get_by_role("button", name=" 展开"), "展开查询条件")
+        self.click(self.page.get_by_placeholder("请输入网关别名"), "网关别名查询框")
+        self.input_data(self.page.get_by_placeholder("请输入网关别名"), f"{sn}", "输入网关sn")
+        self.click(self.page.get_by_role("button", name=" 收起"), "收起查询框")
+        self.click(self.page.get_by_role("button", name=" 查询"), "查询网关sn")
+
+    def parm_read(self):
+        """
+        网关管理-参数读取
+        Args:
+            sn: 网关的sn
+        """
+
+        self.click(self.page.locator(
+            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
+                   "点击网关...")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator("li:has-text('参数读取')").last, "网关点表读取提醒")
+        self.click(self.page.get_by_role("button", name="确定"), "确定读取")
+        self.wait_for_timeouts(2000)
+        bs = self.get_text(self.page.get_by_text("操作成功"), "读取操作成功弹窗")
+        assert bs == "操作成功", "与预期结果不符"
+        self.click(self.page.get_by_role("button", name="同步到平台"), "同步到平台")
+        self.click(self.page.get_by_role("button", name="确定"), "确定同步到平台")
+        self.wait_for_timeouts(2000)
+        cs = self.get_text(self.page.get_by_text("同步成功"), "读取同步成功弹窗")
+        assert cs == "同步成功", "与预期结果不符"
+
+    def issue_device_id(self):
+        self.click(self.page.locator(
+            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
+                   "点击网关...")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator("li:has-text('点表下发')").last, "网关点表读取提醒")
+        self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
+        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        assert result == "操作成功", "下发点表与预期结果不符合"

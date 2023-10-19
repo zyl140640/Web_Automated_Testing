@@ -14,8 +14,18 @@ class TestProject:
     @allure.severity("critical")
     def test_copy_project(self, init, page):
         a = random.randint(5400000000000000, 5499999999999999)
-        self.copy = ProjectPage(page)
+        self.project = ProjectPage(page)
         self.sidebar = SidebarPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.copy.copy_project("Copy_不允许删除pro", f"{a}")
+        self.project.copy_project("Copy_不允许删除pro", f"{a}")
+
+    @allure.title("上传项目材料")
+    @allure.description("测试上传材料功能是否正常")
+    @allure.severity("critical")
+    def test_file_project(self, init, page):
+        self.project = ProjectPage(page)
+        self.sidebar = SidebarPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_project()
+        self.project.update_date()
