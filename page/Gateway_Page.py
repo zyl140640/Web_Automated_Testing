@@ -116,3 +116,14 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
         result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
+
+    def get_clock_gate(self, year):
+        self.click(self.page.locator(
+            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
+                   "点击网关...")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator("li:has-text('获取网关时间')").last, "获取网关时间")
+        bs = self.get_text(self.page.locator(
+            "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(6) > div > div.el-dialog__body"),
+            "读取网关时钟弹窗结果")
+        assert bs.find(f"{year}") != -1, "未获取到网关时间"
