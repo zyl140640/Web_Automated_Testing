@@ -6,7 +6,7 @@ from page.SidebarPage import SidebarPage
 
 
 @allure.feature("设备管理")
-class TestDevice:
+class TestMainDevice:
 
     @allure.title("创建设备")
     @allure.description("测试创建设备功能是否正常")

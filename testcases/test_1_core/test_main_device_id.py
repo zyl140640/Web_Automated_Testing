@@ -6,7 +6,7 @@ from page.SidebarPage import SidebarPage
 
 
 @allure.feature("点表管理")
-class TestDeviceId:
+class TestMainDeviceId:
 
     @allure.title("创建设备点表")
     @pytest.mark.run(order=6)

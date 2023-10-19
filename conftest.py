@@ -135,7 +135,7 @@ def init(page):
         page.get_by_role("button", name="登 录").click()
         bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
         bs_init.wait_for_timeouts(8000)
-        page.context.storage_state(path="auto/cookies.json")
+        # page.context.storage_state(path="auto/cookies.json")
         bs_init.click(page.get_by_label("Close", exact=True), "关闭首页弹窗")
     else:
         bs_init.wait_for_timeouts(8000)

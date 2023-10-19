@@ -8,7 +8,7 @@ from page.SidebarPage import SidebarPage
 
 
 @allure.feature("项目管理")
-class TestProject:
+class TestMainProject:
 
     @allure.title("创建项目")
     @allure.description("测试创建项目功能是否正常")

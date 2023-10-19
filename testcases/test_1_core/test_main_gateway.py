@@ -9,7 +9,7 @@ from page.SidebarPage import SidebarPage
 
 @allure.feature("网关管理")
 # @allure.story("主流程")
-class TestGateway:
+class TestMainGateway:
 
     @allure.title("创建网关")
     @pytest.mark.run(order=2)
