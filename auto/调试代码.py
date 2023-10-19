@@ -30,8 +30,8 @@ def run(playwright: Playwright) -> None:
     bs_init.click(page.get_by_label("Close", exact=True), "关闭首页弹窗")
     page.pause()
     bs_init.click(page.get_by_role("button", name=" 展开"), "展开查询条件")
-    bs_init.click(page.get_by_placeholder("请输入网关别名"), "网关别名查询框")
-    bs_init.input_data(page.get_by_placeholder("请输入网关别名"), "714005F36924F9C7", "输入网关sn")
+    bs_init.click(page.get_by_role("textbox", name="请输入网关SN"), "网关SN查询框")
+    bs_init.input_data(page.get_by_role("textbox", name="请输入网关SN"), "714005F36924F9C7", "输入网关sn")
     bs_init.click(page.get_by_role("button", name=" 收起"), "收起查询框")
     bs_init.click(page.get_by_role("button", name=" 查询"), "查询网关sn")
     bs_init.click(page.locator(
@@ -39,10 +39,11 @@ def run(playwright: Playwright) -> None:
                   "点击网关...")
     bs_init.wait_for_timeouts(1000)
     bs_init.click(page.locator("li:has-text('获取网关时间')").last, "网关点表读取提醒")
-    bs_init.click(page.get_by_role("button", name="确认"), "确认下发按钮")
-    bs_init.get_text(page.get_by_text("操作成功"), "读取下发弹窗结果")
-    print("你好")
-
+    # bs_init.click(page.get_by_role("button", name="确认"), "确认下发按钮")
+    bs = bs_init.get_text(page.locator(
+        "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(6) > div > div.el-dialog__body"),
+                          "读取下发弹窗结果")
+    assert bs.find("2023") != -1,"未获取到网关时间"
     # ---------------------
     context.close()
     browser.close()
