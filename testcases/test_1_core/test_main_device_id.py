@@ -18,3 +18,13 @@ class TestDeviceId:
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
         self.device_id.add_device_id()
+
+
+    @allure.title("查询设备点表")
+    @allure.severity("critical")
+    @allure.description("测试查询设备点表功能是否正常")
+    def test_add_device_id(self, init, page):
+        self.sidebar = SidebarPage(page)
+        self.device_id = DeviceIdPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_device_id()

@@ -44,3 +44,11 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="删除"), "删除按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认删除按钮")
         self.cut_out("删除网关结果")
+
+    def get_gateway(self, project):
+        self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
+        self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
+        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
+        self.get_text(self.page.locator(
+            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
+            "查询w网关数量")

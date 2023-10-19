@@ -64,7 +64,7 @@ class ProjectPage(BasePage):
         self.page.locator(
             ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
         self.wait_for_timeouts(1000)
-        #项目-复制
+        # 项目-复制
         self.page.locator("li:has-text('复制')").last.click()
 
         self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
@@ -80,3 +80,11 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "点表复查下一步")
         self.click(self.page.get_by_role("button", name="提交"), "提交")
         self.cut_out("复制项目")
+
+    def get_project(self, project):
+        self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
+        self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
+        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
+        self.get_text(self.page.locator(
+            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
+            "查询数量")

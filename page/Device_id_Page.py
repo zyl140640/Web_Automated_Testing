@@ -41,3 +41,11 @@ class DeviceIdPage(BasePage):
         self.page.get_by_role("button", name="下一步").click()
         self.page.get_by_role("button", name="保存", exact=True).click()
         allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
+
+    def get_device_id(self, project):
+        self.click(self.page.get_by_role("textbox", name="请输入参数名称"), "项目名称查询弹框")
+        self.input_data(self.page.get_by_role("textbox", name="请输入参数名称"), project, "输入点表参数名称")
+        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
+        self.get_text(self.page.locator(
+            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
+            "查询点表数量")

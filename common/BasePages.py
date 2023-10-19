@@ -86,3 +86,17 @@ class BasePage:
         with allure.step(f"等待{time}毫秒后执行下一步操作"):
             self.logger.info(f"等待{time}毫秒后执行下一步操作")
             self.page.wait_for_timeout(time)
+
+    def get_text(self, locator, text):
+        self.locator = locator
+        try:
+            with allure.step(f"获取{text}元素文本内容"):
+                texts = self.locator.inner_text()
+                self.logger.info(f"获取{text}元素文本内容,内容是{texts}")
+                return texts
+        except Exception as e:
+            self.page.screenshot(path=f"auto/couout/{text}.png")
+            self.cut_out(f"{text}---报错截图")
+            # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
+            self.logger.error(f"获取{text}元素文本内容操作时,元素未找到,报错内容{e}")
+            raise e

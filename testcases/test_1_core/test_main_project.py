@@ -8,7 +8,6 @@ from page.SidebarPage import SidebarPage
 
 
 @allure.feature("项目管理")
-# @allure.story("主流程")
 class TestProject:
 
     @allure.title("创建项目")
@@ -46,13 +45,21 @@ class TestProject:
         self.project.detect_project("云平台项目")
 
     @allure.title("复制项目信息")
-    @pytest.mark.run(order=8)
     @allure.description("测试复制项目功能是否正常")
     @allure.severity("critical")
-    def test_copy_project(self, init, page): 
+    def test_copy_project(self, init, page):
         a = random.randint(5400000000000000, 5499999999999999)
         self.copy = ProjectPage(page)
         self.sidebar = SidebarPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.copy.copy_project("Copy_不允许删除pro",f"{a}")
+        self.copy.copy_project("Copy_不允许删除pro", f"{a}")
+
+    @allure.title("查询项目信息")
+    @allure.description("测试查询项目功能是否正常")
+    def test_git_project(self, init, page):
+        self.get = ProjectPage(page)
+        self.sidebar = SidebarPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_project()
+        self.get.get_project("御控测试")

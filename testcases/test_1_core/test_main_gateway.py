@@ -33,3 +33,12 @@ class TestGateway:
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.gateway.delete_gateway()
+
+    @allure.title("查询网关信息")
+    @allure.description("测试查询网关功能是否正常")
+    def test_get_gateway(self, init, page):
+        self.sidebar = SidebarPage(page)
+        self.gateway = GatewayPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.gateway.get_gateway("御控测试")
