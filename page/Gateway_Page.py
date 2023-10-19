@@ -80,8 +80,8 @@ class GatewayPage(BasePage):
             sn:714005F36924F9C7
         """
         self.click(self.page.get_by_role("button", name=" 展开"), "展开查询条件")
-        self.click(self.page.get_by_placeholder("请输入网关别名"), "网关别名查询框")
-        self.input_data(self.page.get_by_placeholder("请输入网关别名"), f"{sn}", "输入网关sn")
+        self.click(self.page.get_by_role("textbox", name="请输入网关SN"), "网关SN查询框")
+        self.input_data(self.page.get_by_role("textbox", name="请输入网关SN"), f"{sn}", "输入网关sn")
         self.click(self.page.get_by_role("button", name=" 收起"), "收起查询框")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询网关sn")
 
