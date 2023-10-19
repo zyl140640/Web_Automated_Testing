@@ -1,3 +1,4 @@
+import re
 import time
 
 from common.BasePages import BasePage
@@ -60,13 +61,11 @@ class ProjectPage(BasePage):
 
     def copy_project(self, project, gate):
         self.wait_for_timeouts(3000)
-
         self.page.locator(
             ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
         self.wait_for_timeouts(1000)
         # 项目-复制
         self.page.locator("li:has-text('复制')").last.click()
-
         self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
         self.input_data(self.page.get_by_placeholder("请输入项目名称，40字内"), f"{project}", "输入项目名称")
         self.click(self.page.get_by_role("button", name="下一步"), "基础信息下一步")
@@ -88,3 +87,25 @@ class ProjectPage(BasePage):
         self.get_text(self.page.locator(
             "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
             "查询数量")
+
+    def update_date(self):
+        self.page.locator(
+            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
+        self.wait_for_timeouts(1000)
+        # 项目-上传资料
+        self.click(self.page.locator("li:has-text('上传资料')").last, "上传资料")
+        self.click(self.page.locator("div").filter(has_text=re.compile(r"^点击上传$")).nth(1), "上传资料li")
+        # page.locator(".el-upload-dragger").click()
+        # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")
+        # page.locator("div").filter(has_text="资料上传成功").click()
+
+    def update_relevant_date(self):
+        self.page.locator(
+            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
+        self.wait_for_timeouts(1000)
+        # 项目-上传资料
+        self.click(self.page.locator("li:has-text('相关资料')").last, "相关资料")
+        self.click(self.page.locator("div").filter(has_text=re.compile(r"^点击上传$")).nth(1), "上传资料li")
+        # page.locator(".el-upload-dragger").click()
+        # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")
+        # page.locator("div").filter(has_text="资料上传成功").click()
