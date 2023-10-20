@@ -83,3 +83,5 @@ class SidebarPage(BasePage):
                    "更多功能")
         self.wait_for_timeouts(1000)
         self.click(self.page.locator(f"li:has-text('{functions_name}')").last, f"{functions_name}按钮")
+
+

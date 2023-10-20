@@ -110,3 +110,12 @@ class BasePage:
             # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
             self.logger.error(f"获取{text}元素文本内容操作时,元素未找到,报错内容{e}")
             raise e
+
+    def list_row(self, row):
+        """
+        勾选row的行
+        Args:
+            row: 列表的行数 1 2 3  序号
+        """
+        self.click(self.page.get_by_role("row", name=f"{row}", exact=True).locator("label span").nth(1),
+                   f"勾选第几列{row}")
