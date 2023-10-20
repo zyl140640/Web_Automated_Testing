@@ -86,7 +86,7 @@ class TestGateway:
         current_datetime = datetime.datetime.now()
         self.gateway.get_clock_gate(current_datetime.year)
 
-    @allure.title("网关-网关分享时间")
+    @allure.title("网关-网关分享")
     @allure.description("测试网关分享功能是否正常")
     def test_clock_gateway(self, init, page):
         self.sidebar = SidebarPage(page)

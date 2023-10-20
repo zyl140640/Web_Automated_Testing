@@ -14,6 +14,7 @@ class TestGatewayXieYi:
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.add_xieyi("192.186.0.1")
 
@@ -24,6 +25,7 @@ class TestGatewayXieYi:
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.add_chuangkou()
 
