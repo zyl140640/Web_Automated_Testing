@@ -17,8 +17,7 @@ class TestMainDeviceId:
         self.device_id = DeviceIdPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.add_device_id()
-
+        self.device_id.add_device_id("云平台测试点位")
 
     @allure.title("查询设备点表")
     @allure.severity("critical")
@@ -28,3 +27,4 @@ class TestMainDeviceId:
         self.device_id = DeviceIdPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
+        self.device_id.get_device_id("云平台测试点位")

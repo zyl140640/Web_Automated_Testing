@@ -1,3 +1,5 @@
+import re
+
 from playwright.sync_api import Playwright, sync_playwright
 
 from common.BasePages import BasePage
@@ -30,20 +32,35 @@ def run(playwright: Playwright) -> None:
     bs_init.click(page.get_by_label("Close", exact=True), "关闭首页弹窗")
     page.pause()
     bs_init.click(page.get_by_role("button", name=" 展开"), "展开查询条件")
-    bs_init.click(page.get_by_role("textbox", name="请输入网关SN"), "网关SN查询框")
-    bs_init.input_data(page.get_by_role("textbox", name="请输入网关SN"), "714005F36924F9C7", "输入网关sn")
+    bs_init.click(page.get_by_placeholder("请输入网关别名"), "网关别名查询框")
+    bs_init.input_data(page.get_by_placeholder("请输入网关别名"), "714005F36924F9C7", "输入网关sn")
     bs_init.click(page.get_by_role("button", name=" 收起"), "收起查询框")
     bs_init.click(page.get_by_role("button", name=" 查询"), "查询网关sn")
     bs_init.click(page.locator(
         ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
                   "点击网关...")
     bs_init.wait_for_timeouts(1000)
-    bs_init.click(page.locator("li:has-text('获取网关时间')").last, "网关点表读取提醒")
+    bs_init.click(page.locator("li:has-text('协议配置')").last, "网关点表读取提醒")
     # bs_init.click(page.get_by_role("button", name="确认"), "确认下发按钮")
-    bs = bs_init.get_text(page.locator(
-        "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(6) > div > div.el-dialog__body"),
-                          "读取下发弹窗结果")
-    assert bs.find("2023") != -1,"未获取到网关时间"
+    bs_init.wait_for_timeouts(1000)
+    page.get_by_role("button", name=" 串口协议添加").click()
+    page.locator("div").filter(has_text=re.compile(
+        r"^协议类别标准西门子三菱台达协议协议Modbus RTU网关I/ORFID协议协议别名$")).get_by_placeholder("请选择").nth(
+        1).click()
+    page.locator("li").filter(has_text="Modbus RTU").click()
+    page.get_by_label("串口协议添加").locator("form div").filter(
+        has_text="COM口com0(232)com1(485)波特率1200180024004800720096001440019200384005760011520012800").get_by_placeholder(
+        "请选择").first.click()
+    page.locator("li").filter(has_text="com0(232)").click()
+    page.get_by_role("button", name="确 定").click()
+    bs = bs_init.get_text(page.get_by_text("协议保存成功"), "读取下发弹窗结果")
+    print(bs)
+    page.get_by_role("button", name="删除").nth(1).click()
+    page.get_by_role("button", name="确认").click()
+    # bs_init.click(page.get_by_role("button", name="提 交"), "确认下发按钮")
+    # bs_init.wait_for_timeouts(3000)
+    # bs_init.get_text(page.get_by_text("操作成功"), "读取下发弹窗结果")
+
     # ---------------------
     context.close()
     browser.close()

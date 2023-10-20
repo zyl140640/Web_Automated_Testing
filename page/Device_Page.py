@@ -56,11 +56,3 @@ class DevicePage(BasePage):
         self.page.get_by_role("button", name="删除").click()
         self.page.get_by_role("button", name="确认").click()
         allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
-
-    def get_device(self, project):
-        self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
-        self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
-        self.get_text(self.page.locator(
-            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
-            "查询设备数量")

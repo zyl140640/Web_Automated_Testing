@@ -1,14 +1,16 @@
 import re
-import time
-
 from common.BasePages import BasePage
 
 
 class ProjectPage(BasePage):
 
     def add_project(self, project, project_id, gateway):
-        time.sleep(2)
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="新增"), "新增项目按钮")
+        self.click(self.page.get_by_label("新增项目").get_by_placeholder("请选择", exact=True), "所属租户")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "选择所属租户")
+
         self.input_data(self.page.get_by_label("新增项目").get_by_placeholder("请输入项目名称"), f"{project}",
                         "输入项目名称")
         self.input_data(self.page.get_by_placeholder("请输入项目编码"), f"{project_id}",
@@ -61,50 +63,28 @@ class ProjectPage(BasePage):
 
     def copy_project(self, project, gate):
         self.wait_for_timeouts(3000)
-        self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
-        self.wait_for_timeouts(1000)
-        # 项目-复制
-        self.page.locator("li:has-text('复制')").last.click()
         self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
         self.input_data(self.page.get_by_placeholder("请输入项目名称，40字内"), f"{project}", "输入项目名称")
         self.click(self.page.get_by_role("button", name="下一步"), "基础信息下一步")
         self.click(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), "网关sn")
         self.input_data(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), f"{gate}", "输入网关sn")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="下一步"), "映射网关下一步")
-        self.wait_for_timeouts(2000)
-        self.click(self.page.get_by_label("项目复制").get_by_role("textbox"), "输入设备名称")
+        # self.click(self.page.get_by_label("项目复制").get_by_role("textbox"), "输入设备名称")
         self.click(self.page.get_by_role("button", name="下一步"), "映射设备下一步")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="下一步"), "点表复查下一步")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="提交"), "提交")
         self.cut_out("复制项目")
 
-    def get_project(self, project):
-        self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
-        self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
-        self.get_text(self.page.locator(
-            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
-            "查询数量")
-
     def update_date(self):
-        self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
-        self.wait_for_timeouts(1000)
-        # 项目-上传资料
-        self.click(self.page.locator("li:has-text('上传资料')").last, "上传资料")
         self.click(self.page.locator("div").filter(has_text=re.compile(r"^点击上传$")).nth(1), "上传资料li")
         # page.locator(".el-upload-dragger").click()
         # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")
         # page.locator("div").filter(has_text="资料上传成功").click()
 
     def update_relevant_date(self):
-        self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first.click()
-        self.wait_for_timeouts(1000)
-        # 项目-上传资料
-        self.click(self.page.locator("li:has-text('相关资料')").last, "相关资料")
         self.click(self.page.locator("div").filter(has_text=re.compile(r"^点击上传$")).nth(1), "上传资料li")
         # page.locator(".el-upload-dragger").click()
         # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")

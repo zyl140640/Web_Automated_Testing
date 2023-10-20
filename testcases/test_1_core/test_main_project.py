@@ -47,8 +47,8 @@ class TestMainProject:
     @allure.title("查询项目信息")
     @allure.description("测试查询项目功能是否正常")
     def test_git_project(self, init, page):
-        self.get = ProjectPage(page)
+        self.project = ProjectPage(page)
         self.sidebar = SidebarPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.get.get_project("御控测试")
+        self.sidebar.get_project_name("云平台项目")

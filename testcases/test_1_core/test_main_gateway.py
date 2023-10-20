@@ -41,4 +41,4 @@ class TestMainGateway:
         self.gateway = GatewayPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.gateway.get_gateway("御控测试")
+        self.sidebar.get_gateway_name("云平台项目")

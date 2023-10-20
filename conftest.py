@@ -113,7 +113,7 @@ def context(
 def init(page):
     bs_init = BasePage(page)
     login_data = read_yaml("auto/config.yaml")
-    bs_init.go_url(login_data["formal_login"]["url"])
+    bs_init.go_url(login_data["case_login"]["url"])
     # bs_init.wait_for_timeouts(8000)
     title = str(bs_init.page.context.pages)
     if title.find("login") != -1:

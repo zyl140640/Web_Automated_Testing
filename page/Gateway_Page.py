@@ -60,43 +60,11 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="确认"), "确认删除按钮")
         self.cut_out("删除网关结果")
 
-    def get_project_gateway(self, project):
-        """
-         根据项目查询网关信息
-        Args:
-            project: 项目名称
-        """
-        self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
-        self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
-        self.get_text(self.page.locator(
-            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
-            "查询w网关数量")
-
-    def get_sn_gateway(self, sn):
-        """
-        根据网关sn查询
-        Args:
-            sn:714005F36924F9C7
-        """
-        self.click(self.page.get_by_role("button", name=" 展开"), "展开查询条件")
-        self.click(self.page.get_by_role("textbox", name="请输入网关SN"), "网关SN查询框")
-        self.input_data(self.page.get_by_role("textbox", name="请输入网关SN"), f"{sn}", "输入网关sn")
-        self.click(self.page.get_by_role("button", name=" 收起"), "收起查询框")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询网关sn")
-
     def parm_read(self):
         """
         网关管理-参数读取
         Args:
-            sn: 网关的sn
         """
-
-        self.click(self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
-                   "点击网关...")
-        self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li:has-text('参数读取')").last, "网关点表读取提醒")
         self.click(self.page.get_by_role("button", name="确定"), "确定读取")
         self.wait_for_timeouts(2000)
         bs = self.get_text(self.page.get_by_text("操作成功"), "读取操作成功弹窗")
@@ -108,21 +76,47 @@ class GatewayPage(BasePage):
         assert cs == "同步成功", "与预期结果不符"
 
     def issue_device_id(self):
-        self.click(self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
-                   "点击网关...")
-        self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li:has-text('点表下发')").last, "网关点表读取提醒")
+        """
+        点表下发
+        """
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
         result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
+    def message_send(self):
+        """
+        基础信息下发
+        """
+        self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
+        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        assert result == "操作成功", "下发点表与预期结果不符合"
+
+    def network_send(self):
+        """
+        网络信息下发
+        """
+        self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
+        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        assert result == "操作成功", "下发点表与预期结果不符合"
+
+    def lock_in_time(self):
+        """
+        同步时钟
+        """
+
+        self.click(self.page.get_by_role("button", name="确认"), "确认同步按钮")
+        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        assert result == "操作成功", "下发点表与预期结果不符合"
+
+    def debug_switch(self):
+        """
+        远程调试开关
+        """
+        self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
+        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        assert result == "操作成功", "下发点表与预期结果不符合"
+
     def get_clock_gate(self, year):
-        self.click(self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
-                   "点击网关...")
-        self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li:has-text('获取网关时间')").last, "获取网关时间")
         bs = self.get_text(self.page.locator(
             "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(6) > div > div.el-dialog__body"),
             "读取网关时钟弹窗结果")

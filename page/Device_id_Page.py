@@ -8,7 +8,7 @@ from common.BasePages import BasePage
 
 class DeviceIdPage(BasePage):
 
-    def add_device_id(self):
+    def add_device_id(self, name):
         self.wait_for_timeouts(4000)
         self.click(self.page.get_by_role("button", name="新增", exact=True), "新增点表按钮")
         self.click(self.page.get_by_placeholder("请选择", exact=True).nth(3), "选择协议")
@@ -21,7 +21,7 @@ class DeviceIdPage(BasePage):
             "1", "输入地址框")
         self.input_data(
             self.page.locator("div").filter(has_text=re.compile(r"^名称从站号$")).get_by_role("textbox"),
-            "测试点位1", "点位名称")
+            f"{name}", "点位名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         self.click(self.page.get_by_role("button", name="保存", exact=True), "保存按钮")
         self.cut_out("新增点表、点位")
@@ -42,9 +42,9 @@ class DeviceIdPage(BasePage):
         self.page.get_by_role("button", name="保存", exact=True).click()
         allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
 
-    def get_device_id(self, project):
-        self.click(self.page.get_by_role("textbox", name="请输入参数名称"), "项目名称查询弹框")
-        self.input_data(self.page.get_by_role("textbox", name="请输入参数名称"), project, "输入点表参数名称")
+    def get_device_id(self, name):
+        self.click(self.page.get_by_role("textbox", name="请输入参数名称"), "参数名称查询弹框")
+        self.input_data(self.page.get_by_role("textbox", name="请输入参数名称"), f"{name}", "输入点表参数名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
         self.get_text(self.page.locator(
             "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
