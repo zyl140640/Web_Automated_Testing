@@ -18,7 +18,7 @@ class GatewayXieYiPage(BasePage):
         self.click(self.page.get_by_placeholder("请输入设备IP"), "")
         self.input_data(self.page.get_by_placeholder("请输入设备IP"), f"{ip}", "")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        self.get_text(self.page.get_by_text("协议保存成功"), "网口协议添加成功提示")
+        self.get_text(self.page.get_by_role("alert"), "网口协议添加成功提示")
 
     def add_chuangkou(self):
         """
@@ -46,7 +46,7 @@ class GatewayXieYiPage(BasePage):
         self.input_data(self.page.get_by_label("串口协议编辑").get_by_placeholder("请输入超时时间"), "1110",
                         "输入超时时间")
         self.click(self.page.get_by_role("button", name="确 定"), "保存协议")
-        self.get_text(self.page.get_by_text("协议保存成功"), "网口协议修改成功提示")
+        self.get_text(self.page.get_by_role("alert"), "网口协议修改成功提示")
 
     def delete_xieyi(self):
         """

@@ -85,3 +85,14 @@ class TestGateway:
         self.sidebar.click_more_functions("获取网关时间")
         current_datetime = datetime.datetime.now()
         self.gateway.get_clock_gate(current_datetime.year)
+
+    @allure.title("网关-网关分享时间")
+    @allure.description("测试网关分享功能是否正常")
+    def test_clock_gateway(self, init, page):
+        self.sidebar = SidebarPage(page)
+        self.gateway = GatewayPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("网关分享")
+        self.gateway.gateway_share("设备3")

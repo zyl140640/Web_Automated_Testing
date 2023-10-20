@@ -67,12 +67,12 @@ class GatewayPage(BasePage):
         """
         self.click(self.page.get_by_role("button", name="确定"), "确定读取")
         self.wait_for_timeouts(2000)
-        bs = self.get_text(self.page.get_by_text("操作成功"), "读取操作成功弹窗")
+        bs = self.get_text(self.page.get_by_role("alert"), "读取操作成功弹窗")
         assert bs == "操作成功", "与预期结果不符"
         self.click(self.page.get_by_role("button", name="同步到平台"), "同步到平台")
         self.click(self.page.get_by_role("button", name="确定"), "确定同步到平台")
         self.wait_for_timeouts(2000)
-        cs = self.get_text(self.page.get_by_text("同步成功"), "读取同步成功弹窗")
+        cs = self.get_text(self.page.get_by_role("alert"), "读取同步成功弹窗")
         assert cs == "同步成功", "与预期结果不符"
 
     def issue_device_id(self):
@@ -80,7 +80,7 @@ class GatewayPage(BasePage):
         点表下发
         """
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
     def message_send(self):
@@ -88,7 +88,7 @@ class GatewayPage(BasePage):
         基础信息下发
         """
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
     def network_send(self):
@@ -96,7 +96,7 @@ class GatewayPage(BasePage):
         网络信息下发
         """
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        result = self.get_text(self.page.page.get_by_role("alert"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
     def lock_in_time(self):
@@ -105,7 +105,7 @@ class GatewayPage(BasePage):
         """
 
         self.click(self.page.get_by_role("button", name="确认"), "确认同步按钮")
-        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
     def debug_switch(self):
@@ -113,7 +113,7 @@ class GatewayPage(BasePage):
         远程调试开关
         """
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
-        result = self.get_text(self.page.get_by_text("操作成功"), "读取下发弹窗结果")
+        result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
     def get_clock_gate(self, year):
@@ -121,3 +121,16 @@ class GatewayPage(BasePage):
             "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(6) > div > div.el-dialog__body"),
             "读取网关时钟弹窗结果")
         assert bs.find(f"{year}") != -1, "未获取到网关时间"
+
+    def gateway_share(self, project):
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_label("分享").get_by_placeholder("请输入项目名称"), "项目名称输入框")
+        self.input_data(self.page.get_by_label("分享").get_by_placeholder("请输入项目名称"), f"{project}", "项目名称")
+        self.click(self.page.get_by_label("分享").get_by_role("button", name=" 查询"), "查询按钮")
+        self.click(
+            self.page.get_by_role("row", name="d161b660-14ea-4efe-9eca-51702aa2bc31 设备3").locator("span").nth(1),
+            "勾选项目")
+        self.click(self.page.get_by_role("row", name="项目Id 项目名称").locator("span").nth(1), "勾选项目")
+        self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
+        result = self.get_text(self.page.get_by_role("alert"), "获取弹框结果")
+        self.asserts_result(result, "=", "操作成功")

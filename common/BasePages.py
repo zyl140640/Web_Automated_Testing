@@ -87,6 +87,16 @@ class BasePage:
             self.logger.info(f"等待{time}毫秒后执行下一步操作")
             self.page.wait_for_timeout(time)
 
+    def asserts_result(self, result, pk, expected):
+        if pk == "=":
+            with allure.step("结果验证"):
+                assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: {expected},实际结果: {result}"
+                self.logger.error(f"预期结果: {expected},实际结果: {result}")
+        elif pk == "!=":
+            with allure.step("结果验证"):
+                assert result != expected, f"验证失败实际结果与预期结果不符合,预期结果: {expected},实际结果: {result}"
+                self.logger.error(f"预期结果: {expected},实际结果: {result}")
+
     def get_text(self, locator, text):
         self.locator = locator
         try:
