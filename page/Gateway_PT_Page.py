@@ -112,3 +112,30 @@ class GatewayPTPage(BasePage):
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取批量修改从站号结果")
         self.asserts_result(result, "=", "批量修改从站号成功")
+
+    def save_as_template(self, name, miaoshu):
+        """
+        保存为模板
+        Args:
+            name: 模板名称
+            miaoshu: 描述内容
+        """
+        self.list_row("1")
+        self.click(self.page.get_by_role("button", name="保存为模板"), "保存为模板按钮")
+        self.input_data(self.page.get_by_label("保存为模板").locator("input[type=\"text\"]"), f"{name}", "模板名称")
+        self.input_data(self.page.locator("textarea"), f"{miaoshu}", "模板名称")
+        self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
+        result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
+        self.asserts_result(result, "=", "批量修改从站号成功")
+
+    def yinyong_template(self):
+        """
+        引用模板
+        """
+        self.click(self.page.get_by_role("button", name="引用模板"), "引用模板按钮")
+        self.click(self.page.get_by_placeholder("请选择协议"), "请选择协议按钮")
+        self.click(self.page.locator("li").filter(has_text="Modbus TCP"), "选择Modbus TCP协议")
+        self.click(self.page.locator("li").filter(has_text=re.compile(r"^0921$")), "选择模板名称")
+        self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
+        result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
+        self.asserts_result(result, "=", "批量修改从站号成功")

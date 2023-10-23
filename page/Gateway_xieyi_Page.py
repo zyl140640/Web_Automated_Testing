@@ -31,9 +31,9 @@ class GatewayXieYiPage(BasePage):
             1), "选择协议")
         self.click(self.page.locator("li").filter(has_text="Modbus RTU"), "选择RTU协议")
         self.click(self.page.get_by_label("串口协议添加").locator("form div").filter(
-            has_text="COM口com0(232)com1(485)波特率1200180024004800720096001440019200384005760011520012800").get_by_placeholder(
-            "请选择").first, "口子")
-        self.click(self.page.locator("li").filter(has_text="com0(232)"), "")
+            has_text="COM口com0(485)com1(232)波特率1200180024004800720096001440019200384005760011520012800").get_by_placeholder(
+            "请选择").first, "COM口")
+        self.click(self.page.locator("li").filter(has_text="com0(485)"), "选择COM口")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
 
     def update_chuankou(self):
@@ -58,3 +58,20 @@ class GatewayXieYiPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="删除").nth(1), "删除网关按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认网关删除")
+
+    def wangkou_lianjie(self, ip):
+        """
+        网口连接测试
+        Args:
+            ip: ip地址
+        """
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_role("button", name=" 网口协议添加"), "网口协议添加按钮")
+        self.click(self.page.get_by_placeholder("请选择").nth(1), "")
+        self.click(self.page.locator("li").filter(has_text="Modbus TCP").locator("span"), "")
+        self.click(self.page.get_by_placeholder("请输入设备IP"), "")
+        self.input_data(self.page.get_by_placeholder("请输入设备IP"), f"{ip}", "")
+        self.click(self.page.get_by_role("button", name="网口连接测试"), "网口连接测试")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_role("button", name="确认"), "确认下发测试")
+        self.get_text(self.page.get_by_role("alert"), "网口协议添加成功提示")

@@ -94,3 +94,25 @@ class TestGatewayXieYi:
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.delete_gateway_pt()
+
+    @allure.title("网关-点表配置-保存为模板")
+    @allure.description("测试保存为模板功能是否正常")
+    def test_save_as_template(self, init, page):
+        self.sidebar = SidebarPage(page)
+        self.gateway_pt = GatewayPTPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("点表配置")
+        self.gateway_pt.save_as_template("测试点表模板", "测试点表模板描述信息")
+
+    @allure.title("网关-点表配置-引用模板")
+    @allure.description("测试引用模板功能是否正常")
+    def test_save_as_template(self, init, page):
+        self.sidebar = SidebarPage(page)
+        self.gateway_pt = GatewayPTPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("点表配置")
+        self.gateway_pt.yinyong_template()

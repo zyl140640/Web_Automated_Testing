@@ -114,6 +114,7 @@ def init(page):
     bs_init = BasePage(page)
     login_data = read_yaml("auto/config.yaml")
     bs_init.go_url(login_data["case_login"]["url"])
+    bs_init.wait_for_timeouts(2000)
     bs_init.input_data(page.get_by_placeholder("请输入用户名"), login_data["formal_login"]["username"],
                        "输入账号信息")
     bs_init.input_data(page.get_by_placeholder("请输入登录密码"), login_data["formal_login"]["password"],
