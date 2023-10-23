@@ -67,12 +67,12 @@ class GatewayPage(BasePage):
         """
         self.click(self.page.get_by_role("button", name="确定"), "确定读取")
         self.wait_for_timeouts(2000)
-        bs = self.get_text(self.page.get_by_role("alert"), "读取操作成功弹窗")
+        bs = self.get_text(self.page.get_by_role("alert").first, "读取操作成功弹窗")
         assert bs == "操作成功", "与预期结果不符"
         self.click(self.page.get_by_role("button", name="同步到平台"), "同步到平台")
         self.click(self.page.get_by_role("button", name="确定"), "确定同步到平台")
         self.wait_for_timeouts(2000)
-        cs = self.get_text(self.page.get_by_role("alert"), "读取同步成功弹窗")
+        cs = self.get_text(self.page.get_by_role("alert").last, "读取同步成功弹窗")
         assert cs == "同步成功", "与预期结果不符"
 
     def issue_device_id(self):
@@ -96,7 +96,7 @@ class GatewayPage(BasePage):
         网络信息下发
         """
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        result = self.get_text(self.page.page.get_by_role("alert"), "读取下发弹窗结果")
+        result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         assert result == "操作成功", "下发点表与预期结果不符合"
 
     def lock_in_time(self):
