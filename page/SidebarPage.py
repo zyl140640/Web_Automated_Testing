@@ -22,6 +22,9 @@ class SidebarPage(BasePage):
     def click_device_id(self):
         self.click(self.page.get_by_role("link", name="点表管理"), "点表管理")
 
+    def click_touch_screen(self):
+        self.click(self.page.get_by_role("link", name="触摸屏管理"), "点表管理")
+
     def get_gateway_sn(self, sn):
         """
         根据网关sn查询
@@ -45,18 +48,12 @@ class SidebarPage(BasePage):
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
-        self.get_text(self.page.locator(
-            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
-            "查询网关数量")
 
     def get_project_name(self, project):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "根据项目名称查询按钮")
-        self.get_text(self.page.locator(
-            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
-            "查询数量")
 
     def get_gateway_name(self, sn):
         """
@@ -83,5 +80,3 @@ class SidebarPage(BasePage):
                    "更多功能")
         self.wait_for_timeouts(1000)
         self.click(self.page.locator(f"li:has-text('{functions_name}')").last, f"{functions_name}按钮")
-
-
