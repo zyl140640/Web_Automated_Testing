@@ -5,7 +5,7 @@ from page.SidebarPage import SidebarPage
 
 
 @allure.feature("网关管理")
-class TestGatewayXieYi:
+class TestGatewayPT:
 
     @allure.title("网关-点表配置-添加点位信息")
     @allure.description("测试添加点表-点位功能是否正常")
@@ -116,3 +116,14 @@ class TestGatewayXieYi:
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.yinyong_template()
+
+    @allure.title("网关-点表配置-模板下载")
+    @allure.description("测试模板下载功能是否正常")
+    def test_template_download(self, init, page):
+        self.sidebar = SidebarPage(page)
+        self.gateway_pt = GatewayPTPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("点表配置")
+        self.gateway_pt.template_download()

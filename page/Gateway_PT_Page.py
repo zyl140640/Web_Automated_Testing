@@ -139,3 +139,11 @@ class GatewayPTPage(BasePage):
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
         self.asserts_result(result, "=", "批量修改从站号成功")
+
+    def template_download(self):
+        """
+        下载模板
+        """
+        self.interface_requests('/api/Project/DevPara/ParaTemplate')
+        self.wait_for_timeouts(3000)
+        self.click(self.page.get_by_role("button", name="模板下载"), "点表配置-模板下载按钮")

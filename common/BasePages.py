@@ -1,6 +1,7 @@
 import allure
 import logging
 
+from jsonpath import jsonpath
 from playwright.sync_api import Page
 
 from common.ZenTao_Api import add_bug
@@ -119,3 +120,30 @@ class BasePage:
         """
         self.click(self.page.get_by_role("row", name=f"{row}", exact=True).locator("label span").nth(1),
                    f"勾选第几列{row}")
+
+    def on_response(self, response, url):
+        """
+        拦截接口信息配置项
+        Args:
+            response:
+            url: 接口地址 可模糊填写
+        """
+        # if f'{url}' in response.url and response.status == 200:
+        if f'{url}' in response.url:
+            with allure.step(f"【{url}】接口得到的响应结果为:{response.json()}"):
+                self.logger.info(f"响应地址: {response.url}")
+                self.logger.info("method:{}".format(response.request.method))
+                self.logger.info(f"响应响应状态码: {response.status}")
+                self.logger.info("timing:{} 毫秒".format(response.request.timing['responseEnd']))
+                self.logger.info(f"响应求头: {response.headers}")
+                self.logger.info(f"响应请求体: {response.body}")
+
+    def interface_requests(self, url):
+        """
+        拦截接口并返回接口响应，并校验接口是否是200
+        Args:
+            url:
+        """
+        with allure.step(f"开始拦截:{url}接口信息"):
+            self.logger.info(f"开始拦截:{url}接口信息")
+            self.page.on('response', lambda response: self.on_response(response, url))
