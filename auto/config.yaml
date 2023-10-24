@@ -1,16 +1,16 @@
 formal_login:
-  url: "http://36.134.46.91:7070/dashboard"
+  url: "http://36.134.46.91:7070/login"
   username: zhangyuanlong
   password: 123456
 
 
 
 case_login:
-  url: "http://192.168.110.210:9016/dashboard"
+  url: "http://192.168.110.210:9016/login"
   username: zhangyuanlong
   password: 123456
 
 
 
 
-add_bug: False
+add_bug: "false"

@@ -1,5 +1,7 @@
 import requests
 
+from common.tools import read_yaml
+
 # 登录url
 login_host = "http://192.168.110.129:81/zentao/index.php?m=user&f=login"
 # 新增-BUG-url
@@ -20,7 +22,7 @@ def add_bug(title, assigned_to, severity, pri, steps, image_path):
     示例：add_bug("自动化标题", "fangna", "4", "4", "111", "logs/shouye.png")
     """
     header = {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"}  # 设置请求头
-    datas = {"account": "fangna", "password": "fangna@123"}  # 定义请求的数据
+    datas = {"account": "zhangyuanlong", "password": "zylZYL140640..0"}  # 定义请求的数据
     s = requests.session()  # 实例化一个session对象
     response = s.post(login_host, headers=header, data=datas)  # 使用session发起请求
 
@@ -47,10 +49,11 @@ def add_bug(title, assigned_to, severity, pri, steps, image_path):
     f = {
         ("files[]", ("Allure.png", open(f"{image_path}", "rb"), "image/png"))
     }
+
     responses = s.post(add_bug_host, data=data, files=f)
     print(responses.content.decode("utf-8"))
 
 
 if __name__ == '__main__':
 
-    add_bug("自动化标题", "fangna", "4", "4", "111", "logs/shouye.png")
+    add_bug("自动化标题", "zhangyuanlong", "4", "4", "111", "logs/shouye.png")

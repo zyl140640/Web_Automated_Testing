@@ -1,6 +1,7 @@
 import allure
 import logging
 
+import yaml
 from jsonpath import jsonpath
 from playwright.sync_api import Page
 
@@ -21,10 +22,10 @@ class BasePage:
         try:
             with allure.step(f"访问网站:{url}"):
                 self.page.goto(url, wait_until='networkidle')
-                self.logger.info(f"访问网站:{url}")
+                self.logger.info(f"访问网站: [{url}]")
         except Exception as e:
             self.cut_out("网站未访问成功截图")
-            self.logger.error(f"访问网站：{url}时，访问超时,报错内容{e}")
+            self.logger.error(f"访问网站: [{url}]时，访问超时,报错内容{e}")
             raise e
 
     def all_text(self, locator, text):
@@ -40,12 +41,12 @@ class BasePage:
         try:
             with allure.step(f"点击{text}"):
                 self.locator.click()
-                self.logger.info(f"点击{text}")
+                self.logger.info(f"点击[{text}]")
         except Exception as e:
             self.cut_out(f"{text}---报错截图")
             self.page.screenshot(path=f"auto/couout/{text}.png")
-            # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
-            self.logger.error(f"进行{text}操作时,元素未找到,报错内容{e}")
+            self.chan_dao_api(f"{text}")
+            self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
     def input_data(self, locator, data, text):
@@ -59,12 +60,12 @@ class BasePage:
         try:
             with allure.step(f"在{text}内输入数据: {data}"):
                 self.locator.fill(f"{data}")
-                self.logger.info(f"在{text}内,输入数据: {data}")
+                self.logger.info(f"在[{text}]内,输入数据: [{data}]")
         except Exception as e:
             self.page.screenshot(path=f"auto/couout/{text}.png")
             self.cut_out(f"{text}---报错截图")
-            # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
-            self.logger.error(f"进行{text}操作时,元素未找到,报错内容{e}")
+            self.chan_dao_api(f"{text}")
+            self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
     def cut_out(self, image_name):
@@ -85,30 +86,30 @@ class BasePage:
         :param time: 需要等待的时间  单位: 毫秒
         """
         with allure.step(f"等待{time}毫秒后执行下一步操作"):
-            self.logger.info(f"等待{time}毫秒后执行下一步操作")
+            self.logger.info(f"等待[{time}]毫秒后执行下一步操作")
             self.page.wait_for_timeout(time)
 
     def asserts_result(self, result, pk, expected):
         if pk == "=":
             with allure.step("结果验证"):
-                assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: {expected},实际结果: {result}"
-                self.logger.error(f"预期结果: {expected},实际结果: {result}")
+                assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
+                self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
         elif pk == "!=":
             with allure.step("结果验证"):
-                assert result != expected, f"验证失败实际结果与预期结果不符合,预期结果: {expected},实际结果: {result}"
-                self.logger.error(f"预期结果: {expected},实际结果: {result}")
+                assert result != expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
+                self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
 
     def get_text(self, locator, text):
         self.locator = locator
         try:
             with allure.step(f"获取{text}元素文本内容"):
                 texts = self.locator.inner_text()
-                self.logger.info(f"获取{text}元素文本内容,内容是{texts}")
+                self.logger.info(f"获取[{text}]元素文本内容,内容是[{texts}]")
                 return texts
         except Exception as e:
             self.page.screenshot(path=f"auto/couout/{text}.png")
             self.cut_out(f"{text}---报错截图")
-            # add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
+            self.chan_dao_api(f"{text}")
             self.logger.error(f"获取{text}元素文本内容操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -130,13 +131,13 @@ class BasePage:
         """
         # if f'{url}' in response.url and response.status == 200:
         if f'{url}' in response.url:
-            with allure.step(f"【{url}】接口得到的响应结果为:{response.json()}"):
-                self.logger.info(f"响应地址: {response.url}")
+            with allure.step(f"【{url}】接口得到的响应结果为: [{response.json()}]"):
+                self.logger.info(f"响应地址: [{response.url}]")
                 self.logger.info("method:{}".format(response.request.method))
-                self.logger.info(f"响应响应状态码: {response.status}")
+                self.logger.info(f"响应响应状态码: [{response.status}]")
                 self.logger.info("timing:{} 毫秒".format(response.request.timing['responseEnd']))
-                self.logger.info(f"响应求头: {response.headers}")
-                self.logger.info(f"响应请求体: {response.body}")
+                self.logger.info(f"响应求头: [{response.headers}]")
+                self.logger.info(f"响应请求体: [{response.body}]")
 
     def interface_requests(self, url):
         """
@@ -144,6 +145,45 @@ class BasePage:
         Args:
             url:
         """
-        with allure.step(f"开始拦截:{url}接口信息"):
-            self.logger.info(f"开始拦截:{url}接口信息")
+        with allure.step(f"开始拦截: [{url}]接口信息"):
+            self.logger.info(f"开始拦截: [{url}]接口信息")
             self.page.on('response', lambda response: self.on_response(response, url))
+
+    def read_yaml(self, path, json_path="null"):
+        """
+        # 读取YAML文件
+
+        Args:
+            path:
+            json_path:
+
+        Returns:
+
+        """
+        with open(path, 'r') as f:
+            data = yaml.safe_load(f)
+        # 返回读取到的全部内容
+        if json_path == "1":
+            self.logger.info(f"读取文件名: [{path}] , 返回全部内容: [{data}]")
+            return data
+        else:
+            result = jsonpath(data, json_path)
+            cleaned_result = result[0]
+            self.logger.info(f"读取文件名:[{path}] , 使用jsonpath读取[{json_path}]下的内容: [{cleaned_result}]")
+            return cleaned_result
+
+    def chan_dao_api(self, text):
+        """
+        调用禅道提交Bug-API  判断Config.yaml 文件内add_bug的值是否是ture 是则提交 不是则不触发
+        Args:
+            text: 功能名称
+
+        Returns: 空
+
+        """
+        result = self.read_yaml("auto/config.yaml", "$..add_bug")
+        if result == "true":
+            add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
+            self.logger.info(f"读取配置文件结果: {result} ,报错时触发禅道提交Bug功能")
+        else:
+            self.logger.info(f"读取配置文件结果: {result} ,报错时不触发禅道提交Bug功能")

@@ -12,7 +12,6 @@ from playwright.sync_api import (
 from slugify import slugify
 
 from common.BasePages import BasePage
-from common.tools import read_yaml
 
 
 @pytest.fixture(scope="function")
@@ -112,12 +111,13 @@ def context(
 @pytest.fixture(scope="function")
 def init(page):
     bs_init = BasePage(page)
-    login_data = read_yaml("auto/config.yaml")
-    bs_init.go_url(login_data["case_login"]["url"])
+    bs_init.go_url(bs_init.read_yaml("auto/config.yaml", "$..case_login.url"))
     bs_init.wait_for_timeouts(2000)
-    bs_init.input_data(page.get_by_placeholder("请输入用户名"), login_data["formal_login"]["username"],
+    bs_init.input_data(page.get_by_placeholder("请输入用户名"),
+                       bs_init.read_yaml("auto/config.yaml", "$..case_login.username"),
                        "输入账号信息")
-    bs_init.input_data(page.get_by_placeholder("请输入登录密码"), login_data["formal_login"]["password"],
+    bs_init.input_data(page.get_by_placeholder("请输入登录密码"),
+                       bs_init.read_yaml("auto/config.yaml", "$..case_login.password"),
                        "输入密码信息")
     drop_button = page.get_by_role("article").locator("form div").filter(
         has_text="请按住滑块拖动 登 录").locator(

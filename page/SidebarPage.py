@@ -23,7 +23,7 @@ class SidebarPage(BasePage):
         self.click(self.page.get_by_role("link", name="点表管理"), "点表管理")
 
     def click_touch_screen(self):
-        self.click(self.page.get_by_role("link", name="触摸屏管理"), "点表管理")
+        self.click(self.page.get_by_role("link", name="触摸屏管理"), "触摸屏管理")
 
     def get_gateway_sn(self, sn):
         """
