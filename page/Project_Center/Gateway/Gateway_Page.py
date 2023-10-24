@@ -103,8 +103,9 @@ class GatewayPage(BasePage):
         """
         同步时钟
         """
-
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认同步按钮")
+        self.wait_for_timeouts(1000)
         result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         self.asserts_result(result, "=", "操作成功")
 
@@ -117,12 +118,28 @@ class GatewayPage(BasePage):
         self.asserts_result(result, "=", "操作成功")
 
     def get_clock_gate(self, year):
+        """
+        同步时钟
+        Args:
+            year: 时间
+
+        Returns:
+
+        """
         bs = self.get_text(self.page.locator(
             "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(6) > div > div.el-dialog__body"),
             "读取网关时钟弹窗结果")
         assert bs.find(f"{year}") != -1, "未获取到网关时间"
 
     def gateway_share(self, project):
+        """
+        网关分享
+        Args:
+            project:项目名称
+
+        Returns:
+
+        """
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_label("分享").get_by_placeholder("请输入项目名称"), "项目名称输入框")
         self.input_data(self.page.get_by_label("分享").get_by_placeholder("请输入项目名称"), f"{project}", "项目名称")
@@ -134,3 +151,18 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取弹框结果")
         self.asserts_result(result, "=", "操作成功")
+
+    def camera_configuration(self, noe, nos):
+        """
+        设置摄像头功能
+        Returns:
+
+        """
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_label("设置摄像头").get_by_placeholder("请选择"), "选择是否启用")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator("li").filter(has_text="是"), "选择启用")
+        self.input_data(self.page.get_by_placeholder("请输入", exact=True).nth(1), f"{noe}", "设备序列号")
+        self.input_data(self.page.get_by_placeholder("请输入", exact=True).nth(2), f"{nos}", "验证码")
+        self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
+        self.asserts_result(self.get_text(self.page.get_by_role("alert"), "获取设置摄像头结果"), "=", "操作成功")

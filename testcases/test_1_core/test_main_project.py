@@ -3,8 +3,8 @@ import random
 import allure
 import pytest
 
-from page.Project_Page import ProjectPage
-from page.SidebarPage import SidebarPage
+from page.Project_Center.Project.Project_Page import ProjectPage
+from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("项目管理")
@@ -23,7 +23,7 @@ class TestMainProject:
         self.project.add_project("云平台项目", "00100", f"{a}")
 
     @allure.title("修改项目信息")
-    @pytest.mark.run(order=7)
+    @pytest.mark.run(order=3)
     @allure.description("测试修改项目功能是否正常")
     @allure.severity("critical")
     def test_update_project(self, init, page):
@@ -45,6 +45,7 @@ class TestMainProject:
         self.project.detect_project("云平台项目")
 
     @allure.title("查询项目信息")
+    @pytest.mark.run(order=2)
     @allure.description("测试查询项目功能是否正常")
     def test_git_project(self, init, page):
         self.project = ProjectPage(page)

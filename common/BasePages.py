@@ -120,7 +120,7 @@ class BasePage:
             row: 列表的行数 1 2 3  序号
         """
         self.click(self.page.get_by_role("row", name=f"{row}", exact=True).locator("label span").nth(1),
-                   f"勾选第几列{row}")
+                   f"勾选第{row}列")
 
     def on_response(self, response, url):
         """

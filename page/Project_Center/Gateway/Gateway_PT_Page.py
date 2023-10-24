@@ -5,10 +5,11 @@ from common.BasePages import BasePage
 
 class GatewayPTPage(BasePage):
 
-    def add_gateway_pt(self, name):
+    def add_gateway_pt(self, name, path):
         """
         新增点表配置点位信息
         Args:
+            path: 点位地址
             name: 点位名称
         """
         self.wait_for_timeouts(3000)
@@ -21,7 +22,7 @@ class GatewayPTPage(BasePage):
         self.click(self.page.get_by_role("textbox", name="请选择协议"), "请选择协议")
         self.click(self.page.get_by_role("listitem").nth(1), "确定协议")
         self.input_data(self.page.get_by_label("新增点位").locator("form div").filter(
-            has_text="点位地址 请输入地址 寄存器地址区0X1X3X4X").get_by_role("textbox").first, "1", "点位地址")
+            has_text="点位地址 请输入地址 寄存器地址区0X1X3X4X").get_by_role("textbox").first, f"{path}", "点位地址")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取结果")
         self.asserts_result(result, "=", "新增点位成功，请及时下发点表")
@@ -33,8 +34,7 @@ class GatewayPTPage(BasePage):
                    name: 点位名称
                """
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator(
-            ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_3_column_19 > .cell > .basicTableBtnBox > .el-icon-edit-outline").first,
+        self.click(self.page.get_by_role("cell", name="  ").locator("i").nth(1),
                    "编辑点位按钮")
         self.input_data(
             self.page.get_by_label("编辑点位").locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role(
@@ -126,19 +126,23 @@ class GatewayPTPage(BasePage):
         self.input_data(self.page.locator("textarea"), f"{miaoshu}", "模板名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
-        self.asserts_result(result, "=", "批量修改从站号成功")
+        self.asserts_result(result, "=", "点表保存为模板成功")
 
-    def yinyong_template(self):
+    def yinyong_template(self, name):
         """
         引用模板
         """
         self.click(self.page.get_by_role("button", name="引用模板"), "引用模板按钮")
-        self.click(self.page.get_by_placeholder("请选择协议"), "请选择协议按钮")
-        self.click(self.page.locator("li").filter(has_text="Modbus TCP"), "选择Modbus TCP协议")
-        self.click(self.page.locator("li").filter(has_text=re.compile(r"^0921$")), "选择模板名称")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), "请选择按钮")
+        self.wait_for_timeouts(1000)
+        self.input_data(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), f"{name}",
+                        "输入模板名称")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator("li").filter(has_text="云平台项目"), f"选择{name}")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
-        self.asserts_result(result, "=", "批量修改从站号成功")
+        self.asserts_result(result, "=", "引用模板成功")
 
     def template_download(self):
         """

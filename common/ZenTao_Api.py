@@ -1,6 +1,5 @@
 import requests
 
-from common.tools import read_yaml
 
 # 登录url
 login_host = "http://192.168.110.129:81/zentao/index.php?m=user&f=login"

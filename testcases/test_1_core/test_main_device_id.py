@@ -1,15 +1,13 @@
 import allure
-import pytest
 
-from page.Device_id_Page import DeviceIdPage
-from page.SidebarPage import SidebarPage
+from page.Project_Center.Device.Device_id_Page import DeviceIdPage
+from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("点表管理")
 class TestMainDeviceId:
 
     @allure.title("创建设备点表")
-    @pytest.mark.run(order=6)
     @allure.severity("critical")
     @allure.description("测试创建设备点表功能是否正常")
     def test_add_device_id(self, init, page):

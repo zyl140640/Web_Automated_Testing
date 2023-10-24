@@ -1,10 +1,10 @@
 import allure
 
-from page.Gateway_xieyi_Page import GatewayXieYiPage
-from page.SidebarPage import SidebarPage
+from page.Project_Center.Gateway.Gateway_xieyi_Page import GatewayXieYiPage
+from page.SideBar.SidebarPage import SidebarPage
 
 
-@allure.feature("网关管理")
+@allure.feature("网关管理-协议配置")
 class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-添加网关")
@@ -53,7 +53,7 @@ class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-网口连接测试")
     @allure.description("测试网口连接测试功能是否正常")
-    def test_delete_gateway_xieyi(self, init, page):
+    def test_lianjie_gateway_xieyi(self, init, page):
         self.sidebar = SidebarPage(page)
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()

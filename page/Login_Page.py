@@ -1,8 +1,3 @@
-import time
-
-from common.BasePages import BasePage
-
-
 class LoginPage:
     name = ['get_by_placeholder', '请输入用户名', 'zhangyuanlong', '账号输入框']
     password = ['get_by_placeholder', '请输入登录密码', '123456', '密码输入框']

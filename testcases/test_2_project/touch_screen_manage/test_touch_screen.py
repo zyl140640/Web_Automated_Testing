@@ -1,9 +1,7 @@
-import datetime
 import allure
 
-from page.Gateway_Page import GatewayPage
-from page.SidebarPage import SidebarPage
-from page.Touch_Screen_Page import TouchScreenPage
+from page.Project_Center.TouchScreen.Touch_Screen_Page import TouchScreenPage
+from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("触摸屏管理")

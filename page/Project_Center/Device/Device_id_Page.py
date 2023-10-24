@@ -46,6 +46,3 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("textbox", name="请输入参数名称"), "参数名称查询弹框")
         self.input_data(self.page.get_by_role("textbox", name="请输入参数名称"), f"{name}", "输入点表参数名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
-        self.get_text(self.page.locator(
-            "#pane-first > div.containerYK > div.basicTableBox > div.pagination-container > div > span.el-pagination__total"),
-            "查询点表数量")

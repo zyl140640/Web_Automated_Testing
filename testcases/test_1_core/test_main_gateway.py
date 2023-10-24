@@ -3,8 +3,8 @@ import random
 import allure
 import pytest
 
-from page.Gateway_Page import GatewayPage
-from page.SidebarPage import SidebarPage
+from page.Project_Center.Gateway.Gateway_Page import GatewayPage
+from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("网关管理")
@@ -12,7 +12,7 @@ from page.SidebarPage import SidebarPage
 class TestMainGateway:
 
     @allure.title("创建网关")
-    @pytest.mark.run(order=2)
+    @pytest.mark.run(order=5)
     @allure.description("测试创建网关功能是否正常")
     @allure.severity("critical")
     def test_add_gateway(self, init, page):
@@ -24,7 +24,7 @@ class TestMainGateway:
         self.gateway.add_gateway("云平台项目", "云平台网关别名", f"{a}")
 
     @allure.title("删除网关")
-    @pytest.mark.run(order=3)
+    @pytest.mark.run(order=4)
     @allure.description("测试删除网关功能是否正常")
     @allure.severity("minor")
     def test_delete_gateway(self, init, page):
@@ -35,6 +35,7 @@ class TestMainGateway:
         self.gateway.delete_gateway()
 
     @allure.title("查询网关信息")
+    @pytest.mark.run(order=6)
     @allure.description("测试查询网关功能是否正常")
     def test_get_gateway(self, init, page):
         self.sidebar = SidebarPage(page)

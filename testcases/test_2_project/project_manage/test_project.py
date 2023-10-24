@@ -2,8 +2,8 @@ import random
 
 import allure
 
-from page.Project_Page import ProjectPage
-from page.SidebarPage import SidebarPage
+from page.Project_Center.Project.Project_Page import ProjectPage
+from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("项目管理")

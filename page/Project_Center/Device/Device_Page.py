@@ -9,9 +9,13 @@ from common.BasePages import BasePage
 class DevicePage(BasePage):
 
     def add_device(self, project, device):
-        self.wait_for_timeouts(4000)
-        self.click(self.page.get_by_role("button", name="新增"), "新增设备按钮")
         self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_role("button", name="新增"), "新增设备按钮")
+        self.page.pause()
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_placeholder("请选择", exact=True).nth(1), "所属租户")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "选择所属租户")
         self.click(self.page.get_by_placeholder("请选择项目名称").first, "选择项目名称")
         self.wait_for_timeouts(1000)
         self.input_data(self.page.get_by_placeholder("请选择项目名称"), f"{project}", "项目名称输入框")
@@ -41,9 +45,6 @@ class DevicePage(BasePage):
         self.page.get_by_placeholder("请输入项目名称").click()
         self.page.get_by_placeholder("请输入项目名称").fill(f"{project}")
         self.page.get_by_role("button", name=" 查询").click()
-        self.page.locator(
-            '//*[@id="app"]/div/div[2]/section/div[1]/div[2]/div[5]/div[1]/div[5]/div[2]/table/tbody/tr/td[16]/div/div/i[2]').first.click()
-
         self.page.locator(
             "div:nth-child(3) > .el-dialog > .el-dialog__body > .el-form > div > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner").first.fill(
             "修改测试设备")

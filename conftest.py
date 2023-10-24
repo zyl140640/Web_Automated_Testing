@@ -20,6 +20,17 @@ def page(context: BrowserContext) -> Generator[Page, None, None]:
     yield page
 
 
+@pytest.fixture(scope="function")
+def browser_context_args(browser_context_args):
+    return {
+        **browser_context_args,
+        "viewport": {
+            "width": 1800,
+            "height": 1024,
+        },
+    }
+
+
 def _build_artifact_test_folder(
         pytestconfig: Any, request: pytest.FixtureRequest, folder_or_file_name: str
 ) -> str:
