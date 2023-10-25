@@ -9,7 +9,7 @@ class TestTouchScreenPage:
 
     @allure.title("触摸屏管理-新增触摸屏")
     @allure.description("测试新增触摸屏功能是否正常")
-    def test_add_touch_screen(self, init, page):
+    def test_add_touch_screen(self, page):
         self.sidebar = SidebarPage(page)
         self.touch_screen = TouchScreenPage(page)
         self.sidebar.click_project_max()
@@ -18,7 +18,7 @@ class TestTouchScreenPage:
 
     @allure.title("触摸屏管理-查询触摸屏")
     @allure.description("测试查询触摸屏功能是否正常")
-    def test_get_touch_screen(self, init, page):
+    def test_get_touch_screen(self, page):
         self.sidebar = SidebarPage(page)
         self.touch_screen = TouchScreenPage(page)
         self.sidebar.click_project_max()
@@ -27,7 +27,7 @@ class TestTouchScreenPage:
 
     @allure.title("触摸屏管理-修改触摸屏")
     @allure.description("测试修改触摸屏功能是否正常")
-    def test_update_touch_screen(self, init, page):
+    def test_update_touch_screen(self, page):
         self.sidebar = SidebarPage(page)
         self.touch_screen = TouchScreenPage(page)
         self.sidebar.click_project_max()
@@ -37,7 +37,7 @@ class TestTouchScreenPage:
 
     @allure.title("触摸屏管理-删除触摸屏")
     @allure.description("测试删除触摸屏功能是否正常")
-    def test_delete_touch_screen(self, init, page):
+    def test_delete_touch_screen(self, page):
         self.sidebar = SidebarPage(page)
         self.touch_screen = TouchScreenPage(page)
         self.sidebar.click_project_max()

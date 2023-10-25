@@ -9,7 +9,7 @@ class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-添加网关")
     @allure.description("测试添加网关功能是否正常")
-    def test_add_gateway_xieyi(self, init, page):
+    def test_add_gateway_xieyi(self, page):
         self.sidebar = SidebarPage(page)
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()
@@ -20,7 +20,7 @@ class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-添加串口")
     @allure.description("测试添加串口功能是否正常")
-    def test_add_gateway_wangkou(self, init, page):
+    def test_add_gateway_wangkou(self, page):
         self.sidebar = SidebarPage(page)
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()
@@ -31,7 +31,7 @@ class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-修改协议")
     @allure.description("测试修改协议功能是否正常")
-    def test_update_gateway_xieyi(self, init, page):
+    def test_update_gateway_xieyi(self, page):
         self.sidebar = SidebarPage(page)
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()
@@ -42,7 +42,7 @@ class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-删除协议")
     @allure.description("测试删除协议功能是否正常")
-    def test_delete_gateway_xieyi(self, init, page):
+    def test_delete_gateway_xieyi(self, page):
         self.sidebar = SidebarPage(page)
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()
@@ -53,7 +53,7 @@ class TestGatewayXieYi:
 
     @allure.title("网关-协议配置-网口连接测试")
     @allure.description("测试网口连接测试功能是否正常")
-    def test_lianjie_gateway_xieyi(self, init, page):
+    def test_lianjie_gateway_xieyi(self, page):
         self.sidebar = SidebarPage(page)
         self.gatewayxieyi = GatewayXieYiPage(page)
         self.sidebar.click_project_max()

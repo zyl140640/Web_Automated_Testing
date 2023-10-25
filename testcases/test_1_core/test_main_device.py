@@ -12,7 +12,7 @@ class TestMainDevice:
     @allure.description("测试创建设备功能是否正常")
     @pytest.mark.run(order=8)
     @allure.severity("critical")
-    def test_add_device(self, init, page):
+    def test_add_device(self, page):
         self.sidebar = SidebarPage(page)
         self.device = DevicePage(page)
         self.sidebar.click_project_max()
@@ -23,7 +23,7 @@ class TestMainDevice:
     @allure.description("测试删除设备功能是否正常")
     @pytest.mark.run(order=7)
     @allure.severity("trivial")
-    def test_delete_device(self, init, page):
+    def test_delete_device(self, page):
         self.sidebar = SidebarPage(page)
         self.device = DevicePage(page)
         self.sidebar.click_project_max()
@@ -34,7 +34,7 @@ class TestMainDevice:
     @allure.description("测试修改设备功能是否正常")
     @pytest.mark.run(order=9)
     @allure.severity("trivial")
-    def test_update_device(self, init, page):
+    def test_update_device(self, page):
         self.sidebar = SidebarPage(page)
         self.device = DevicePage(page)
         self.sidebar.click_project_max()
@@ -45,7 +45,7 @@ class TestMainDevice:
     @allure.description("测试查询设备功能是否正常")
     @pytest.mark.run(order=10)
     @allure.severity("trivial")
-    def test_get_device(self, init, page):
+    def test_get_device(self, page):
         self.sidebar = SidebarPage(page)
         self.device = DevicePage(page)
         self.sidebar.click_project_max()

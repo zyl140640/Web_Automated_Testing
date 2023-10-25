@@ -14,7 +14,7 @@ class TestMainProject:
     @allure.description("测试创建项目功能是否正常")
     @allure.severity("critical")
     @pytest.mark.run(order=1)
-    def test_add_project(self, init, page):
+    def test_add_project(self, page):
         a = random.randint(1000000000000000, 9999999999999999)
         self.sidebar = SidebarPage(page)
         self.project = ProjectPage(page)
@@ -26,7 +26,7 @@ class TestMainProject:
     @pytest.mark.run(order=3)
     @allure.description("测试修改项目功能是否正常")
     @allure.severity("critical")
-    def test_update_project(self, init, page):
+    def test_update_project(self, page):
         self.update = ProjectPage(page)
         self.sidebar = SidebarPage(page)
         self.sidebar.click_project_max()
@@ -37,7 +37,7 @@ class TestMainProject:
     @allure.description("测试删除项目功能是否正常")
     @pytest.mark.run(order=-1)
     @allure.severity("normal")
-    def test_detect_project(self, init, page):
+    def test_detect_project(self, page):
         self.sidebar = SidebarPage(page)
         self.project = ProjectPage(page)
         self.sidebar.click_project_max()
@@ -47,7 +47,7 @@ class TestMainProject:
     @allure.title("查询项目信息")
     @pytest.mark.run(order=2)
     @allure.description("测试查询项目功能是否正常")
-    def test_git_project(self, init, page):
+    def test_git_project(self, page):
         self.project = ProjectPage(page)
         self.sidebar = SidebarPage(page)
         self.sidebar.click_project_max()

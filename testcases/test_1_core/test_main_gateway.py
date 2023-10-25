@@ -15,7 +15,7 @@ class TestMainGateway:
     @pytest.mark.run(order=5)
     @allure.description("测试创建网关功能是否正常")
     @allure.severity("critical")
-    def test_add_gateway(self, init, page):
+    def test_add_gateway(self, page):
         self.sidebar = SidebarPage(page)
         self.gateway = GatewayPage(page)
         a = random.randint(1000000000000000, 9999999999999999)
@@ -27,7 +27,7 @@ class TestMainGateway:
     @pytest.mark.run(order=4)
     @allure.description("测试删除网关功能是否正常")
     @allure.severity("minor")
-    def test_delete_gateway(self, init, page):
+    def test_delete_gateway(self, page):
         self.sidebar = SidebarPage(page)
         self.gateway = GatewayPage(page)
         self.sidebar.click_project_max()
@@ -37,7 +37,7 @@ class TestMainGateway:
     @allure.title("查询网关信息")
     @pytest.mark.run(order=6)
     @allure.description("测试查询网关功能是否正常")
-    def test_get_gateway(self, init, page):
+    def test_get_gateway(self, page):
         self.sidebar = SidebarPage(page)
         self.gateway = GatewayPage(page)
         self.sidebar.click_project_max()

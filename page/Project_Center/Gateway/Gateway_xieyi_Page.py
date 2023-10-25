@@ -34,9 +34,6 @@ class GatewayXieYiPage(BasePage):
         self.click(self.page.locator(
             "#app > div > div.main-container.hasTagsView > section > div.tab-container > div > div:nth-child(4) > div > div.el-dialog__body > div.containerYK > form > div:nth-child(2) > div:nth-child(1) > div > div > div > div > div > input"),
             "COM口")
-        self.click(self.page.locator(
-            "body > div:nth-child(11) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item.hover"),
-            "选择COM口")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
 
     def update_chuankou(self):

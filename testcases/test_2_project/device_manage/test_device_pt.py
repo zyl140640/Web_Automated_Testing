@@ -9,7 +9,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-添加点位信息")
     @allure.description("测试添加点表-点位功能是否正常")
-    def test_device_add_device_pt(self, init, page):
+    def test_device_add_device_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -20,7 +20,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-查询点位信息")
     @allure.description("测试查询点表-点位功能是否正常")
-    def test_device_get_device_pt(self, init, page):
+    def test_device_get_device_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -31,7 +31,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-修改点位信息")
     @allure.description("测试修改点表-点位功能是否正常")
-    def test_device_update_device_pt(self, init, page):
+    def test_device_update_device_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -42,7 +42,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-删除点位信息")
     @allure.description("测试删除点表-点位功能是否正常")
-    def test_device_delete_device_pt(self, init, page):
+    def test_device_delete_device_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -53,7 +53,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-点表下发")
     @allure.description("测试点表配置-点表下发功能是否正常")
-    def test_device_pt_send(self, init, page):
+    def test_device_pt_send(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -64,7 +64,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-批量新增")
     @allure.description("测试点表配置-批量新增功能是否正常")
-    def test_device_batch_addition_pt(self, init, page):
+    def test_device_batch_addition_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -75,7 +75,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-批量修改从站号")
     @allure.description("测试批量修改从站号功能是否正常")
-    def test_device_batch_update_pt(self, init, page):
+    def test_device_batch_update_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -86,7 +86,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-保存为模板")
     @allure.description("测试保存为模板功能是否正常")
-    def test_device_save_as_template(self, init, page):
+    def test_device_save_as_template(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -97,7 +97,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-批量删除点位信息")
     @allure.description("测试批量删除点表-点位功能是否正常")
-    def test_device_batch_device_pt(self, init, page):
+    def test_device_batch_device_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -109,7 +109,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-引用模板")
     @allure.description("测试引用模板功能是否正常")
-    def test_device_yinyong_template(self, init, page):
+    def test_device_yinyong_template(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
@@ -120,7 +120,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-模板下载")
     @allure.description("测试模板下载功能是否正常")
-    def test_device_template_download(self, init, page):
+    def test_device_template_download(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()

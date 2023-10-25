@@ -10,7 +10,7 @@ class TestMainDeviceId:
     @allure.title("创建设备点表")
     @allure.severity("critical")
     @allure.description("测试创建设备点表功能是否正常")
-    def test_add_device_id(self, init, page):
+    def test_add_device_id(self, page):
         self.sidebar = SidebarPage(page)
         self.device_id = DeviceIdPage(page)
         self.sidebar.click_project_max()
@@ -20,7 +20,7 @@ class TestMainDeviceId:
     @allure.title("查询设备点表")
     @allure.severity("critical")
     @allure.description("测试查询设备点表功能是否正常")
-    def test_add_device_id(self, init, page):
+    def test_add_device_id(self, page):
         self.sidebar = SidebarPage(page)
         self.device_id = DeviceIdPage(page)
         self.sidebar.click_project_max()
