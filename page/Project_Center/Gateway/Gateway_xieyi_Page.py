@@ -42,7 +42,15 @@ class GatewayXieYiPage(BasePage):
               """
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="编辑").first, "点击编辑")
-        self.click(self.page.get_by_label("串口协议编辑").get_by_placeholder("请输入超时时间"), "编辑")
+        self.click(self.page.get_by_role("button", name="确 定"), "保存协议")
+        self.get_text(self.page.get_by_role("alert"), "网口协议修改成功提示")
+
+    def update_wangkou(self):
+        """
+               修改网口
+              """
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_role("button", name="编辑").first, "点击编辑")
         self.click(self.page.get_by_role("button", name="确 定"), "保存协议")
         self.get_text(self.page.get_by_role("alert"), "网口协议修改成功提示")
 
@@ -51,19 +59,8 @@ class GatewayXieYiPage(BasePage):
         删除俩协议
         """
         self.wait_for_timeouts(2000)
-        self.click(self.page.get_by_role("button", name="删除").nth(1), "删除串口按钮")
+        self.click(self.page.get_by_role("button", name="删除").nth(1), "删除按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认按钮删除")
-        self.wait_for_timeouts(1000)
-        self.click(self.page.get_by_role("button", name="删除").nth(1), "删除网关按钮")
-        self.click(self.page.get_by_role("button", name="确认"), "确认网关删除")
-
-    def delete_chuankou(self):
-        """
-        删除串口
-        """
-        self.wait_for_timeouts(2000)
-        self.click(self.page.get_by_role("button", name="删除").nth(1), "删除网关按钮")
-        self.click(self.page.get_by_role("button", name="确认"), "确认网关删除")
 
     def wangkou_lianjie(self, ip):
         """

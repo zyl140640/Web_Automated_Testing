@@ -37,8 +37,7 @@ class GatewayPTPage(BasePage):
         self.click(self.page.get_by_role("cell", name="  ").locator("i").nth(1),
                    "编辑点位按钮")
         self.input_data(
-            self.page.get_by_label("编辑点位").locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role(
-                "textbox").first, f"{name}",
+            self.page.locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role("textbox").first, f"{name}",
             "点位名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取结果")
@@ -70,10 +69,11 @@ class GatewayPTPage(BasePage):
         """
                下发点表信息
                """
-        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="点表下发"), "点表下发按钮")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
+        self.wait_for_timeouts(1000)
+        result = self.get_text(self.page.get_by_role("alert").first, "获取结果")
         self.asserts_result(result, "=", "操作成功")
 
     def batch_addition_pt(self, one, two, three):
@@ -134,12 +134,14 @@ class GatewayPTPage(BasePage):
         """
         self.click(self.page.get_by_role("button", name="引用模板"), "引用模板按钮")
         self.wait_for_timeouts(1000)
-        self.click(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), "请选择按钮")
+        self.click(self.page.get_by_placeholder("请选择协议"),"请选择协议")
+        self.click(self.page.locator("li").filter(has_text="Modbus TCP"), f"选择Modbus TCP")
+        self.click(self.page.get_by_label("选择模板").get_by_placeholder("请选择协议", exact=True), "请选择按钮")
         self.wait_for_timeouts(1000)
-        self.input_data(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), f"{name}",
+        self.input_data(self.page.get_by_label("选择模板").get_by_placeholder("请选择协议", exact=True), f"{name}",
                         "输入模板名称")
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li").filter(has_text="云平台项目"), f"选择{name}")
+        self.click(self.page.locator("li").filter(has_text=f"{name}"), f"选择{name}")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
         self.asserts_result(result, "=", "引用模板成功")

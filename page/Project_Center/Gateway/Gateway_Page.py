@@ -87,7 +87,9 @@ class GatewayPage(BasePage):
         """
         基础信息下发
         """
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
+        self.wait_for_timeouts(1000)
         result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         self.asserts_result(result, "=", "操作成功")
 
@@ -95,7 +97,9 @@ class GatewayPage(BasePage):
         """
         网络信息下发
         """
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
+        self.wait_for_timeouts(1000)
         result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         self.asserts_result(result, "=", "操作成功")
 
@@ -114,7 +118,9 @@ class GatewayPage(BasePage):
         远程调试开关
         """
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
+        self.wait_for_timeouts(1000)
         result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
+        self.wait_for_timeouts(1000)
         self.asserts_result(result, "=", "操作成功")
 
     def get_clock_gate(self, year):

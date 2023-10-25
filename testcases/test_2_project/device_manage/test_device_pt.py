@@ -14,7 +14,7 @@ class TestDevicePT:
         self.device_pt = DevicePTPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_add_device_pt("云平台点位", "2")
 
@@ -71,7 +71,7 @@ class TestDevicePT:
         self.sidebar.click_device()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_batch_addition_pt("10", "11", "2")
+        self.device_pt.device_batch_addition_pt("10", "111", "2")
 
     @allure.title("设备管理-点表配置-批量修改从站号")
     @allure.description("测试批量修改从站号功能是否正常")
@@ -128,3 +128,14 @@ class TestDevicePT:
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_template_download()
+
+    @allure.title("设备管理-点表配置-关联点表")
+    @allure.description("测试关联点表功能是否正常")
+    def test_link_table(self, page):
+        self.sidebar = SidebarPage(page)
+        self.device_pt = DevicePTPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_device()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("点表配置")
+        self.device_pt.link_table()

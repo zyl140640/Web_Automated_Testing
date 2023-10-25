@@ -71,7 +71,7 @@ class TestGatewayPT:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.gateway_pt.batch_addition_pt("10", "11", "2")
+        self.gateway_pt.batch_addition_pt("101", "11", "2")
 
     @allure.title("网关管理-点表配置-批量修改从站号")
     @allure.description("测试批量修改从站号功能是否正常")

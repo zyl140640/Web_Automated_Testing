@@ -50,6 +50,7 @@ class DevicePTPage(BasePage):
         self.click(self.page.get_by_role("cell", name="  ").locator("i").nth(2), "删除按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
+        self.wait_for_timeouts(1000)
         result = self.get_text(self.page.get_by_role("alert"), "获取结果")
         self.asserts_result(result, "=", "删除成功")
 
@@ -71,7 +72,7 @@ class DevicePTPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="点表下发"), "点表下发按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
+        result = self.get_text(self.page.get_by_role("alert").first, "获取结果")
         self.asserts_result(result, "=", "操作成功")
 
     def device_batch_addition_pt(self, one, two, three):
@@ -143,3 +144,18 @@ class DevicePTPage(BasePage):
         self.interface_requests('/api/Project/DevPara/ParaTemplate')
         self.wait_for_timeouts(3000)
         self.click(self.page.get_by_role("button", name="模板下载"), "点表配置-模板下载按钮")
+
+    def link_table(self):
+        """
+        关联点表
+        """
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_role("button", name="关联点表"), "关联点表")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator(
+            "tr:nth-child(2) > .el-table_10_column_86 > .cell > .el-checkbox > .el-checkbox__input > .el-checkbox__inner")
+            ,
+            "勾选点表")
+        self.click(self.page.get_by_role("button", name="提交"), "提交关联")
+        result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
+        self.asserts_result(result, "=", "引用模板成功")

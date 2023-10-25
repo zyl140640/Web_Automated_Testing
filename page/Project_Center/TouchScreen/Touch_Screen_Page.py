@@ -8,7 +8,7 @@ class TouchScreenPage(BasePage):
         self.click(self.page.get_by_role("button", name="新增"), "新增触摸屏")
         self.input_data(self.page.get_by_placeholder("请输入触摸屏名称").last, f"{name}", "触摸屏名称")
         self.click(self.page.get_by_placeholder("请选择网关"), "选择所属网关")
-        self.click(self.page.locator("li").filter(has_text="张三").first, "选择所属网关")
+        self.click(self.page.locator("li").filter(has_text="设备3").first, "选择所属网关")
         self.input_data(self.page.locator("div").filter(has_text=re.compile(r"^触摸屏Ip\.\.\.触摸屏端口$")).get_by_role(
             "textbox").first, "192", "")
         self.input_data(self.page.get_by_label("触摸屏新增").locator("form div").filter(

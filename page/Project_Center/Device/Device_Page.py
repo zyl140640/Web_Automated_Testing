@@ -11,7 +11,6 @@ class DevicePage(BasePage):
     def add_device(self, project, device):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="新增"), "新增设备按钮")
-        self.page.pause()
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_placeholder("请选择", exact=True).nth(1), "所属租户")
         self.wait_for_timeouts(2000)
@@ -40,19 +39,16 @@ class DevicePage(BasePage):
         self.cut_out("添加设备信息")
 
     def update_device(self, project):
-        time.sleep(2)
-        self.page.get_by_role("menu").get_by_role("link", name="设备管理").click()
-        self.page.get_by_placeholder("请输入项目名称").click()
-        self.page.get_by_placeholder("请输入项目名称").fill(f"{project}")
-        self.page.get_by_role("button", name=" 查询").click()
-        self.page.locator(
-            "div:nth-child(3) > .el-dialog > .el-dialog__body > .el-form > div > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner").first.fill(
-            "修改测试设备")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_placeholder("请输入项目名称"), "项目名称输入框")
+        self.input_data(self.page.get_by_placeholder("请输入项目名称"), f"{project}", "项目名称输入框")
+        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
+        self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
         self.page.get_by_role("button", name="确 定").click()
         allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
 
     def delete_device(self):
-        time.sleep(2)
+        self.wait_for_timeouts(2000)
         self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1).click()
         self.page.get_by_role("button", name="删除").click()
         self.page.get_by_role("button", name="确认").click()
