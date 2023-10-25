@@ -163,7 +163,7 @@ class BasePage:
         with open(path, 'r') as f:
             data = yaml.safe_load(f)
         # 返回读取到的全部内容
-        if json_path == "1":
+        if json_path == "null":
             self.logger.info(f"读取文件名: [{path}] , 返回全部内容: [{data}]")
             return data
         else:

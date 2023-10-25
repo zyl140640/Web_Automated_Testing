@@ -57,6 +57,14 @@ class GatewayXieYiPage(BasePage):
         self.click(self.page.get_by_role("button", name="删除").nth(1), "删除网关按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认网关删除")
 
+    def delete_chuankou(self):
+        """
+        删除串口
+        """
+        self.wait_for_timeouts(2000)
+        self.click(self.page.get_by_role("button", name="删除").nth(1), "删除网关按钮")
+        self.click(self.page.get_by_role("button", name="确认"), "确认网关删除")
+
     def wangkou_lianjie(self, ip):
         """
         网口连接测试

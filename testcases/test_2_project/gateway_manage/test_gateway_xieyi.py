@@ -51,6 +51,17 @@ class TestGatewayXieYi:
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.delete_xieyi()
 
+    @allure.title("网关-协议配置-删除协议")
+    @allure.description("测试删除协议功能是否正常")
+    def test_delete_gateway_xieyi(self, page):
+        self.sidebar = SidebarPage(page)
+        self.gatewayxieyi = GatewayXieYiPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("协议配置")
+        self.gatewayxieyi.delete_chuankou()
+
     @allure.title("网关-协议配置-网口连接测试")
     @allure.description("测试网口连接测试功能是否正常")
     def test_lianjie_gateway_xieyi(self, page):
