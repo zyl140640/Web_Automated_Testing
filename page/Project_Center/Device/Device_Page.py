@@ -1,6 +1,5 @@
 import re
 
-
 from common.BasePages import BasePage
 
 
@@ -15,9 +14,9 @@ class DevicePage(BasePage):
         self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "选择所属租户")
         self.click(self.page.get_by_placeholder("请选择项目名称").first, "选择项目名称")
         self.wait_for_timeouts(1000)
-        self.input_data(self.page.get_by_placeholder("请选择项目名称"), f"{project}", "项目名称输入框")
+        self.input_data(self.page.get_by_placeholder("请选择项目名称").first, f"{project}", "项目名称输入框")
         self.wait_for_timeouts(2000)
-        self.click(self.page.locator("li").filter(has_text=project), "项目")
+        self.click(self.page.locator("li").filter(has_text=f"{project}"), "选择云平台项目")
         self.input_data(
             self.page.locator("div").filter(has_text=re.compile(r"^项目名称设备名称$")).get_by_role("textbox").nth(
                 1), f"{device}", "设备输入框")
