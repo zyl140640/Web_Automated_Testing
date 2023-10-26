@@ -24,7 +24,6 @@ class GatewayXieYiPage(BasePage):
         """
          新增协议配置-串口
         """
-        self.page.pause()
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name=" 串口协议添加"), "添加串口")
         self.click(self.page.locator("div").filter(has_text=re.compile(
