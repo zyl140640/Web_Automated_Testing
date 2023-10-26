@@ -29,6 +29,8 @@ class DeviceTableTemplatePage(BasePage):
 
     def delete_table_template(self):
         self.wait_for_timeouts(1000)
+        self.list_row(1)
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="删除"), "删除点表模板按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认删除点表模板按钮")

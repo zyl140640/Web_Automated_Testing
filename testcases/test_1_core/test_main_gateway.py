@@ -32,6 +32,7 @@ class TestMainGateway:
         self.gateway = GatewayPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
+        self.sidebar.get_project_name("云平台项目")
         self.gateway.delete_gateway()
 
     @allure.title("查询网关信息")

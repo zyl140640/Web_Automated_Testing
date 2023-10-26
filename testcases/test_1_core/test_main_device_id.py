@@ -40,17 +40,6 @@ class TestMainDeviceId:
         self.device_id.get_device_id("云平台测试点位")
         self.device_id.update_device_id()
 
-    @allure.title("删除设备点表")
-    @allure.severity("critical")
-    @allure.description("测试删除点表功能是否正常")
-    def test_delete_device_id(self, page):
-        self.sidebar = SidebarPage(page)
-        self.device_id = DeviceIdPage(page)
-        self.sidebar.click_project_max()
-        self.sidebar.click_device_id()
-        self.device_id.get_device_id("云平台测试点位")
-        self.device_id.delete_device_id()
-
     @allure.title("点表管理-保存为模板")
     @allure.description("测试点表管理-保存为模板功能是否正常")
     def test_device_id_template(self, page):
@@ -84,7 +73,7 @@ class TestMainDeviceId:
         self.device_id.get_device_id("云平台测试点位")
         self.device_id.bind_device()
 
-    @allure.title("创建点表-点位")
+    @allure.title("创建点表-创建点位")
     @allure.severity("critical")
     @allure.description("测试创建点位功能是否正常")
     def test_add_device_dianwei(self, page):
@@ -127,3 +116,14 @@ class TestMainDeviceId:
         self.sidebar.click_device_id()
         self.device_id.add_device_one()
         self.device_id.device_xiazai_moban()
+
+    @allure.title("删除设备点表")
+    @allure.severity("critical")
+    @allure.description("测试删除点表功能是否正常")
+    def test_delete_device_id(self, page):
+        self.sidebar = SidebarPage(page)
+        self.device_id = DeviceIdPage(page)
+        self.sidebar.click_project_max()
+        self.sidebar.click_device_id()
+        self.device_id.get_device_id("云平台测试点位")
+        self.device_id.delete_device_id()

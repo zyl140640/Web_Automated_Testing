@@ -126,7 +126,7 @@ class DevicePTPage(BasePage):
         """
         引用模板
         """
-        self.click(self.page.get_by_role("button", name="引用模板"), "引用模板按钮")
+        self.click(self.page.get_by_role("button", name="引用模板"), "设备引用模板按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), "请选择按钮")
         self.wait_for_timeouts(1000)
@@ -153,10 +153,9 @@ class DevicePTPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="关联点表"), "关联点表")
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator(
-            "tr:nth-child(2) > .el-table_10_column_86 > .cell > .el-checkbox > .el-checkbox__input > .el-checkbox__inner")
-            ,
-            "勾选点表")
+        self.click(self.page.get_by_role("row",
+                                         name="12 3 Modbus TCP 714005F36924F9C7 714005F36924F9C7 714005F36924F9C7").locator(
+            "label span").nth(1), "勾选点表")
         self.click(self.page.get_by_role("button", name="提交"), "提交关联")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
-        self.asserts_result(result, "=", "引用模板成功")
+        self.asserts_result(result, "=", "关联点表成功")

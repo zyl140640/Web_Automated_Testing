@@ -48,7 +48,7 @@ def context(
     pages: List[Page] = []
     context = browser.new_context(**browser_context_args, storage_state="./auto/cookies.json")
     # 设置全局超时40秒
-    context.set_default_navigation_timeout(40000)
+    # context.set_default_navigation_timeout(40000)
     # context = browser.new_context(**browser_context_args)
 
     context.on("page", lambda page: pages.append(page))

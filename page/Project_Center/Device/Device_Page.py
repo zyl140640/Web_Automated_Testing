@@ -1,7 +1,5 @@
 import re
-import time
 
-import allure
 
 from common.BasePages import BasePage
 
@@ -45,11 +43,9 @@ class DevicePage(BasePage):
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
         self.page.get_by_role("button", name="确 定").click()
-        allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)
 
     def delete_device(self):
         self.wait_for_timeouts(2000)
         self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1).click()
         self.page.get_by_role("button", name="删除").click()
         self.page.get_by_role("button", name="确认").click()
-        allure.attach(self.page.screenshot(), "用例执行结果图", allure.attachment_type.PNG)

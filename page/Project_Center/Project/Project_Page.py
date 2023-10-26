@@ -4,7 +4,7 @@ from common.BasePages import BasePage
 
 class ProjectPage(BasePage):
 
-    def add_project(self, project, project_id, gateway):
+    def add_project(self, project, project_id, gateway_name, gateway_sn):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="新增"), "新增项目按钮")
         self.click(self.page.get_by_label("新增项目").get_by_placeholder("请选择", exact=True), "所属租户")
@@ -23,8 +23,8 @@ class ProjectPage(BasePage):
         self.input_data(self.page.get_by_placeholder("请输入负责人"), "张三", "负责人输入框")
         self.input_data(self.page.get_by_placeholder("请输入电话"), "15533065391", "电话输入框")
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
-        self.input_data(self.page.get_by_placeholder("请输入网关别名"), "张三", "网关别名输入框")
-        self.input_data(self.page.get_by_placeholder("请输入网关SN"), f"{gateway}", "网关SN输入框")
+        self.input_data(self.page.get_by_placeholder("请输入网关别名"), f"{gateway_name}", "网关别名输入框")
+        self.input_data(self.page.get_by_placeholder("请输入网关SN"), f"{gateway_sn}", "网关SN输入框")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_placeholder("请选择网关类型"), "请选择网关类型")
         self.wait_for_timeouts(1000)

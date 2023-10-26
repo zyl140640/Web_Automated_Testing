@@ -1,6 +1,5 @@
 import allure
 
-from page.Project_Center.Device.Device_PT_Page import DevicePTPage
 from page.Project_Center.Device.Device_Page import DevicePage
 from page.Project_Center.Device.Device_Table_Template_Page import DeviceTableTemplatePage
 from page.SideBar.SidebarPage import SidebarPage

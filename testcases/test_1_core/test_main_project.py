@@ -20,7 +20,7 @@ class TestMainProject:
         self.project = ProjectPage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.project.add_project("云平台项目", "00100", f"{a}")
+        self.project.add_project("云平台项目", "00100", "云平台项目网关", f"{a}")
 
     @allure.title("修改项目信息")
     @pytest.mark.run(order=3)

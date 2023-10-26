@@ -28,10 +28,9 @@ class DeviceIdPage(BasePage):
         self.asserts_result(self.get_alert("新增点表功能"), "=", "新增点位成功")
 
     def update_device_id(self):
+        self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
-        self.wait_for_timeouts(1000)
         self.input_data(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "192.180.1.1", "输入ip地址")
-        self.wait_for_timeouts(1000)
         self.input_data(self.page.get_by_placeholder("请输入端口"), "501", "输入端口号")
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         self.wait_for_timeouts(1000)
@@ -72,8 +71,10 @@ class DeviceIdPage(BasePage):
         self.asserts_result(self.get_alert("保存为模板"), "=", "点表保存为模板成功")
 
     def bind_device(self):
+        self.wait_for_timeouts(1000)
         self.list_row("1")
         self.click(self.page.get_by_role("button", name="绑定设备"), "绑定设备按钮")
+        self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         self.asserts_result(self.get_alert("保存为模板"), "=", "点表保存为模板成功")
 

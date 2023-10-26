@@ -28,6 +28,7 @@ class TestMainDevice:
         self.device = DevicePage(page)
         self.sidebar.click_project_max()
         self.sidebar.click_device()
+        self.sidebar.get_project_name("云平台项目")
         self.device.delete_device()
 
     @allure.title("修改设备")
