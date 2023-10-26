@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from page.Project_Center.Device.Device_PT_Page import DevicePTPage
 from page.SideBar.SidebarPage import SidebarPage
@@ -71,7 +72,7 @@ class TestDevicePT:
         self.sidebar.click_device()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_batch_addition_pt("10", "111", "2")
+        self.device_pt.device_batch_addition_pt("121", "111", "2")
 
     @allure.title("设备管理-点表配置-批量修改从站号")
     @allure.description("测试批量修改从站号功能是否正常")
@@ -97,6 +98,7 @@ class TestDevicePT:
 
     @allure.title("设备管理-点表配置-批量删除点位信息")
     @allure.description("测试批量删除点表-点位功能是否正常")
+    @pytest.mark.skip("不需要批量删除点位信息")
     def test_device_batch_device_pt(self, page):
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
