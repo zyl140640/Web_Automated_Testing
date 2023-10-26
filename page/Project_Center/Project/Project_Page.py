@@ -66,8 +66,8 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
         self.input_data(self.page.get_by_placeholder("请输入项目名称，40字内"), f"{project}", "输入项目名称")
         self.click(self.page.get_by_role("button", name="下一步"), "基础信息下一步")
-        self.click(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), "网关sn")
-        self.input_data(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), f"{gate}", "输入网关sn")
+        # self.click(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), "网关sn")
+        # self.input_data(self.page.get_by_role("cell", name="0/16").get_by_role("textbox"), f"{gate}", "输入网关sn")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="下一步"), "映射网关下一步")
         # self.click(self.page.get_by_label("项目复制").get_by_role("textbox"), "输入设备名称")
@@ -85,7 +85,7 @@ class ProjectPage(BasePage):
         # page.locator("div").filter(has_text="资料上传成功").click()
 
     def update_relevant_date(self):
-        self.click(self.page.locator("div").filter(has_text=re.compile(r"^点击上传$")).nth(1), "上传资料li")
+        self.wait_for_timeouts(2000)
         # page.locator(".el-upload-dragger").click()
         # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")
         # page.locator("div").filter(has_text="资料上传成功").click()
