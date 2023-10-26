@@ -9,7 +9,7 @@ class DeviceTableTemplatePage(BasePage):
         self.click(self.page.get_by_role("button", name="点表模板"), "点表模板按钮")
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="新增"), "新增点表模板")
-        self.input_data(self.page.get_by_placeholder("请输入模板名称，40字内"), f"{name}")
+        self.input_data(self.page.get_by_placeholder("请输入模板名称，40字内"), f"{name}", "输入模板名称")
         self.click(
             self.page.locator("div").filter(has_text=re.compile(r"^模板名称：端口类别：网口串口$")).get_by_placeholder(
                 "请选择"), "选择端口类别")

@@ -76,5 +76,5 @@ class SidebarPage(BasePage):
         self.click(self.page.locator(
             ".el-table__fixed-right > .el-table__fixed-body-wrapper > .el-table__body > tbody > tr > .el-table_1_column_3 > .cell > .basicTableBtnBox > .el-dropdown > .el-dropdown-link").first,
                    "更多功能")
-        self.wait_for_timeouts(1000)
+        self.wait_for_timeouts(1500)
         self.click(self.page.locator(f"li:has-text('{functions_name}')").last, f"{functions_name}按钮")
