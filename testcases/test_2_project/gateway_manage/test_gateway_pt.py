@@ -8,7 +8,7 @@ from page.SideBar.SidebarPage import SidebarPage
 
 @allure.feature("网关管理-点表配置")
 class TestGatewayPT:
-    gatewary_pt_value = "测试云平台点位"
+    gateway_pt_value = "测试云平台点位"
 
     @pytest.fixture(scope="function", autouse=True)
     def global_init(self, page):
@@ -23,7 +23,7 @@ class TestGatewayPT:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.gateway_pt.add_gateway_pt(self.gatewary_pt_value, "1011")
+        self.gateway_pt.add_gateway_pt(self.gateway_pt_value, "1011")
 
     @allure.title("网关管理-点表配置-查询点位信息")
     @allure.description("测试查询点表-点位功能是否正常")
@@ -32,7 +32,7 @@ class TestGatewayPT:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.gateway_pt.get_gateway_pt(self.gatewary_pt_value)
+        self.gateway_pt.get_gateway_pt(self.gateway_pt_value)
 
     @allure.title("网关管理-点表配置-修改点位信息")
     @allure.description("测试修改点表-点位功能是否正常")
@@ -41,8 +41,8 @@ class TestGatewayPT:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.gateway_pt.get_gateway_pt(self.gatewary_pt_value)
-        self.gateway_pt.update_gateway_pt(self.gatewary_pt_value)
+        self.gateway_pt.get_gateway_pt(self.gateway_pt_value)
+        self.gateway_pt.update_gateway_pt(self.gateway_pt_value)
 
     @allure.title("网关管理-点表配置-点表下发")
     @allure.description("测试点表配置-点表下发功能是否正常")
@@ -60,7 +60,7 @@ class TestGatewayPT:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.gateway_pt.get_gateway_pt(self.gatewary_pt_value)
+        self.gateway_pt.get_gateway_pt(self.gateway_pt_value)
         self.gateway_pt.delete_gateway_pt()
 
     @allure.title("网关管理-点表配置-批量新增")
