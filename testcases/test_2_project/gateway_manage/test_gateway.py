@@ -1,18 +1,23 @@
 import datetime
 import allure
+import pytest
 
 from page.Project_Center.Gateway.Gateway_Page import GatewayPage
+from page.Project_Center.Project.Project_Page import ProjectPage
 from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("网关管理")
 class TestGateway:
+    @pytest.fixture(scope="function", autouse=True)
+    def global_init(self, page):
+        self.sidebar = SidebarPage(page)
+        self.project = ProjectPage(page)
+        self.gateway = GatewayPage(page)
 
     @allure.title("网关-参数读取")
     @allure.description("测试参数读取功能是否正常")
-    def test_read_gateway(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_read_gateway(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -21,9 +26,7 @@ class TestGateway:
 
     @allure.title("网关-点表下发")
     @allure.description("测试点表下发功能是否正常")
-    def test_issue_device_id(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_issue_device_id(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -32,9 +35,7 @@ class TestGateway:
 
     @allure.title("网关-基础信息下发")
     @allure.description("测试基础信息下发功能是否正常")
-    def test_message_send(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_message_send(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -43,9 +44,7 @@ class TestGateway:
 
     @allure.title("网关-网络信息下发")
     @allure.description("测试网络信息下发功能是否正常")
-    def test_network_send(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_network_send(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -54,9 +53,7 @@ class TestGateway:
 
     @allure.title("网关-同步时钟")
     @allure.description("测试同步时钟功能是否正常")
-    def test_lock_in_time(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_lock_in_time(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -65,9 +62,7 @@ class TestGateway:
 
     @allure.title("网关-远程调试开关")
     @allure.description("测试远程调试开关功能是否正常")
-    def test_debug_switch(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_debug_switch(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -76,9 +71,7 @@ class TestGateway:
 
     @allure.title("网关-获取网关时间")
     @allure.description("测试网关时钟功能是否正常")
-    def test_clock_gateway(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_clock_gateway(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -88,9 +81,7 @@ class TestGateway:
 
     @allure.title("网关-网关分享")
     @allure.description("测试网关分享功能是否正常")
-    def test_clock_gateway(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_clock_gateway(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
@@ -99,9 +90,7 @@ class TestGateway:
 
     @allure.title("网关-摄像头配置")
     @allure.description("测试摄像头配置功能是否正常")
-    def test_camera_configuration(self, page):
-        self.sidebar = SidebarPage(page)
-        self.gateway = GatewayPage(page)
+    def test_camera_configuration(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("7300100000000000")

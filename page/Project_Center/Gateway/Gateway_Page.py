@@ -150,9 +150,6 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_label("分享").get_by_placeholder("请输入项目名称"), "项目名称输入框")
         self.input_data(self.page.get_by_label("分享").get_by_placeholder("请输入项目名称"), f"{project}", "项目名称")
         self.click(self.page.get_by_label("分享").get_by_role("button", name=" 查询"), "查询按钮")
-        self.click(
-            self.page.get_by_role("row", name="d161b660-14ea-4efe-9eca-51702aa2bc31 设备3").locator("span").nth(1),
-            "勾选项目")
         self.click(self.page.get_by_role("row", name="项目Id 项目名称").locator("span").nth(1), "勾选项目")
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取弹框结果")
