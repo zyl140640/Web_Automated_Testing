@@ -31,20 +31,12 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="确 定"), "保存按钮")
         self.cut_out("结果图")
 
-    def update_gateway(self, project):
+    def update_gateway(self):
         """
-        根据项目名称修改项目信息
-        Args:
-            project: 项目名称
+        修改网关信息
         """
         self.wait_for_timeouts(2000)
-        self.click(self.page.get_by_role("link", name="网关管理"), "网关管理")
-        self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询框")
-        self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), f"{project}", "项目名称查询框")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
-        self.click(self.page.locator(
-            '//*[@id="app"]/div/div[2]/section/div[1]/div[2]/div[5]/div[1]/div[5]/div[2]/table/tbody/tr[1]/td[15]/div/div/i[2]').first,
-                   "编辑按钮")
+        self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
         self.page.get_by_placeholder("请输入网关别名").fill("修改测试网关")
         self.page.get_by_label("网关编辑窗口").get_by_role("spinbutton").fill("6")
         self.page.get_by_role("button", name="确 定").click()

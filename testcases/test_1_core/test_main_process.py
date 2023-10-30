@@ -65,9 +65,17 @@ class TestMainProcess:
         a = random.randint(1000000000000000, 9999999999999999)
         self.gateway.add_gateway(f"{self.project_name}", "测试主流程网关别名", f"{a}")
 
+    @allure.title("修改网关")
+    @allure.description("测试修改网关功能是否正常")
+    def test_main_update_gateway(self):
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_name(f"{self.project_name}")
+        self.gateway.update_gateway()
+
     @allure.title("查询网关信息")
     @allure.description("测试查询网关功能是否正常")
-    def test_main_main_get_gateway(self):
+    def test_main_get_gateway(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_name(f"{self.project_name}")
