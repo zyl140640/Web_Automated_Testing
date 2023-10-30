@@ -24,7 +24,7 @@ class TestMainProcess:
         self.device = DevicePage(page)
         self.device_id = DeviceIdPage(page)
 
-    @allure.title("创建项目")
+    @allure.title("创建项目信息")
     @allure.description("测试创建项目功能是否正常")
     @allure.severity("critical")
     @pytest.mark.run(order=1)
@@ -48,7 +48,7 @@ class TestMainProcess:
         self.sidebar.click_project()
         self.project.update_project(f"{self.project_name}")
 
-    @allure.title("删除网关")
+    @allure.title("删除网关信息")
     @allure.description("测试删除网关功能是否正常")
     @allure.severity("minor")
     def test_main_delete_gateway(self):
@@ -57,7 +57,7 @@ class TestMainProcess:
         self.sidebar.get_project_name(f"{self.project_name}")
         self.gateway.delete_gateway()
 
-    @allure.title("创建网关")
+    @allure.title("创建网关信息")
     @allure.description("测试创建网关功能是否正常")
     @allure.severity("critical")
     def test_main_add_gateway(self):
@@ -66,7 +66,7 @@ class TestMainProcess:
         a = random.randint(1000000000000000, 9999999999999999)
         self.gateway.add_gateway(f"{self.project_name}", "测试主流程网关别名", f"{a}")
 
-    @allure.title("修改网关")
+    @allure.title("修改网关信息")
     @allure.description("测试修改网关功能是否正常")
     def test_main_update_gateway(self):
         self.sidebar.click_project_max()
@@ -81,7 +81,7 @@ class TestMainProcess:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_name(f"{self.project_name}")
 
-    @allure.title("删除设备")
+    @allure.title("删除设备信息")
     @allure.description("测试删除设备功能是否正常")
     @allure.severity("trivial")
     def test_main_delete_device(self):
@@ -90,7 +90,7 @@ class TestMainProcess:
         self.sidebar.get_project_name(f"{self.project_name}")
         self.device.delete_device()
 
-    @allure.title("创建设备")
+    @allure.title("创建设备信息")
     @allure.description("测试创建设备功能是否正常")
     @allure.severity("critical")
     def test_main_add_device(self):
@@ -98,7 +98,7 @@ class TestMainProcess:
         self.sidebar.click_device()
         self.device.add_device(f"{self.project_name}", "测试主流程设备名称")
 
-    @allure.title("修改设备")
+    @allure.title("修改设备信息")
     @allure.description("测试修改设备功能是否正常")
     @allure.severity("trivial")
     def test_main_update_device(self):
@@ -106,7 +106,7 @@ class TestMainProcess:
         self.sidebar.click_device()
         self.device.update_device(f"{self.project_name}")
 
-    @allure.title("查询设备")
+    @allure.title("查询设备信息")
     @allure.description("测试查询设备功能是否正常")
     @allure.severity("trivial")
     def test_main_get_device(self):
@@ -114,7 +114,7 @@ class TestMainProcess:
         self.sidebar.click_device()
         self.sidebar.get_project_name(f"{self.project_name}")
 
-    @allure.title("创建点表")
+    @allure.title("创建点表信息")
     @allure.severity("critical")
     @allure.description("测试创建点表功能是否正常")
     def test_main_add_device_id(self):
@@ -123,7 +123,7 @@ class TestMainProcess:
         self.device_id.add_device_one()
         self.device_id.add_device_id(f"{self.device_id_name}")
 
-    @allure.title("查询点表")
+    @allure.title("查询点表信息")
     @allure.severity("critical")
     @allure.description("测试查询点表功能是否正常")
     def test_main_get_device_id(self):
@@ -131,16 +131,16 @@ class TestMainProcess:
         self.sidebar.click_device_id()
         self.device_id.get_device_id(f"{self.device_id_name}")
 
-    @allure.title("修改设备点表")
+    @allure.title("修改点表信息")
     @allure.severity("critical")
-    @allure.description("测试修改点表功能是否正常")
+    @allure.description("测试点表信息功能是否正常")
     def test_main_update_device_id(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
         self.device_id.get_device_id(f"{self.device_id_name}")
         self.device_id.update_device_id()
 
-    @allure.title("删除设备点表")
+    @allure.title("删除设备点表信息")
     @allure.severity("critical")
     @allure.description("测试删除点表功能是否正常")
     def test_main_delete_device_id(self):
@@ -149,7 +149,7 @@ class TestMainProcess:
         self.device_id.get_device_id(f"{self.device_id_name}")
         self.device_id.delete_device_id()
 
-    @allure.title("删除项目")
+    @allure.title("删除项目信息")
     @allure.description("测试删除项目功能是否正常")
     @allure.severity("normal")
     @pytest.mark.run(order=-1)

@@ -22,7 +22,7 @@ class TestDeviceId:
     def test_device_id_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.get_device_id("云平台点位")
+        self.device_id.get_device_id("测试主流程点表的点位")
         self.device_pt.device_save_as_template("测试点表模板", "测试点表模板描述信息")
 
     @allure.title("绑定网关")
@@ -31,7 +31,7 @@ class TestDeviceId:
     def test_bind_device(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.get_device_id("云平台测试点位")
+        self.device_id.get_device_id("测试主流程点表的点位")
         self.device_id.bind_gateway()
 
     @allure.title("绑定设备")
@@ -40,7 +40,7 @@ class TestDeviceId:
     def test_bind_device(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.get_device_id("云平台测试点位")
+        self.device_id.get_device_id("测试主流程点表的点位")
         self.device_id.bind_device()
 
     @allure.title("创建点表-创建点位")
@@ -78,12 +78,3 @@ class TestDeviceId:
         self.sidebar.click_device_id()
         self.device_id.add_device_one()
         self.device_id.device_xiazai_moban()
-
-    @allure.title("删除设备点表")
-    @allure.severity("critical")
-    @allure.description("测试删除点表功能是否正常")
-    def test_delete_device_id(self):
-        self.sidebar.click_project_max()
-        self.sidebar.click_device_id()
-        self.device_id.get_device_id("云平台测试点位")
-        self.device_id.delete_device_id()
