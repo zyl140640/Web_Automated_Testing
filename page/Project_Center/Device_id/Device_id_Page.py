@@ -76,6 +76,7 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("button", name="绑定设备"), "绑定设备按钮")
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
+        self.wait_for_timeouts(1000)
         self.asserts_result(self.get_alert("保存为模板"), "=", "点表保存为模板成功")
 
     def add_device_dianwei(self, name):

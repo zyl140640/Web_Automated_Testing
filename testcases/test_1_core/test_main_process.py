@@ -13,7 +13,7 @@ from page.SideBar.SidebarPage import SidebarPage
 @allure.feature("主流程")
 class TestMainProcess:
     project_name = "测试主流程项目"
-    device_id_name = "测试主流程点表的点位"
+    device_id_name = "测试主流程项目-点表"
     gateway_sn = random.randint(1000000000000000, 9999999999999999)
 
     @pytest.fixture(scope="function", autouse=True)
@@ -143,6 +143,7 @@ class TestMainProcess:
     @allure.title("删除点表信息")
     @allure.severity("critical")
     @allure.description("测试删除点表功能是否正常")
+    @pytest.mark.run(order=-2)
     def test_main_delete_device_id(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()

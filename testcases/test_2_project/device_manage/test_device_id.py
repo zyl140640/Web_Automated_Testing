@@ -1,3 +1,5 @@
+import random
+
 import allure
 import pytest
 
@@ -22,11 +24,8 @@ class TestDeviceId:
     def test_device_id_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.add_device_one()
-        self.device_id.add_device_id("测试保存为模板")
-        self.device_id.get_device_id("测试保存为模板")
+        self.device_id.get_device_id("测试主流程项目-点表")
         self.device_pt.device_save_as_template("测试点表模板", "测试点表模板描述信息")
-        self.device_id.delete_device_id()
 
     @allure.title("绑定网关")
     @allure.severity("critical")
@@ -34,10 +33,8 @@ class TestDeviceId:
     def test_bind_device(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.add_device_id("测试保存为模板")
-        self.device_id.get_device_id("测试保存为模板")
+        self.device_id.get_device_id("测试主流程项目-点表")
         self.device_id.bind_gateway()
-        self.device_id.delete_device_id()
 
     @allure.title("绑定设备")
     @allure.severity("critical")
@@ -45,9 +42,8 @@ class TestDeviceId:
     def test_bind_device(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
-        self.device_id.get_device_id("测试保存为模板")
+        self.device_id.get_device_id("测试主流程项目-点表")
         self.device_id.bind_device()
-        self.device_id.delete_device_id()
 
     @allure.title("创建点表-创建点位")
     @allure.severity("critical")

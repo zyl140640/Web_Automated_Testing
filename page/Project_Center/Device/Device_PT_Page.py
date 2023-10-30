@@ -117,10 +117,11 @@ class DevicePTPage(BasePage):
         self.list_row("1")
         self.click(self.page.get_by_role("button", name="保存为模板"), "保存为模板按钮")
         self.input_data(self.page.get_by_label("保存为模板").locator("input[type=\"text\"]"), f"{name}", "模板名称")
-        self.input_data(self.page.locator("textarea"), f"{miaoshu}", "模板名称")
+        self.input_data(self.page.get_by_label("保存为模板").locator("textarea"), f"{miaoshu}", "模板名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
-        self.asserts_result(result, "=", "点表保存为模板成功")
+        self.wait_for_timeouts(1000)
+        self.asserts_result(self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果"), "=",
+                            "点表保存为模板成功")
 
     def device_yinyong_template(self, name):
         """
@@ -153,9 +154,9 @@ class DevicePTPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="关联点表"), "关联点表")
         self.wait_for_timeouts(1000)
-        self.click(self.page.get_by_role("row",
-                                         name="12 3 Modbus TCP 714005F36924F9C7 714005F36924F9C7 714005F36924F9C7").locator(
-            "label span").nth(1), "勾选点表")
+        self.click(
+            self.page.get_by_role("row", name="测试主流程项目-点表 1 Modbus TCP - - -").locator("label span").first,
+            "勾选点表")
         self.click(self.page.get_by_role("button", name="提交"), "提交关联")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
         self.asserts_result(result, "=", "关联点表成功")
