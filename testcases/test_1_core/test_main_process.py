@@ -27,7 +27,6 @@ class TestMainProcess:
     @allure.title("创建项目信息")
     @allure.description("测试创建项目功能是否正常")
     @allure.severity("critical")
-    @pytest.mark.run(order=1)
     def test_main_add_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
@@ -140,7 +139,7 @@ class TestMainProcess:
         self.device_id.get_device_id(f"{self.device_id_name}")
         self.device_id.update_device_id()
 
-    @allure.title("删除设备点表信息")
+    @allure.title("删除点表信息")
     @allure.severity("critical")
     @allure.description("测试删除点表功能是否正常")
     def test_main_delete_device_id(self):
@@ -152,7 +151,6 @@ class TestMainProcess:
     @allure.title("删除项目信息")
     @allure.description("测试删除项目功能是否正常")
     @allure.severity("normal")
-    @pytest.mark.run(order=-1)
     def test_main_detect_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
