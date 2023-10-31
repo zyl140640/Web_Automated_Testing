@@ -148,7 +148,14 @@ def init(page):
         bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
         bs_init.wait_for_timeouts(8000)
         page.context.storage_state(path="auto/cookies.json")
-        bs_init.click(page.get_by_label("Close", exact=True), "关闭首页弹窗")
+        try:
+            page.get_by_label("Close", exact=True).click()
+            bs_init.logger.info("----首页弹窗----")
+        except Exception as a:
+            bs_init.wait_for_timeouts(1000)
+            bs_init.logger.info("----没弹窗直接跳过----")
+            print(a)
+
     else:
         bs_init.logger.info("cookies有效,跳过登录步骤")
         bs_init.wait_for_timeouts(1000)

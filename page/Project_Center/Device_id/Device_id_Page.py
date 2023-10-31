@@ -25,7 +25,7 @@ class DeviceIdPage(BasePage):
             "1", "")
         self.click(self.page.get_by_role("button", name="确 定"), "")
         self.click(self.page.get_by_role("button", name="保存", exact=True), "")
-        self.asserts_result(self.get_alert("新增点表功能"), "=", "新增点位成功")
+        self.asserts_result(self.get_alert("点表管理-新增点表功能"), "=", "新增点位成功")
 
     def update_device_id(self):
         self.wait_for_timeouts(2000)
@@ -35,7 +35,7 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="保存", exact=True), "保存按钮")
-        self.asserts_result(self.get_alert("修改点表功能"), "=", "修改成功")
+        self.asserts_result(self.get_alert("点表管理-修改点表功能"), "=", "修改成功")
 
     def get_device_id(self, name):
         self.click(self.page.get_by_role("textbox", name="请输入参数名称"), "参数名称查询弹框")
@@ -48,7 +48,7 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("button", name="删除"), "删除按钮")
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
-        self.asserts_result(self.get_alert("删除点表功能"), "=", "删除成功")
+        self.asserts_result(self.get_alert("点表管理-删除点表功能"), "=", "删除成功")
 
     def device_save_as_template(self, name, miaoshu):
         """
@@ -62,13 +62,13 @@ class DeviceIdPage(BasePage):
         self.input_data(self.page.get_by_label("保存为模板").locator("input[type=\"text\"]"), f"{name}", "模板名称")
         self.input_data(self.page.locator("textarea"), f"{miaoshu}", "模板名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        self.asserts_result(self.get_alert("保存为模板"), "=", "点表保存为模板成功")
+        self.asserts_result(self.get_alert("点表管理-保存为模板"), "=", "点表保存为模板成功")
 
     def bind_gateway(self):
         self.list_row("1")
         self.click(self.page.get_by_role("button", name="绑定网关"), "绑定网关按钮")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        self.asserts_result(self.get_alert("保存为模板"), "=", "点表保存为模板成功")
+        self.asserts_result(self.get_alert("点表管理-绑定网关"), "=", "绑定网关成功")
 
     def bind_device(self):
         self.wait_for_timeouts(1000)
@@ -77,7 +77,7 @@ class DeviceIdPage(BasePage):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
         self.wait_for_timeouts(1000)
-        self.asserts_result(self.get_alert("保存为模板"), "=", "点表保存为模板成功")
+        self.asserts_result(self.get_alert("点表管理-绑定设备"), "=", "绑定设备成功")
 
     def add_device_dianwei(self, name):
         self.click(self.page.get_by_role("button", name="添加点表"), "")
@@ -87,7 +87,7 @@ class DeviceIdPage(BasePage):
             "div:nth-child(2) > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner"),
             "1", "")
         self.click(self.page.get_by_role("button", name="确 定"), "")
-        self.asserts_result(self.get_alert("新增点表功能"), "=", "新增点位成功")
+        self.asserts_result(self.get_alert("点表管理-新增点表功能"), "=", "新增点位成功")
 
     def device_addition_pt(self, zhanhao, path, one):
         self.click(self.page.get_by_role("button", name="批量新增"), "批量新增")

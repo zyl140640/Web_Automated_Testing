@@ -38,8 +38,9 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         # self.click(self.page.locator("label").filter(has_text="0905自定义模板").locator("span").nth(1), "选择模板")
         self.click(self.page.get_by_role("button", name="保 存"), "保存按钮")
-        self.cut_out("添加项目")
         self.click(self.page.get_by_role("button", name="关闭"), "关闭按钮")
+        self.asserts_result(self.get_alert("项目管理-新增项目"), "=",
+                            "新增项目成功")
 
     def update_project(self, project):
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称")
@@ -50,7 +51,8 @@ class ProjectPage(BasePage):
         self.input_data(self.page.get_by_placeholder("请输入电话"), "15533065392", "电话输入框")
         self.click(self.page.get_by_role("button", name="结束并保存"), "结束并保存按钮")
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
-        self.cut_out("修改项目")
+        self.asserts_result(self.get_alert("项目管理-修改项目"), "=",
+                            "修改项目成功")
 
     def detect_project(self, project):
         self.wait_for_timeouts(5000)
@@ -59,7 +61,8 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(2), "删除按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认按钮")
-        self.cut_out("删除项目")
+        self.asserts_result(self.get_alert("项目管理-删除项目"), "=",
+                            "删除项目成功")
 
     def copy_project(self, project, gate):
         self.wait_for_timeouts(3000)
@@ -76,15 +79,23 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "点表复查下一步")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="提交"), "提交")
-        self.cut_out("复制项目")
+        self.asserts_result(self.get_alert("项目管理-复制"), "=",
+                            "复制项目成功")
 
     def update_date(self):
+        """
+        项目管理-上传材料
+        """
         self.click(self.page.locator("div").filter(has_text=re.compile(r"^点击上传$")).nth(1), "上传资料li")
+
         # page.locator(".el-upload-dragger").click()
         # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")
         # page.locator("div").filter(has_text="资料上传成功").click()
 
     def update_relevant_date(self):
+        """
+        相关材料
+        """
         self.wait_for_timeouts(2000)
         # page.locator(".el-upload-dragger").click()
         # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")

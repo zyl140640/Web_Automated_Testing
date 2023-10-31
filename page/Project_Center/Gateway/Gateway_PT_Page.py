@@ -24,8 +24,7 @@ class GatewayPTPage(BasePage):
         self.input_data(self.page.get_by_label("新增点位").locator("form div").filter(
             has_text="点位地址 请输入地址 寄存器地址区0X1X3X4X").get_by_role("textbox").first, f"{path}", "点位地址")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
-        self.asserts_result(result, "=", "新增点位成功，请及时下发点表")
+        self.asserts_result(self.get_alert("网关管理-点表配置-新增"), "=", "新增点位成功，请及时下发点表")
 
     def update_gateway_pt(self, name):
         """
@@ -40,8 +39,7 @@ class GatewayPTPage(BasePage):
             self.page.locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role("textbox").first, f"{name}",
             "点位名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
-        self.asserts_result(result, "=", "编辑点位成功，请及时下发点表")
+        self.asserts_result(self.get_alert("网关管理-点表配置-修改"), "=", "编辑点位成功，请及时下发点表")
 
     def delete_gateway_pt(self):
         """
@@ -51,8 +49,7 @@ class GatewayPTPage(BasePage):
         self.click(self.page.get_by_role("cell", name="  ").locator("i").nth(2), "删除按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
-        self.asserts_result(result, "=", "删除成功")
+        self.asserts_result(self.get_alert("网关管理-点表配置-删除"), "=", "删除成功")
 
     def get_gateway_pt(self, name):
         """
@@ -73,8 +70,7 @@ class GatewayPTPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确定按钮")
         self.wait_for_timeouts(1000)
-        result = self.get_text(self.page.get_by_role("alert").first, "获取结果")
-        self.asserts_result(result, "=", "操作成功")
+        self.asserts_result(self.get_alert("网关管理-点表配置-下发点表信息"), "=", "操作成功")
 
     def batch_addition_pt(self, one, two, three):
         """
@@ -97,8 +93,7 @@ class GatewayPTPage(BasePage):
             "spinbutton"), f"{three}", "个数")
         self.click(self.page.get_by_role("button", name="生成预览"), "生成预览按钮")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
-        self.asserts_result(result, "=", "批量新增成功，请及时下发点表")
+        self.asserts_result(self.get_alert("网关管理-点表配置-批量新增"), "=", "批量新增成功，请及时下发点表")
 
     def batch_update_pt(self, one):
         """
@@ -110,8 +105,7 @@ class GatewayPTPage(BasePage):
         self.click(self.page.get_by_role("button", name="批量修改从站号"), "批量修改从站号按钮")
         self.input_data(self.page.get_by_label("批量修改从站号").get_by_role("textbox"), f"{one}", "输入从站号")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取批量修改从站号结果")
-        self.asserts_result(result, "=", "批量修改从站号成功")
+        self.asserts_result(self.get_alert("网关管理-点表配置-批量修改从站号"), "=", "批量修改从站号成功")
 
     def save_as_template(self, name, miaoshu):
         """
@@ -125,8 +119,7 @@ class GatewayPTPage(BasePage):
         self.input_data(self.page.get_by_label("保存为模板").locator("input[type=\"text\"]"), f"{name}", "模板名称")
         self.input_data(self.page.locator("textarea"), f"{miaoshu}", "模板名称")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
-        self.asserts_result(result, "=", "点表保存为模板成功")
+        self.asserts_result(self.get_alert("网关管理-点表配置-保存为模板"), "=", "点表保存为模板成功")
 
     def yinyong_template(self, name):
         """
@@ -142,8 +135,7 @@ class GatewayPTPage(BasePage):
         self.click(self.page.locator("li").filter(has_text="0921"), f"{name}")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
-        self.asserts_result(result, "=", "引用模板成功")
+        self.asserts_result(self.get_alert("网关管理-点表配置-引用模板"), "=", "引用模板成功")
 
     def template_download(self):
         """

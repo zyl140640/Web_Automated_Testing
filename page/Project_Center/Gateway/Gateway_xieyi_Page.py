@@ -18,7 +18,7 @@ class GatewayXieYiPage(BasePage):
         self.click(self.page.get_by_placeholder("请输入设备IP"), "")
         self.input_data(self.page.get_by_placeholder("请输入设备IP"), f"{ip}", "")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        self.get_text(self.page.get_by_role("alert"), "网口协议添加成功提示")
+        self.asserts_result(self.get_alert("网关管理-协议配置-新增网口"), "=", "网口协议添加成功")
 
     def add_chuangkou(self):
         """
@@ -34,6 +34,7 @@ class GatewayXieYiPage(BasePage):
             "#app > div > div.main-container.hasTagsView > section > div.tab-container > div > div:nth-child(4) > div > div.el-dialog__body > div.containerYK > form > div:nth-child(2) > div:nth-child(1) > div > div > div > div > div > input"),
             "COM口")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
+        self.asserts_result(self.get_alert("网关管理-协议配置-新增串口"), "=", "网口协议添加成功")
 
     def update_chuankou(self):
         """
@@ -42,7 +43,7 @@ class GatewayXieYiPage(BasePage):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="编辑").first, "点击编辑")
         self.click(self.page.get_by_role("button", name="确 定"), "保存协议")
-        self.get_text(self.page.get_by_role("alert"), "网口协议修改成功提示")
+        self.asserts_result(self.get_alert("网关管理-协议配置-修改串口"), "=", "网口协议修改成功")
 
     def update_wangkou(self):
         """
@@ -51,7 +52,7 @@ class GatewayXieYiPage(BasePage):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="编辑").first, "点击编辑")
         self.click(self.page.get_by_role("button", name="确 定"), "保存协议")
-        self.get_text(self.page.get_by_role("alert"), "网口协议修改成功提示")
+        self.asserts_result(self.get_alert("网关管理-协议配置-修改网口"), "=", "网口协议修改成功")
 
     def delete_xieyi(self):
         """
@@ -76,4 +77,4 @@ class GatewayXieYiPage(BasePage):
         self.click(self.page.get_by_role("button", name="网口连接测试"), "网口连接测试")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发测试")
-        self.get_text(self.page.get_by_role("alert"), "网口协议添加成功提示")
+        self.asserts_result(self.get_alert("网关管理-协议配置-网口连接测试"), "=", "网口连接测试成功")

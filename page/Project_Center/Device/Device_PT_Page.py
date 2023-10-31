@@ -113,8 +113,9 @@ class DevicePTPage(BasePage):
             name: 模板名称
             miaoshu: 描述内容
         """
-        self.wait_for_timeouts(2000)
+        self.wait_for_timeouts(1000)
         self.list_row("1")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="保存为模板"), "保存为模板按钮")
         self.input_data(self.page.get_by_label("保存为模板").locator("input[type=\"text\"]"), f"{name}", "模板名称")
         self.input_data(self.page.get_by_label("保存为模板").locator("textarea"), f"{miaoshu}", "模板名称")

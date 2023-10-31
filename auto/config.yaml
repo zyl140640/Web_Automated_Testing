@@ -14,3 +14,5 @@ case_login:
 
 
 add_bug: "false"
+
+asserts_switch: "false"

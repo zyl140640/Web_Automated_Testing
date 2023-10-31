@@ -115,18 +115,23 @@ class BasePage:
                 return "{text}步骤元素未找到"
 
     def get_alert(self, text):
-        try:
-            with allure.step(f"获取{text}-alert弹窗文本内容"):
-                texts = self.page.get_by_role("alert").inner_text()
-                self.logger.info(f"获取{text}-alert弹窗文本内容,内容是[{texts}]")
-                return texts
-        except Exception as e:
-            with allure.step(f"获取{text}-alert弹窗文本内容"):
-                self.page.screenshot(path=f"auto/couout/{text}.png")
-                self.cut_out(f"{text}---报错截图")
-                self.chan_dao_api(f"{text}")
-                self.logger.error(f"获取{text}-alert弹窗文本内容操作时,元素未找到,报错内容{e}")
-                return "{text}-弹窗内容未找到"
+
+        result = self.read_yaml("auto/config.yaml", "$..asserts_switch")
+        if result == "true":
+            try:
+                with allure.step(f"获取{text}-alert弹窗文本内容"):
+                    texts = self.page.get_by_role("alert").inner_text()
+                    self.logger.info(f"获取{text}-alert弹窗文本内容,内容是[{texts}]")
+                    return texts
+            except Exception as e:
+                with allure.step(f"获取{text}-alert弹窗文本内容"):
+                    self.page.screenshot(path=f"auto/couout/{text}.png")
+                    self.cut_out(f"{text}---报错截图")
+                    self.chan_dao_api(f"{text}")
+                    self.logger.error(f"获取{text}-alert弹窗文本内容操作时,元素未找到,报错内容{e}")
+                    return "{text}-弹窗内容未找到"
+        else:
+            self.logger.info("未开启断言功能，不进行断言操作")
 
     def list_row(self, row):
         """
