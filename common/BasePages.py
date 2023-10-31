@@ -90,14 +90,18 @@ class BasePage:
             self.page.wait_for_timeout(time)
 
     def asserts_result(self, result, pk, expected):
-        if pk == "=":
-            with allure.step("结果验证"):
-                assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
-                self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
-        elif pk == "!=":
-            with allure.step("结果验证"):
-                assert result != expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
-                self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
+        results = self.read_yaml("auto/config.yaml", "$..asserts_switch")
+        if results == "true":
+            if pk == "=":
+                with allure.step("结果验证"):
+                    assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
+                    self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
+            elif pk == "!=":
+                with allure.step("结果验证"):
+                    assert result != expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
+                    self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
+        else:
+            self.logger.info("未开启断言功能，不进行断言操作")
 
     def get_text(self, locator, text):
         self.locator = locator
@@ -116,7 +120,7 @@ class BasePage:
 
     def get_alert(self, text):
 
-        result = self.read_yaml("auto/config.yaml", "$..asserts_switch")
+        result = self.read_yaml("auto/config.yaml", "$..get_alert_switch")
         if result == "true":
             try:
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
@@ -131,7 +135,7 @@ class BasePage:
                     self.logger.error(f"获取{text}-alert弹窗文本内容操作时,元素未找到,报错内容{e}")
                     return "{text}-弹窗内容未找到"
         else:
-            self.logger.info("未开启断言功能，不进行断言操作")
+            self.logger.info("未开启获取弹窗功能，不进行断言操作")
 
     def list_row(self, row):
         """

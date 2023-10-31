@@ -23,7 +23,7 @@ class TouchScreenPage(BasePage):
         self.input_data(self.page.get_by_label("触摸屏新增").locator("form div").filter(
             has_text="触摸屏Ip... 请输入IP地址 触摸屏端口").get_by_role("textbox").nth(3), "33", "触摸屏输入框")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
-        self.asserts_result(self.get_alert("触摸屏管理-新增"), "=", "新增触摸屏成功")
+        self.asserts_result(self.get_alert("触摸屏管理-新增"), "=", "保存成功")
 
     def get_touch_screen(self, name):
         self.input_data(self.page.get_by_placeholder("请输入触摸屏名称"), f"{name}", "查询条件-触摸屏名称")
