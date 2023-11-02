@@ -1,10 +1,11 @@
 import requests
 
-
 # 登录url
 login_host = "http://192.168.110.129:81/zentao/index.php?m=user&f=login"
 # 新增-BUG-url
 add_bug_host = "http://192.168.110.129:81/zentao/index.php?m=bug&f=create&productID=5&branch=0&extra=moduleID=0"
+# 提交图片地址
+url1 = "http://192.168.110.129:81/zentao/file-ajaxUpload-5a26aca290b59.html?dir=image"
 
 
 def add_bug(title, assigned_to, severity, pri, steps, image_path):
@@ -27,6 +28,17 @@ def add_bug(title, assigned_to, severity, pri, steps, image_path):
 
     print(response.content)
 
+    f = {
+        "localUrl": (None, "1.png"),
+        "imgFile": ("name.png", open(f"{image_path}", "rb"), "image/png")
+    }
+    r = s.post(url1, files=f)
+    try:
+        jpgurl = "http://192.168.110.129:81/" + r.json()["url"]
+        print(u"上传图片后的url地址：%s" % jpgurl)
+    except Exception as msg:
+        print(u"返回值不是json格式：%s" % str(msg))
+        print(r.content)
     data = {
         "product": "5",  # int 所属产品 * 必填
         "openedBuild": "trunk",  # int | trunk 影响版本 * 必填
@@ -43,16 +55,13 @@ def add_bug(title, assigned_to, severity, pri, steps, image_path):
         "keywords": "",  # string 关键词
         "title": f"{title}",  # 标题
         "story": "",  # 需求
-        "steps": f"{steps}"  # string 重现步骤
-    }
-    f = {
-        ("files[]", ("Allure.png", open(f"{image_path}", "rb"), "image/png"))
+        "steps": "<p>[步骤]{} </p><p>[结果]<p><img src='{}' /></p></p><p>[期望]</p>".format(steps, r.json()["url"])
+        # string 重现步骤
     }
 
-    responses = s.post(add_bug_host, data=data, files=f)
+    responses = s.post(add_bug_host, data=data)
     print(responses.content.decode("utf-8"))
 
 
 if __name__ == '__main__':
-
-    add_bug("自动化标题", "zhangyuanlong", "4", "4", "111", "logs/shouye.png")
+    add_bug("自动化标题", "zhangyuanlong", "4", "4", "你好呀步骤", "Allure.png")
