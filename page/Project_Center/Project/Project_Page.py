@@ -38,9 +38,9 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         # self.click(self.page.locator("label").filter(has_text="0905自定义模板").locator("span").nth(1), "选择模板")
         self.click(self.page.get_by_role("button", name="保 存"), "保存按钮")
+        self.asserts_result(self.get_text(self.page.get_by_text("项目创建成功"), "项目管理-新增"), "=",
+                            "项目创建成功")
         self.click(self.page.get_by_role("button", name="关闭"), "关闭按钮")
-        self.asserts_result(self.get_alert("项目管理-新增项目"), "=",
-                            "新增项目成功")
 
     def update_project(self, project):
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称")
@@ -51,8 +51,8 @@ class ProjectPage(BasePage):
         self.input_data(self.page.get_by_placeholder("请输入电话"), "15533065392", "电话输入框")
         self.click(self.page.get_by_role("button", name="结束并保存"), "结束并保存按钮")
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
-        self.asserts_result(self.get_alert("项目管理-修改项目"), "=",
-                            "修改项目成功")
+        self.asserts_result(self.get_text(self.page.get_by_text("项目编辑成功"), "项目管理-编辑"), "=",
+                            "项目编辑成功")
 
     def detect_project(self, project):
         self.wait_for_timeouts(5000)

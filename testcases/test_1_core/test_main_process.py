@@ -48,15 +48,6 @@ class TestMainProcess:
         self.sidebar.click_project()
         self.project.update_project(f"{self.project_name}")
 
-    @allure.title("删除网关信息")
-    @allure.description("测试删除网关功能是否正常")
-    @allure.severity("minor")
-    def test_main_delete_gateway(self):
-        self.sidebar.click_project_max()
-        self.sidebar.click_gateway()
-        self.sidebar.get_project_name(f"{self.project_name}")
-        self.gateway.delete_gateway()
-
     @allure.title("创建网关信息")
     @allure.description("测试创建网关功能是否正常")
     @allure.severity("critical")
@@ -80,6 +71,15 @@ class TestMainProcess:
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_name(f"{self.project_name}")
+
+    @allure.title("删除网关信息")
+    @allure.description("测试删除网关功能是否正常")
+    @allure.severity("minor")
+    def test_main_delete_gateway(self):
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_project_name(f"{self.project_name}")
+        self.gateway.delete_gateway()
 
     @allure.title("删除设备信息")
     @allure.description("测试删除设备功能是否正常")

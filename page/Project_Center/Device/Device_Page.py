@@ -49,3 +49,4 @@ class DevicePage(BasePage):
         self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1).click()
         self.page.get_by_role("button", name="删除").click()
         self.page.get_by_role("button", name="确认").click()
+        self.asserts_result(self.get_alert("设备管理-删除设备"), "=", "删除设备成功")

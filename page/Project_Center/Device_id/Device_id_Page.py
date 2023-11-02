@@ -8,7 +8,7 @@ class DeviceIdPage(BasePage):
     def add_device_one(self):
         self.click(self.page.get_by_role("button", name="新增", exact=True), "新增点表按钮")
         self.click(self.page.get_by_role("dialog").locator("form").filter(
-            has_text="所属租户xing0011009child1012qitest11009qi0921newa0921child0921qi09210010905qi泉州市德宝机电").get_by_placeholder(
+            has_text="所属租户xing0011009child1012qitest11009qi0921newa0921child0921qi09210010905qi荏原电产（青岛").get_by_placeholder(
             "请选择", exact=True), "选择租户")
         self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "")
         self.click(self.page.get_by_role("dialog", name="新增点位").get_by_placeholder("请选择", exact=True).nth(2), "")
@@ -30,12 +30,12 @@ class DeviceIdPage(BasePage):
     def update_device_id(self):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
-        self.input_data(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "192.180.1.1", "输入ip地址")
+        self.input_data(self.page.get_by_placeholder("请输入设备IP"), "192.180.1.1", "输入ip地址")
         self.input_data(self.page.get_by_placeholder("请输入端口"), "501", "输入端口号")
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="保存", exact=True), "保存按钮")
-        self.asserts_result(self.get_alert("点表管理-修改点表功能"), "=", "修改成功")
+        self.asserts_result(self.get_alert("点表管理-修改点表功能"), "=", "保存成功")
 
     def get_device_id(self, name):
         self.click(self.page.get_by_role("textbox", name="请输入参数名称"), "参数名称查询弹框")

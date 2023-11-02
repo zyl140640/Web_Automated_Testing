@@ -13,6 +13,10 @@ class GatewayPage(BasePage):
         """
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="新增"), "新增网关按钮")
+        self.click(self.page.get_by_placeholder("请选择", exact=True).nth(1), "所属租户")
+        self.wait_for_timeouts(2000)
+        self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "选择所属租户")
+        self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("textbox", name="请选择项目名称"), "项目名称")
         self.input_data(self.page.get_by_label("选择项目").get_by_placeholder("请选择项目名称"), f"{project}",
                         "输入项目名称")
@@ -29,7 +33,7 @@ class GatewayPage(BasePage):
         self.input_data(self.page.get_by_placeholder("请输入地址"), "山东省青岛市李沧区九水东路东李新苑", "地址输入框")
         self.click(self.page.get_by_placeholder("请选择状态"), "请选择状态")
         self.click(self.page.get_by_role("button", name="确 定"), "保存按钮")
-        self.asserts_result(self.get_alert("网关管理-新增网关"), "=", "保存成功")
+        self.asserts_result(self.get_alert("网关管理-新增网关"), "=", "新增网关成功")
 
     def update_gateway(self):
         """
@@ -50,7 +54,7 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("row", name="1", exact=True).locator("label span").nth(1), "勾选网关")
         self.click(self.page.get_by_role("button", name="删除"), "删除按钮")
         self.click(self.page.get_by_role("button", name="确认"), "确认删除按钮")
-        self.asserts_result(self.get_alert("网关管理-删除网关"), "=", "保存成功")
+        self.asserts_result(self.get_alert("网关管理-删除网关"), "=", "删除网关成功")
 
     def parm_read(self):
         """
