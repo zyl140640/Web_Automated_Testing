@@ -28,7 +28,7 @@ class TestDeviceId:
     @allure.title("绑定网关")
     @allure.severity("critical")
     @allure.description("测试绑定网关功能是否正常")
-    def test_bind_device(self):
+    def test_bind_gateway(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
         self.device_id.get_device_id("测试主流程项目-点表")
