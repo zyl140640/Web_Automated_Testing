@@ -11,9 +11,6 @@ class DeviceIdPage(BasePage):
         self.click(self.page.locator(
             "#app > div > div.main-container.hasTagsView > section > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div > div.el-dialog__body > div.step-wrapper > div.el-row > form > div:nth-child(1) > div > div > div > div > input"),
             "测试")
-        # self.click(self.page.get_by_role("dialog").locator("form").filter(
-        #     has_text="所属租户1105qi1106qixing0011009child1012qitest11009qi0921newa0921child0921qi09210010").get_by_placeholder(
-        #     "请选择", exact=True), "选择租户")
         self.wait_for_timeouts(1000)
         self.input_data(
             self.page.locator("form").filter(has_text="所属租户所属组织暂无数据").get_by_placeholder("请选择",
@@ -24,8 +21,8 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("dialog", name="新增点位").get_by_placeholder("请选择", exact=True).nth(2),
                    "选择协议")
         self.click(self.page.locator("li").filter(has_text="Modbus TCP").locator("span"), "选择Modbus TCP协议")
-        self.input_data(self.page.get_by_placeholder("请输入设备IP"), "189.123.22.11", "")
-        self.click(self.page.get_by_role("button", name="下一步"), "")
+        self.input_data(self.page.get_by_placeholder("请输入设备IP"), "189.123.22.11", "输入设备IP地址")
+        self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
 
     def add_device_id(self, name):
         self.click(self.page.get_by_role("button", name="添加点表"), "")

@@ -46,7 +46,7 @@ def context(
         request: pytest.FixtureRequest,
 ) -> Generator[BrowserContext, None, None]:
     pages: List[Page] = []
-    context = browser.new_context(**browser_context_args, storage_state="auto/cookies.json")
+    context = browser.new_context(**browser_context_args, storage_state="auto/cookies.json", locale="zh-CH")
     # 设置全局超时40秒
     # context.set_default_navigation_timeout(40000)
     # context = browser.new_context(**browser_context_args)
