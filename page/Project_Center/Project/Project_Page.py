@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 import re
 from common.BasePages import BasePage
 
 
 class ProjectPage(BasePage):
 
-    def add_project(self, project, project_id, gateway_name, gateway_sn):
+    def 创建项目(self, project, project_id, gateway_name, gateway_sn):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="新增"), "新增项目按钮")
         self.click(self.page.get_by_label("新增项目").get_by_placeholder("请选择", exact=True), "所属租户")
@@ -42,7 +43,8 @@ class ProjectPage(BasePage):
                             "项目创建成功")
         self.click(self.page.get_by_role("button", name="关闭"), "关闭按钮")
 
-    def update_project(self, project):
+    # noinspection NonAsciiCharacters
+    def 修改项目(self, project):
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), f"{project}", "输入项目名称")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
@@ -54,7 +56,7 @@ class ProjectPage(BasePage):
         self.asserts_result(self.get_text(self.page.get_by_text("项目编辑成功"), "项目管理-编辑"), "=",
                             "项目编辑成功")
 
-    def detect_project(self, project):
+    def 删除项目(self, project):
         self.wait_for_timeouts(5000)
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), f"{project}", "输入项目名称")
@@ -64,7 +66,7 @@ class ProjectPage(BasePage):
         self.asserts_result(self.get_alert("项目管理-删除项目"), "=",
                             "删除项目成功")
 
-    def copy_project(self, project, gate):
+    def 复制项目(self, project, gate):
         self.wait_for_timeouts(3000)
         self.click(self.page.get_by_placeholder("请输入项目名称，40字内"), "项目名称")
         self.input_data(self.page.get_by_placeholder("请输入项目名称，40字内"), f"{project}", "输入项目名称")
@@ -81,7 +83,7 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="提交"), "提交")
         self.asserts_result(self.get_alert("项目管理-复制"), "=", "复制项目成功")
 
-    def update_date(self):
+    def 项目_上传材料(self):
         """
         项目管理-上传材料
         """
@@ -91,7 +93,7 @@ class ProjectPage(BasePage):
         # page.locator(".el-upload").set_input_files("微信截图_20231011104056.png")
         # page.locator("div").filter(has_text="资料上传成功").click()
 
-    def update_relevant_date(self):
+    def 项目_相关材料(self):
         """
         相关材料
         """
