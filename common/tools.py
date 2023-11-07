@@ -1,8 +1,11 @@
 import json
+import logging
 
 import yaml
 
 import os
+
+from jsonpath import jsonpath
 
 
 def clear_directory():
@@ -78,3 +81,28 @@ def read_yaml(path):
         data = yaml.safe_load(f)
     # 返回读取到的全部内容
     return data
+
+
+def read_yaml_json(path, json_path="null"):
+    """
+    # 读取YAML文件
+
+    Args:
+        path:
+        json_path:
+
+    Returns:
+
+    """
+    with open(path, 'r') as f:
+        data = yaml.safe_load(f)
+    # 返回读取到的全部内容
+    if json_path == "null":
+        logging.info(f"读取文件名: [{path}] , 返回全部内容: [{data}]")
+        return data
+
+    else:
+        result = jsonpath(data, json_path)
+        cleaned_result = result[0]
+        logging.info(f"读取文件名:[{path}] , 使用jsonpath读取[{json_path}]下的内容: [{cleaned_result}]")
+        return cleaned_result

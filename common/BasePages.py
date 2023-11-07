@@ -5,8 +5,6 @@ import yaml
 from jsonpath import jsonpath
 from playwright.sync_api import Page
 
-from common.ZenTao_Api import add_bug
-
 """
 封装常用API
 """
@@ -45,7 +43,6 @@ class BasePage:
         except Exception as e:
             self.cut_out(f"{text}---报错截图")
             self.page.screenshot(path=f"auto/couout/{text}.png")
-            self.chan_dao_api(f"{text}")
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -64,7 +61,6 @@ class BasePage:
         except Exception as e:
             self.page.screenshot(path=f"auto/couout/{text}.png")
             self.cut_out(f"{text}---报错截图")
-            self.chan_dao_api(f"{text}")
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -89,12 +85,12 @@ class BasePage:
             self.logger.info(f"等待[{time}]毫秒后执行下一步操作")
             self.page.wait_for_timeout(time)
 
-    def asserts_result(self, result, pk, expected):
+    def asserts_result(self, result, pk, expected, bug_api="未调用提交接口"):
         results = self.read_yaml("auto/config.yaml", "$..asserts_switch")
         if results == "true":
             if pk == "=":
                 with allure.step("结果验证"):
-                    assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
+                    assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}],禅道状态: {bug_api}"
                     self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
             elif pk == "!=":
                 with allure.step("结果验证"):
@@ -114,7 +110,6 @@ class BasePage:
             with allure.step(f"获取{text}元素文本内容失败"):
                 self.page.screenshot(path=f"auto/couout/{text}.png")
                 self.cut_out(f"{text}---报错截图")
-                self.chan_dao_api(f"{text}")
                 self.logger.error(f"获取{text}元素文本内容操作时,元素未找到,报错内容{e}")
                 return "{text}步骤元素未找到"
 
@@ -131,7 +126,6 @@ class BasePage:
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
                     self.page.screenshot(path=f"auto/couout/{text}.png")
                     self.cut_out(f"{text}---报错截图")
-                    self.chan_dao_api(f"{text}")
                     self.logger.error(f"获取{text}-alert弹窗文本内容操作时,元素未找到,报错内容{e}")
                     return "{text}-弹窗内容未找到"
         else:
@@ -195,19 +189,3 @@ class BasePage:
             cleaned_result = result[0]
             self.logger.info(f"读取文件名:[{path}] , 使用jsonpath读取[{json_path}]下的内容: [{cleaned_result}]")
             return cleaned_result
-
-    def chan_dao_api(self, text):
-        """
-        调用禅道提交Bug-API  判断Config.yaml 文件内add_bug的值是否是ture 是则提交 不是则不触发
-        Args:
-            text: 功能名称
-
-        Returns: 空
-
-        """
-        result = self.read_yaml("auto/config.yaml", "$..add_bug")
-        if result == "true":
-            add_bug(f"脚本定位错误:{text}", "fangna", "4", "4", "111", f"auto/couout/{text}.png")
-            self.logger.info(f"读取配置文件结果: {result} ,报错时触发禅道提交Bug功能")
-        else:
-            self.logger.info(f"读取配置文件结果: {result} ,报错时不触发禅道提交Bug功能")
