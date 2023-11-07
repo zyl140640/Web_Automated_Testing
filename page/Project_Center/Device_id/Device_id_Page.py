@@ -74,8 +74,11 @@ class DeviceIdPage(BasePage):
 
     def bind_gateway(self):
         self.list_row("1")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="绑定网关"), "绑定网关按钮")
-        self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_role("radio"), "勾选网关")
+        self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
         self.asserts_result(self.get_alert("点表管理-绑定网关"), "=", "绑定网关成功")
 
     def bind_device(self):
