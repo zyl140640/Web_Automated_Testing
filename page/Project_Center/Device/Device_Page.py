@@ -11,7 +11,7 @@ class DevicePage(BasePage):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_placeholder("请选择", exact=True).nth(1), "所属租户")
         self.wait_for_timeouts(2000)
-        self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "选择所属租户")
+        self.click(self.page.locator("li").filter(has_text="张氏家族企业").nth(1), "选择所属租户")
         self.click(self.page.get_by_placeholder("请选择项目名称").first, "选择项目名称")
         self.wait_for_timeouts(1000)
         self.input_data(self.page.get_by_placeholder("请选择项目名称").first, f"{project}", "项目名称输入框")

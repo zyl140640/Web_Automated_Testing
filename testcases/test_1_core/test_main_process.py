@@ -28,10 +28,10 @@ class TestMainProcess:
     @allure.description("测试创建项目功能是否正常")
     @allure.severity("critical")
     @pytest.mark.run(order=1)
-    def test_main_创建项目(self):
+    def test_main_add_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.project.创建项目(f"{self.project_name}", "00100", "测试主流程项目网关", f"{self.gateway_sn}")
+        self.project.add_project(f"{self.project_name}", "00100", "测试主流程项目网关", f"{self.gateway_sn}")
 
     @allure.title("查询项目信息")
     @allure.description("测试查询项目功能是否正常")
@@ -46,7 +46,7 @@ class TestMainProcess:
     def test_main_update_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.project.修改项目(f"{self.project_name}")
+        self.project.update_project(f"{self.project_name}")
 
     @allure.title("创建网关信息")
     @allure.description("测试创建网关功能是否正常")
@@ -157,4 +157,4 @@ class TestMainProcess:
     def test_main_detect_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.project.删除项目(f"{self.project_name}")
+        self.project.detect_project(f"{self.project_name}")

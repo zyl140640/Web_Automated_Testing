@@ -15,7 +15,7 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="新增"), "新增网关按钮")
         self.click(self.page.get_by_placeholder("请选择", exact=True).nth(1), "所属租户")
         self.wait_for_timeouts(2000)
-        self.click(self.page.locator("li").filter(has_text="xing001").nth(1), "选择所属租户")
+        self.click(self.page.locator("li").filter(has_text="张氏家族企业").nth(1), "选择所属租户")
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("textbox", name="请选择项目名称"), "项目名称")
         self.input_data(self.page.get_by_label("选择项目").get_by_placeholder("请选择项目名称"), f"{project}",

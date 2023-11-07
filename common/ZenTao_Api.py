@@ -75,4 +75,4 @@ def add_bug(title, assigned_to, severity, pri, steps, image_path):
 
 
 if __name__ == '__main__':
-# add_bug("自动化标题", "zhangyuanlong", "4", "4", "你好呀步骤", "Allure.png")
+    add_bug("自动化标题", "zhangyuanlong", "4", "4", "你好呀步骤", "Allure.png")

@@ -15,9 +15,9 @@ class DeviceIdPage(BasePage):
         self.input_data(
             self.page.locator("form").filter(has_text="所属租户所属组织暂无数据").get_by_placeholder("请选择",
                                                                                                      exact=True),
-            "荏原", "搜索所属租户")
+            "张氏", "搜索所属租户")
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li").filter(has_text="荏原电产（青岛）科技有限公司").nth(1), "选择荏原")
+        self.click(self.page.locator("li").filter(has_text="张氏家族企业").nth(1), "选择张氏家族企业")
         self.click(self.page.get_by_role("dialog", name="新增点位").get_by_placeholder("请选择", exact=True).nth(2),
                    "选择协议")
         self.click(self.page.locator("li").filter(has_text="Modbus TCP").locator("span"), "选择Modbus TCP协议")
@@ -93,7 +93,7 @@ class DeviceIdPage(BasePage):
                         f"{name}", "")
         self.input_data(self.page.locator(
             "div:nth-child(2) > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner"),
-            "1", "")
+            "1", "输入1")
         self.click(self.page.get_by_role("button", name="确 定"), "")
         self.asserts_result(self.get_alert("点表管理-新增点表功能"), "=", "新增点位成功")
 

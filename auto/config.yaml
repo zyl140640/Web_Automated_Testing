@@ -1,5 +1,6 @@
 formal_login:
   url: "http://36.134.46.91:7070/"
+  cookies_url: "http://192.168.110.210:9016/"
   username: zhangyuanlong
   password: 123456
 
@@ -7,9 +8,18 @@ formal_login:
 
 case_login:
   url: "http://192.168.110.210:9016/"
+  cookies_url: "http://192.168.110.210:9016/"
   username: zhangyuanlong
   password: 123456
 
+
+
+
+tenantry_login:
+  url: "http://192.168.110.210:9016/login?id=888888"
+  cookies_url: "http://192.168.110.210:9016/"
+  username: root
+  password: 123456
 
 
 
