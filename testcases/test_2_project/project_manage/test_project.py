@@ -22,7 +22,7 @@ class TestProject:
         self.sidebar.click_project_max()
         self.sidebar.click_project()
         self.sidebar.click_more_functions("复制")
-        self.project.复制项目("Copy_不允许删除pro", f"{a}")
+        self.project.copy_project("Copy_不允许删除pro", f"{a}")
 
     @allure.title("上传项目材料")
     @allure.description("测试上传材料功能是否正常")
@@ -31,7 +31,7 @@ class TestProject:
         self.sidebar.click_project_max()
         self.sidebar.click_project()
         self.sidebar.click_more_functions("上传资料")
-        self.project.项目_上传材料()
+        self.project.update_date()
 
     @allure.title("项目-相关资料")
     @allure.description("测试项目-相关资料功能是否正常")
@@ -40,4 +40,4 @@ class TestProject:
         self.sidebar.click_project_max()
         self.sidebar.click_project()
         self.sidebar.click_more_functions("相关资料")
-        self.project.项目_相关材料()
+        self.project.update_relevant_date()
