@@ -35,5 +35,5 @@ class TestDeviceTableTemplate:
     def test_delete_table_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.tabletemplate.get_table_template("云平台点表模板")
+        self.tabletemplate.get_table_template("测试设备-点表模板")
         self.tabletemplate.delete_table_template()
