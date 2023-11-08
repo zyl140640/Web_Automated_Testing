@@ -124,6 +124,9 @@ def context(
 @pytest.fixture(scope="function", autouse=True)
 def init(page):
     bs_init = BasePage(page)
+    lan = page.evaluate("window.navigator.language;")
+    print(lan)
+    bs_init.logger.info(f"浏览器语言是{lan}")
     login_config = bs_init.read_yaml("auto/config.yaml", "$..tenantry_login")
     bs_init.logger.info(
         f"------环境地址: [{login_config['cookies_url']}], 登录账号信息: [{login_config['username']}], 登录密码信息: [{login_config['password']}]------")

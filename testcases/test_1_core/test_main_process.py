@@ -31,11 +31,11 @@ class TestMainProcess:
     def test_main_add_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
-        self.project.add_project(f"{self.project_name}", "00100", "测试主流程项目网关", f"{self.gateway_sn}")
+        self.project.add_project(f"{self.project_name}", "00100", "测试主流程项目-网关", f"{self.gateway_sn}")
 
     @allure.title("查询项目信息")
     @allure.description("测试查询项目功能是否正常")
-    def test_main_git_project(self):
+    def test_main_get_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()
         self.sidebar.get_project_name(f"{self.project_name}")
@@ -54,8 +54,7 @@ class TestMainProcess:
     def test_main_add_gateway(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        a = random.randint(1000000000000000, 9999999999999999)
-        self.gateway.add_gateway(f"{self.project_name}", "测试主流程网关别名", f"{a}")
+        self.gateway.add_gateway(f"{self.project_name}", "测试主流程-新增网关", f"{self.gateway_sn}")
 
     @allure.title("修改网关信息")
     @allure.description("测试修改网关功能是否正常")
@@ -96,7 +95,7 @@ class TestMainProcess:
     def test_main_add_device(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.device.add_device(f"{self.project_name}", "测试主流程设备名称")
+        self.device.add_device(f"{self.project_name}", "测试主流程-新增设备")
 
     @allure.title("修改设备信息")
     @allure.description("测试修改设备功能是否正常")
