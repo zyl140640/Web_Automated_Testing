@@ -50,7 +50,7 @@ class TestDeviceId:
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
         self.device_id.add_device_one()
-        self.device_id.add_device_dianwei("云平台测试点位")
+        self.device_id.add_device_dianwei("测试-新增点位")
 
     @allure.title("点表管理-点位-批量新增")
     @allure.severity("critical")

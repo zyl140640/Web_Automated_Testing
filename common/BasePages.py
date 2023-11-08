@@ -19,7 +19,7 @@ class BasePage:
     def go_url(self, url):
         try:
             with allure.step(f"访问网站:{url}"):
-                self.page.goto(url, timeout=10000)
+                self.page.goto(url, wait_until='networkidle')
                 self.logger.info(f"访问网站: [{url}]")
         except Exception as e:
             self.cut_out("网站未访问成功截图")
@@ -119,6 +119,7 @@ class BasePage:
         if result == "true":
             try:
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
+                    self.page.get_by_role("alert").wait_for()
                     texts = self.page.get_by_role("alert").inner_text()
                     self.logger.info(f"获取{text}-alert弹窗文本内容,内容是[{texts}]")
                     return texts

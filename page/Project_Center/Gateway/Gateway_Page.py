@@ -92,7 +92,6 @@ class GatewayPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
         self.wait_for_timeouts(1000)
-        result = self.get_text(self.page.get_by_role("alert"), "读取下发弹窗结果")
         self.asserts_result(self.get_alert("网关管理-网络信息下发"), "=", "操作成功")
 
     def lock_in_time(self):

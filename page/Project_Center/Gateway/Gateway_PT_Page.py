@@ -12,17 +12,22 @@ class GatewayPTPage(BasePage):
             path: 点位地址
             name: 点位名称
         """
-        self.wait_for_timeouts(3000)
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="新增", exact=True), "新增点位按钮")
         self.click(self.page.locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role("textbox").first,
                    "点位名称")
         self.input_data(
             self.page.locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role("textbox").first, f"{name}",
             "点位名称")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("textbox", name="请选择协议"), "请选择协议")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("listitem").nth(1), "确定协议")
-        self.input_data(self.page.get_by_label("新增点位").locator("form div").filter(
-            has_text="点位地址 请输入地址 寄存器地址区0X1X3X4X").get_by_role("textbox").first, f"{path}", "点位地址")
+        self.wait_for_timeouts(1000)
+        self.input_data(self.page.locator(
+            '#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(3) > div > div.el-dialog__body > div:nth-child(1) > form > div:nth-child(3) > div:nth-child(2) > div > div > div.el-input.el-input--medium > input'),
+            f"{path}", "点位地址")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         self.asserts_result(self.get_alert("网关管理-点表配置-新增"), "=", "新增点位成功，请及时下发点表")
 

@@ -21,14 +21,14 @@ class TestDeviceTableTemplate:
     def test_add_table_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.tabletemplate.add_table_template("云平台点表模板")
+        self.tabletemplate.add_table_template("测试设备-点表模板")
 
     @allure.title("设备管理-点表模板-查询点表模板")
     @allure.description("测试查询点表模板-点位功能是否正常")
     def test_get_table_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.tabletemplate.get_table_template("云平台点表模板")
+        self.tabletemplate.get_table_template("测试设备-点表模板")
 
     @allure.title("设备管理-点表模板-删除点表模板")
     @allure.description("测试删除点表模板-点位功能是否正常")
