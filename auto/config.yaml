@@ -25,6 +25,6 @@ tenantry_login:
 
 add_bug: "false"
 
-asserts_switch: "false"
+asserts_switch: "true"
 
 get_alert_switch: "true"

@@ -86,7 +86,7 @@ class TestGateway:
         self.sidebar.click_gateway()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("网关分享")
-        self.gateway.gateway_share("设备3")
+        self.gateway.gateway_share("测试主流程项目")
 
     @allure.title("网关-摄像头配置")
     @allure.description("测试摄像头配置功能是否正常")
