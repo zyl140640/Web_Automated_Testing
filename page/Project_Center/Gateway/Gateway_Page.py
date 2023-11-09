@@ -107,6 +107,7 @@ class GatewayPage(BasePage):
         """
         远程调试开关
         """
+        self.wait_for_timeouts(3000)
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
         self.asserts_result(self.get_alert("网关管理-远程调试开关"), "=", "操作成功")
 

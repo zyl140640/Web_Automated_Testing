@@ -30,9 +30,11 @@ class GatewayXieYiPage(BasePage):
             r"^协议类别标准西门子三菱台达协议协议Modbus RTU网关I/ORFID协议协议别名$")).get_by_placeholder("请选择").nth(
             1), "选择协议")
         self.click(self.page.locator("li").filter(has_text="Modbus RTU"), "选择RTU协议")
+        self.wait_for_timeouts(1000)
         self.click(self.page.locator(
             "#app > div > div.main-container.hasTagsView > section > div.tab-container > div > div:nth-child(4) > div > div.el-dialog__body > div.containerYK > form > div:nth-child(2) > div:nth-child(1) > div > div > div > div > div > input"),
             "COM口")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         self.asserts_result(self.get_alert("网关管理-协议配置-新增串口"), "=", "协议添加成功")
 
