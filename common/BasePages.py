@@ -120,7 +120,7 @@ class BasePage:
             try:
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
                     self.page.get_by_role("alert").wait_for()
-                    texts = self.page.get_by_role("alert").inner_text()
+                    texts = self.page.get_by_role("alert").first.inner_text()
                     self.logger.info(f"获取{text}-alert弹窗文本内容,内容是[{texts}]")
                     return texts
             except Exception as e:
