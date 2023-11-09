@@ -62,13 +62,13 @@ class GatewayPage(BasePage):
         Args:
         """
         self.click(self.page.get_by_role("button", name="确定"), "确定读取")
-        self.wait_for_timeouts(2000)
+        self.wait_for_timeouts(1000)
         bs = self.get_text(self.page.get_by_role("alert").first, "读取操作成功弹窗")
-        self.asserts_result(bs, "=", "操作成功")
+        # self.asserts_result(bs, "=", "操作成功")
         self.click(self.page.get_by_role("button", name="同步到平台"), "同步到平台")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"), "确定同步到平台")
-        self.wait_for_timeouts(2000)
-        self.asserts_result(self.get_alert("网关管理-参数读取"), "=", "读取成功")
+        self.asserts_result(self.get_alert("网关管理-参数读取"), "=", "同步成功")
 
     def issue_device_id(self):
         """

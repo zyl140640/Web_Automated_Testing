@@ -5,6 +5,8 @@ import yaml
 from jsonpath import jsonpath
 from playwright.sync_api import Page
 
+from common.ZenTao_Api import add_bug
+
 """
 封装常用API
 """
@@ -43,6 +45,8 @@ class BasePage:
         except Exception as e:
             self.cut_out(f"{text}---报错截图")
             self.page.screenshot(path=f"auto/couout/{text}.png")
+            add_bug(f"Web自动化定位错误-报错操作: [点击] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
+                    f"auto/couout/{text}.png")
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -61,6 +65,9 @@ class BasePage:
         except Exception as e:
             self.page.screenshot(path=f"auto/couout/{text}.png")
             self.cut_out(f"{text}---报错截图")
+            self.page.screenshot(path=f"auto/couout/{text}.png")
+            add_bug(f"Web自动化定位错误-报错操作: [输入] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
+                    f"auto/couout/{text}.png")
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -127,6 +134,10 @@ class BasePage:
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
                     self.page.screenshot(path=f"auto/couout/{text}.png")
                     self.cut_out(f"{text}---报错截图")
+                    self.page.screenshot(path=f"auto/couout/{text}.png")
+                    add_bug(f"Web自动化定位错误-报错操作: [弹窗] , 报错功能：{text}", "zhangyuanlong", "4", "4",
+                            "步骤暂无",
+                            f"auto/couout/{text}.png")
                     self.logger.error(f"获取{text}-alert弹窗文本内容操作时,元素未找到,报错内容{e}")
                     return "{text}-弹窗内容未找到"
         else:
