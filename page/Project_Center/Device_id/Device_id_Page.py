@@ -82,7 +82,7 @@ class DeviceIdPage(BasePage):
             self.page.get_by_role("row", name="714005F36924F9C7 714005F36924F9C7 YC7100 714005F36924F9C7").get_by_role(
                 "radio"), "勾选网关")
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
-        self.asserts_result(self.get_alert("点表管理-绑定网关"), "=", "绑定网关成功")
+        self.asserts_result(self.get_alert("点表管理-绑定网关"), "=", "保存成功")
 
     def bind_device(self):
         self.wait_for_timeouts(1000)

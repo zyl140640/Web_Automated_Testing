@@ -9,6 +9,7 @@ from page.SideBar.SidebarPage import SidebarPage
 @allure.feature("网关管理-点表配置")
 class TestGatewayPT:
     gateway_pt_value = "测试主流程-网关-点位"
+    project_name = "测试主流程项目"
 
     @pytest.fixture(scope="function", autouse=True)
     def global_init(self, page):

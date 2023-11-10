@@ -8,6 +8,8 @@ from page.SideBar.SidebarPage import SidebarPage
 
 @allure.feature("网关管理-协议配置")
 class TestGatewayXieYi:
+    project_name = "测试主流程项目"
+
     @pytest.fixture(scope="function", autouse=True)
     def global_init(self, page):
         self.sidebar = SidebarPage(page)
@@ -19,7 +21,7 @@ class TestGatewayXieYi:
     def test_add_gateway_xieyi(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.add_xieyi("192.186.0.1")
 
@@ -28,7 +30,7 @@ class TestGatewayXieYi:
     def test_update_gateway_xieyi(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.update_chuankou()
 
@@ -37,7 +39,7 @@ class TestGatewayXieYi:
     def test_delete_gateway_xieyi(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.delete_xieyi()
 
@@ -46,7 +48,7 @@ class TestGatewayXieYi:
     def test_add_gateway_chuankou(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name("714005F36924F9C7")
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.add_chuangkou()
 
@@ -55,7 +57,7 @@ class TestGatewayXieYi:
     def test_update_gateway_chuankou(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.update_wangkou()
 
@@ -64,7 +66,7 @@ class TestGatewayXieYi:
     def test_delete_gateway_chuangkou(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.delete_xieyi()
 
@@ -73,6 +75,6 @@ class TestGatewayXieYi:
     def test_lianjie_gateway_xieyi(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.wangkou_lianjie("192.186.0.1")
