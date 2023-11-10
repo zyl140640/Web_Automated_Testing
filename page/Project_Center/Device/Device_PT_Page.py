@@ -136,7 +136,9 @@ class DevicePTPage(BasePage):
         self.input_data(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), f"{name}",
                         "输入模板名称")
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li").filter(has_text=f"{name}"), f"选择{name}")
+        self.click(self.page.locator(
+            "div:nth-child(5) > .el-scrollbar > .el-select-dropdown__wrap > .el-scrollbar__view > li:nth-child(2)"),
+            f"选择{name}")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
         self.asserts_result(result, "=", "引用模板成功")
