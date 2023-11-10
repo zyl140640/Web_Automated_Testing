@@ -54,7 +54,7 @@ class GatewayXieYiPage(BasePage):
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="编辑").first, "点击编辑")
         self.click(self.page.get_by_role("button", name="确 定"), "保存协议")
-        self.asserts_result(self.get_alert("网关管理-协议配置-修改网口"), "=", "协议添加成功")
+        self.asserts_result(self.get_alert("网关管理-协议配置-修改网口"), "=", "协议编辑成功")
 
     def delete_xieyi(self):
         """

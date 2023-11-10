@@ -109,7 +109,7 @@ class TestDevicePT:
         self.sidebar.click_device()
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_yinyong_template("云平台项目")
+        self.device_pt.device_yinyong_template("测试点表模板")
 
     @allure.title("设备管理-点表配置-模板下载")
     @allure.description("测试模板下载功能是否正常")

@@ -157,8 +157,7 @@ class DevicePTPage(BasePage):
         self.click(self.page.get_by_role("button", name="关联点表"), "关联点表")
         self.wait_for_timeouts(1000)
         self.click(
-            self.page.locator(
-                "#app > div > div.main-container.hasTagsView > section > div.tab-container > div:nth-child(14) > div > div.el-dialog__body > div.el-table.el-table--fit.el-table--striped.el-table--border.el-table--scrollable-y.el-table--enable-row-hover.el-table--enable-row-transition.el-table--medium > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(1) > td.el-table_4_column_30.el-table-column--selection.el-table__cell > div > label > span > span"),
+            self.page.get_by_role("row", name="测试主流程项目-点表 1 Modbus TCP - - -").locator("label span").nth(1),
             "勾选点表")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="提交"), "提交关联")

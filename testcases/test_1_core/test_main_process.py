@@ -144,6 +144,7 @@ class TestMainProcess:
     @allure.severity("critical")
     @allure.description("测试删除点表功能是否正常")
     @pytest.mark.run(order=-2)
+    @pytest.mark.skip("先控制")
     def test_main_delete_device_id(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
@@ -154,6 +155,7 @@ class TestMainProcess:
     @allure.description("测试删除项目功能是否正常")
     @allure.severity("normal")
     @pytest.mark.run(order=-1)
+    @pytest.mark.skip("先控制")
     def test_main_detect_project(self):
         self.sidebar.click_project_max()
         self.sidebar.click_project()

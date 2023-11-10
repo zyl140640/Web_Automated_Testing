@@ -23,7 +23,7 @@ tenantry_login:
 
 
 
-add_bug: "true"
+add_bug: "false"
 
 asserts_switch: "true"
 

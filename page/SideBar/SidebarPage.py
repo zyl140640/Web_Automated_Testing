@@ -34,7 +34,7 @@ class SidebarPage(BasePage):
         self.click(self.page.get_by_role("textbox", name="请输入网关SN"), "网关别名查询框")
         self.input_data(self.page.get_by_role("textbox", name="请输入网关SN"), f"{sn}", "输入网关sn")
         self.click(self.page.get_by_role("button", name=" 收起"), "收起查询框")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询网关sn")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name=" 查询"), "查询网关sn")
 
     def get_project_gateway(self, project):
@@ -46,14 +46,14 @@ class SidebarPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
-        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
 
     def get_project_name(self, project):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("textbox", name="请输入项目名称"), "项目名称查询弹框")
         self.input_data(self.page.get_by_role("textbox", name="请输入项目名称"), project, "输入项目名称")
-        self.click(self.page.get_by_role("button", name=" 查询"), "根据项目名称查询按钮")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name=" 查询"), "根据项目名称查询按钮")
 
     def get_gateway_name(self, sn):
@@ -67,7 +67,7 @@ class SidebarPage(BasePage):
         self.click(self.page.get_by_placeholder("请输入网关别名"), "网关别名查询框")
         self.input_data(self.page.get_by_placeholder("请输入网关别名"), f"{sn}", "输入网关别名")
         self.click(self.page.get_by_role("button", name=" 收起"), "收起查询框")
-        self.click(self.page.get_by_role("button", name=" 查询"), "根据网关别名进行查询")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name=" 查询"), "根据网关别名进行查询")
 
     def click_more_functions(self, functions_name):

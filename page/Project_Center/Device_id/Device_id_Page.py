@@ -9,13 +9,8 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("button", name="新增", exact=True), "新增点表按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.locator(
-            "#app > div > div.main-container.hasTagsView > section > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div > div.el-dialog__body > div.step-wrapper > div.el-row > form > div:nth-child(1) > div > div > div > div > input"),
-            "测试")
-        self.wait_for_timeouts(1000)
-        self.input_data(
-            self.page.locator("form").filter(has_text="所属租户所属组织暂无数据").get_by_placeholder("请选择",
-                                                                                                     exact=True),
-            "张氏", "搜索所属租户")
+            '//*[@id="app"]/div/div[2]/section/div[1]/div[5]/div[1]/div/div[2]/div[2]/div[1]/form/div/div[1]/div/div/div/div[1]/input'),
+            "新增点位-所属租户输入框")
         self.wait_for_timeouts(1000)
         self.click(self.page.locator("li").filter(has_text="张氏家族企业").nth(1), "选择张氏家族企业")
         self.click(self.page.get_by_role("dialog", name="新增点位").get_by_placeholder("请选择", exact=True).nth(2),
@@ -43,6 +38,7 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
         self.input_data(self.page.get_by_placeholder("请输入设备IP"), "192.180.1.1", "输入ip地址")
         self.input_data(self.page.get_by_placeholder("请输入端口"), "501", "输入端口号")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="保存", exact=True), "保存按钮")
@@ -75,12 +71,16 @@ class DeviceIdPage(BasePage):
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         self.asserts_result(self.get_alert("点表管理-保存为模板"), "=", "点表保存为模板成功")
 
-    def bind_gateway(self):
+    def bind_gateway(self, gateway_sn):
         self.list_row("1")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="绑定网关"), "绑定网关按钮")
         self.wait_for_timeouts(1000)
-        self.click(self.page.get_by_role("radio"), "勾选网关")
+        self.input_data(self.page.get_by_placeholder("请输入网关SN"), f"{gateway_sn}", "查询网关SN码")
+        self.click(self.page.get_by_label("绑定网关").get_by_role("button", name=" 查询"), "查询网关按钮")
+        self.click(
+            self.page.get_by_role("row", name="714005F36924F9C7 714005F36924F9C7 YC7100 714005F36924F9C7").get_by_role(
+                "radio"), "勾选网关")
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
         self.asserts_result(self.get_alert("点表管理-绑定网关"), "=", "绑定网关成功")
 

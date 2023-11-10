@@ -43,10 +43,10 @@ class BasePage:
                 self.locator.click()
                 self.logger.info(f"点击[{text}]")
         except Exception as e:
-            self.cut_out(f"{text}---报错截图")
-            self.page.screenshot(path=f"auto/couout/{text}.png")
-            add_bug(f"Web自动化定位错误-报错操作: [点击] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
-                    f"auto/couout/{text}.png")
+            # self.cut_out(f"{text}---报错截图")
+            # self.page.screenshot(path=f"auto/couout/{text}.png")
+            # add_bug(f"Web自动化定位错误-报错操作: [点击] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
+            #         f"auto/couout/{text}.png")
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -64,10 +64,10 @@ class BasePage:
                 self.logger.info(f"在[{text}]内,输入数据: [{data}]")
         except Exception as e:
             self.page.screenshot(path=f"auto/couout/{text}.png")
-            self.cut_out(f"{text}---报错截图")
-            self.page.screenshot(path=f"auto/couout/{text}.png")
-            add_bug(f"Web自动化定位错误-报错操作: [输入] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
-                    f"auto/couout/{text}.png")
+            # self.cut_out(f"{text}---报错截图")
+            # self.page.screenshot(path=f"auto/couout/{text}.png")
+            # add_bug(f"Web自动化定位错误-报错操作: [输入] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
+            #         f"auto/couout/{text}.png")
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
             raise e
 
@@ -149,6 +149,7 @@ class BasePage:
         Args:
             row: 列表的行数 1 2 3  序号
         """
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("row", name=f"{row}", exact=True).locator("label span").nth(1),
                    f"勾选第{row}列")
 
@@ -201,3 +202,9 @@ class BasePage:
             cleaned_result = result[0]
             self.logger.info(f"读取文件名:[{path}] , 使用jsonpath读取[{json_path}]下的内容: [{cleaned_result}]")
             return cleaned_result
+
+    def chandao(self, text, steps):
+        self.page.screenshot(path=f"auto/couout/{text}.png")
+        add_bug(text, "zhangyuanlong", "3", "2",
+                steps,
+                f"auto/couout/{text}.png")

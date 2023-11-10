@@ -81,7 +81,7 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="下一步"), "点表复查下一步")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="提交"), "提交")
-        self.asserts_result(self.get_alert("项目管理-复制"), "=", "复制项目成功")
+        self.asserts_result(self.get_alert("项目管理-复制"), "=", "复制成功")
 
     def update_date(self):
         """

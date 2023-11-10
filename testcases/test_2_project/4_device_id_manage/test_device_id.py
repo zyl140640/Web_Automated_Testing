@@ -32,7 +32,7 @@ class TestDeviceId:
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
         self.device_id.get_device_id("测试主流程项目-点表")
-        self.device_id.bind_gateway()
+        self.device_id.bind_gateway("714005F36924F9C7")
 
     @allure.title("绑定设备")
     @allure.severity("critical")
