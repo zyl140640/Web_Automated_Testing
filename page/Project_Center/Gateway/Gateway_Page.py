@@ -68,7 +68,7 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="同步到平台"), "同步到平台")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"), "确定同步到平台")
-        self.asserts_result(self.get_alert("网关管理-参数读取"), "=", "同步成功")
+        self.asserts_result(self.get_alert("网关管理-参数读取"), "=", "网关参数读取成功!")
 
     def issue_device_id(self):
         """
@@ -83,7 +83,7 @@ class GatewayPage(BasePage):
         """
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        self.asserts_result(self.get_alert("网关管理-基础信息下发"), "=", "操作成功")
+        self.asserts_result(self.get_alert("网关管理-基础信息下发"), "=", "基础信息下发成功!")
 
     def network_send(self):
         """
@@ -107,7 +107,7 @@ class GatewayPage(BasePage):
         """
         远程调试开关
         """
-        self.wait_for_timeouts(3000)
+        self.wait_for_timeouts(5000)
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
         self.asserts_result(self.get_alert("网关管理-远程调试开关"), "=", "操作成功")
 
