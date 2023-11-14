@@ -77,4 +77,4 @@ class TestGatewayXieYi:
         self.sidebar.click_gateway()
         self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
-        self.gatewayxieyi.wangkou_lianjie("192.186.0.1")
+        self.gatewayxieyi.wangkou_lianjie("192.168.50.97")
