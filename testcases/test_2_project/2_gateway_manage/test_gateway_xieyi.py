@@ -48,7 +48,7 @@ class TestGatewayXieYi:
     def test_add_gateway_chuankou(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_project_name("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("协议配置")
         self.gatewayxieyi.add_chuangkou()
 

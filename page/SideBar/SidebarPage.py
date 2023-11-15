@@ -23,6 +23,18 @@ class SidebarPage(BasePage):
     def click_touch_screen(self):
         self.click(self.page.get_by_role("link", name="触摸屏管理"), "触摸屏管理")
 
+    def click_data_max(self):
+        self.click(self.page.locator("div").filter(has_text=re.compile(r"^可视化中心$")), "可视化中心")
+
+    def click_screen_monitoring(self):
+        self.click(self.page.get_by_role("link", name="大屏监控"), "大屏监控")
+
+    def click_configuration(self):
+        self.click(self.page.get_by_role("link", name="组态管理"), "组态管理")
+
+    def click_device_map(self):
+        self.click(self.page.get_by_role("link", name="点位地图"), "点位地图")
+
     def get_gateway_sn(self, sn):
         """
         根据网关sn查询

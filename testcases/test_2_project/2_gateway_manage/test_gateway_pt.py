@@ -22,7 +22,7 @@ class TestGatewayPT:
     def test_add_gateway_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.add_gateway_pt(self.gateway_pt_value, "1011")
 
@@ -31,7 +31,7 @@ class TestGatewayPT:
     def test_get_gateway_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.get_gateway_pt(self.gateway_pt_value)
 
@@ -40,7 +40,7 @@ class TestGatewayPT:
     def test_update_gateway_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.get_gateway_pt(self.gateway_pt_value)
         self.gateway_pt.update_gateway_pt(self.gateway_pt_value)
@@ -50,7 +50,7 @@ class TestGatewayPT:
     def test_pt_send(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.pt_send()
 
@@ -59,7 +59,7 @@ class TestGatewayPT:
     def test_delete_gateway_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.get_gateway_pt(self.gateway_pt_value)
         self.gateway_pt.delete_gateway_pt()
@@ -69,7 +69,7 @@ class TestGatewayPT:
     def test_batch_addition_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.batch_addition_pt("101", "11", "2")
 
@@ -78,7 +78,7 @@ class TestGatewayPT:
     def test_batch_update_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.batch_update_pt("112")
 
@@ -87,7 +87,7 @@ class TestGatewayPT:
     def test_save_as_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.save_as_template("测试点表模板", "测试点表模板描述信息")
 
@@ -96,7 +96,7 @@ class TestGatewayPT:
     def test_batch_gateway_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.delete_gateway_pt()
         self.gateway_pt.delete_gateway_pt()
@@ -106,7 +106,7 @@ class TestGatewayPT:
     def test_yinyong_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.yinyong_template("云平台模板")
 
@@ -115,6 +115,6 @@ class TestGatewayPT:
     def test_template_download(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
         self.gateway_pt.template_download()

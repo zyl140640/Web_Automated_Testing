@@ -68,14 +68,14 @@ class GatewayPage(BasePage):
         self.click(self.page.get_by_role("button", name="同步到平台"), "同步到平台")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"), "确定同步到平台")
-        self.asserts_result(self.get_alert("网关管理-参数读取"), "=", "网关参数读取成功!")
+        self.asserts_result(self.get_alert("网关管理-参数读取"), "=", "网关参数读取成功")
 
     def issue_device_id(self):
         """
         点表下发
         """
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        self.asserts_result(self.get_alert("网关管理-点表下发"), "=", "操作成功")
+        self.asserts_result(self.get_alert("网关管理-点表下发"), "=", "点表下发成功")
 
     def message_send(self):
         """
@@ -101,7 +101,7 @@ class GatewayPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认同步按钮")
         self.wait_for_timeouts(1000)
-        self.asserts_result(self.get_alert("网关管理-同步时钟"), "=", "操作成功")
+        self.asserts_result(self.get_alert("网关管理-同步时钟"), "=", "同步时钟成功")
 
     def debug_switch(self):
         """
