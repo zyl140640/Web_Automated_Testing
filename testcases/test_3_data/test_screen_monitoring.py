@@ -13,6 +13,9 @@ class TestScreenMonitoring:
         self.sidebar = SidebarPage(page)
         self.screen_monitoring = ScreenMonitoring(page)
 
+    @allure.title("大屏监控-新增")
+    @allure.description("测试复制项目功能是否正常")
+    @allure.severity("critical")
     def test_add_screen_monitoring(self):
         self.sidebar.click_data_max()
         self.sidebar.click_screen_monitoring()

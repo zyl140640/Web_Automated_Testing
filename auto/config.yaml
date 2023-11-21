@@ -1,7 +1,7 @@
 formal_login:
-  url: "http://36.134.46.91:7070/"
-  cookies_url: "http://192.168.110.210:9016/"
-  username: zhangyuanlong
+  url: "https://cloud.yu-con.com/login?id=888888"
+  cookies_url: "https://cloud.yu-con.com"
+  username: root
   password: 123456
 
 

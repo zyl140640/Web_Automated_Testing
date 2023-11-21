@@ -4,7 +4,6 @@ import logging
 import yaml
 from jsonpath import jsonpath
 from playwright.sync_api import Page
-
 from common.ZenTao_Api import add_bug
 
 """
@@ -21,8 +20,8 @@ class BasePage:
     def go_url(self, url):
         try:
             with allure.step(f"访问网站:{url}"):
-                self.page.goto(url, wait_until='networkidle')
                 self.logger.info(f"访问网站: [{url}]")
+                self.page.goto(url, wait_until='networkidle')
         except Exception as e:
             self.cut_out("网站未访问成功截图")
             self.logger.error(f"访问网站: [{url}]时，访问超时,报错内容{e}")
@@ -32,6 +31,7 @@ class BasePage:
         return self.page.get_attribute(locator, text)  # 获取元素文本
 
     def click(self, locator, text):
+
         """
          封装点击方法
         :param locator: 定位方法
@@ -40,8 +40,8 @@ class BasePage:
         self.locator = locator
         try:
             with allure.step(f"点击{text}"):
-                self.locator.click()
                 self.logger.info(f"点击[{text}]")
+                self.locator.click()
         except Exception as e:
             # self.cut_out(f"{text}---报错截图")
             # self.page.screenshot(path=f"auto/couout/{text}.png")
@@ -60,8 +60,8 @@ class BasePage:
         self.locator = locator
         try:
             with allure.step(f"在{text}内输入数据: {data}"):
-                self.locator.fill(f"{data}")
                 self.logger.info(f"在[{text}]内,输入数据: [{data}]")
+                self.locator.fill(f"{data}")
         except Exception as e:
             self.page.screenshot(path=f"auto/couout/{text}.png")
             # self.cut_out(f"{text}---报错截图")
