@@ -147,21 +147,21 @@ def init(page):
         bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
         bs_init.wait_for_timeouts(8000)
         page.context.storage_state(path="auto/cookies.json")
-        try:
+        bs_init.wait_for_timeouts(1000)
+        Dialog = page.get_by_label("Close", exact=True).count()
+        if Dialog == 1:
+            bs_init.logger.info("----存在首页弹窗----")
             page.get_by_label("Close", exact=True).click()
-            bs_init.logger.info("----首页弹窗----")
-        except Exception as a:
-            bs_init.wait_for_timeouts(1000)
-            bs_init.logger.info("----没弹窗直接跳过----")
-            print(a)
+        else:
+            bs_init.logger.info("----未存在弹窗直接跳过----")
 
     else:
         bs_init.logger.info("cookies有效,跳过登录步骤")
         bs_init.wait_for_timeouts(1000)
-        try:
+        Dialog = page.get_by_label("Close", exact=True).count()
+        if Dialog == 1:
+            bs_init.logger.info("----存在首页弹窗----")
             page.get_by_label("Close", exact=True).click()
-            bs_init.logger.info("----首页弹窗----")
-        except Exception as a:
-            bs_init.wait_for_timeouts(1000)
-            bs_init.logger.info("----没弹窗直接跳过----")
-            print(a)
+        else:
+            bs_init.logger.info("----未存在弹窗直接跳过----")
+    bs_init.logger.info("当前网址是: {}".format(bs_init.page.url))

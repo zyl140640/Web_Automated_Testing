@@ -21,7 +21,7 @@ class ScreenMonitoring(BasePage):
         self.click(self.page.locator("li").filter(has_text=f"{name}"), f"选择[{name}]")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
 
-    def delete_screen_monitoring(self, name):
+    def delete_screen_monitoring(self):
         self.list_row(1)
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="删除"), "删除大屏监控")

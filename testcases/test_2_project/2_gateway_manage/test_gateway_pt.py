@@ -108,7 +108,7 @@ class TestGatewayPT:
         self.sidebar.click_gateway()
         self.sidebar.get_project_name(self.project_name)
         self.sidebar.click_more_functions("点表配置")
-        self.gateway_pt.yinyong_template("云平台模板")
+        self.gateway_pt.yinyong_template("测试点表模板")
 
     @allure.title("网关管理-点表配置-模板下载")
     @allure.description("测试模板下载功能是否正常")

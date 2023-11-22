@@ -9,7 +9,7 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_role("button", name="新增"), "新增项目按钮")
         self.click(self.page.get_by_label("新增项目").get_by_placeholder("请选择", exact=True), "所属租户")
         self.wait_for_timeouts(2000)
-        self.click(self.page.locator("li").filter(has_text="张氏家族企业").nth(1), "选择所属租户")
+        self.click(self.page.locator("li").filter(has_text="1115qi").nth(1), "选择所属租户")
 
         self.input_data(self.page.get_by_label("新增项目").get_by_placeholder("请输入项目名称"), f"{project}",
                         "输入项目名称")
@@ -36,8 +36,9 @@ class ProjectPage(BasePage):
         self.click(self.page.get_by_text("Modbus TCP"), "协议")
         self.input_data(self.page.get_by_placeholder("请输入设备IP"), "192.168.30.152", "设备IP输入框")
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
-        self.wait_for_timeouts(3000)
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="下一步"), "下一步按钮")
+        self.wait_for_timeouts(1000)
         # self.click(self.page.locator("label").filter(has_text="0905自定义模板").locator("span").nth(1), "选择模板")
         self.click(self.page.get_by_role("button", name="保 存"), "保存按钮")
         self.asserts_result(self.get_text(self.page.get_by_text("项目创建成功"), "项目管理-新增"), "=",

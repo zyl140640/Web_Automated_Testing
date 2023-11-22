@@ -21,7 +21,7 @@ class BasePage:
         try:
             with allure.step(f"访问网站:{url}"):
                 self.logger.info(f"访问网站: [{url}]")
-                self.page.goto(url, wait_until='networkidle')
+                self.page.goto(url, wait_until='networkidle', timeout=60000)
         except Exception as e:
             self.cut_out("网站未访问成功截图")
             self.logger.error(f"访问网站: [{url}]时，访问超时,报错内容{e}")
