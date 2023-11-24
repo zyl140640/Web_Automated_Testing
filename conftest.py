@@ -122,7 +122,6 @@ def context(
 
 
 @pytest.fixture(scope="function", autouse=True)
-@pytest.mark.flaky(reruns=2, reruns_delay=1)
 def init(page):
     bs_init = BasePage(page)
     login_config = bs_init.read_yaml("auto/config.yaml", "$..formal_login")
