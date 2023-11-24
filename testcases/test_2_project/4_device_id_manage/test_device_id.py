@@ -68,7 +68,7 @@ class TestDeviceId:
         self.sidebar.click_project_max()
         self.sidebar.click_device_id()
         self.device_id.add_device_one()
-        self.device_id.device_pt_yinyong()
+        self.device_id.device_pt_yinyong("测试点表模板")
 
     @allure.title("点表管理-点位-下载模板")
     @allure.severity("critical")

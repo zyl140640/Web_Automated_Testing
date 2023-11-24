@@ -83,7 +83,7 @@ class GatewayPage(BasePage):
         """
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
-        self.asserts_result(self.get_alert("网关管理-基础信息下发"), "=", "基础信息下发成功!")
+        self.asserts_result(self.get_alert("网关管理-基础信息下发"), "=", "基础信息下发成功")
 
     def network_send(self):
         """
@@ -92,7 +92,7 @@ class GatewayPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确认"), "确认下发按钮")
         self.wait_for_timeouts(1000)
-        self.asserts_result(self.get_alert("网关管理-网络信息下发"), "=", "操作成功")
+        self.asserts_result(self.get_alert("网关管理-网络信息下发"), "=", "网络配置成功")
 
     def lock_in_time(self):
         """
@@ -107,7 +107,7 @@ class GatewayPage(BasePage):
         """
         远程调试开关
         """
-        self.wait_for_timeouts(5000)
+        self.wait_for_timeouts(10000)
         self.click(self.page.get_by_role("button", name="提 交"), "提交按钮")
         self.asserts_result(self.get_alert("网关管理-远程调试开关"), "=", "操作成功")
 

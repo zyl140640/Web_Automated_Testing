@@ -114,10 +114,11 @@ class DeviceIdPage(BasePage):
         self.input_data(self.page.get_by_role("spinbutton").nth(1), f"{one}", "个数")
         self.click(self.page.get_by_role("button", name="确 定"), "确定")
 
-    def device_pt_yinyong(self):
+    def device_pt_yinyong(self,name):
         self.click(self.page.get_by_role("button", name="引用模板"), "引用模板")
         self.click(self.page.get_by_role("dialog", name="选择模板").get_by_placeholder("请选择", exact=True), "请选择")
-        self.click(self.page.locator("li").filter(has_text=re.compile(r"^0921$")), "选择")
+        self.input_data(self.page.get_by_role("dialog", name="选择模板").get_by_placeholder("请选择", exact=True), f"{name}",f"选择{name}")
+        self.click(self.page.locator("li").filter(has_text=f"{name}").first, "选择")
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
 
     def device_xiazai_moban(self):

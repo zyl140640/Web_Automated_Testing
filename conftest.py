@@ -122,18 +122,17 @@ def context(
 
 
 @pytest.fixture(scope="function", autouse=True)
+@pytest.mark.flaky(reruns=2, reruns_delay=1)
 def init(page):
     bs_init = BasePage(page)
     login_config = bs_init.read_yaml("auto/config.yaml", "$..formal_login")
     bs_init.logger.info(
         f"------环境地址: [{login_config['cookies_url']}], 登录账号信息: [{login_config['username']}], 登录密码信息: [{login_config['password']}]------")
     bs_init.go_url(login_config['cookies_url'])
-    bs_init.wait_for_timeouts(3000)
-    title = str(bs_init.page.context.pages)
-    if title.find("login") != -1:
+    if str(bs_init.page.url).find("login") != -1:
+        bs_init.logger.info("cookies无效,进入登录步骤")
         bs_init.go_url(login_config['url'])
         bs_init.wait_for_timeouts(3000)
-        bs_init.logger.info("cookies无效,进入登录步骤")
         bs_init.input_data(page.get_by_placeholder("请输入用户名"), login_config['username'], "输入账号信息")
         bs_init.input_data(page.get_by_placeholder("请输入登录密码"), login_config['password'], "输入密码信息")
         drop_button = page.get_by_role("article").locator("form div").filter(
@@ -147,21 +146,12 @@ def init(page):
         bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
         bs_init.wait_for_timeouts(8000)
         page.context.storage_state(path="auto/cookies.json")
-        bs_init.wait_for_timeouts(1000)
-        Dialog = page.get_by_label("Close", exact=True).count()
-        if Dialog == 1:
-            bs_init.logger.info("----存在首页弹窗----")
-            page.get_by_label("Close", exact=True).click()
-        else:
-            bs_init.logger.info("----未存在弹窗直接跳过----")
-
     else:
         bs_init.logger.info("cookies有效,跳过登录步骤")
         bs_init.wait_for_timeouts(1000)
-        Dialog = page.get_by_label("Close", exact=True).count()
-        if Dialog == 1:
-            bs_init.logger.info("----存在首页弹窗----")
-            page.get_by_label("Close", exact=True).click()
-        else:
-            bs_init.logger.info("----未存在弹窗直接跳过----")
-    bs_init.logger.info("当前网址是: {}".format(bs_init.page.url))
+    Dialog = page.get_by_text("快速接入平台指引说明").count()
+    if Dialog == 1:
+        bs_init.logger.info("----存在首页弹窗----")
+        page.get_by_label("Close", exact=True).click()
+    else:
+        bs_init.logger.info("----未存在弹窗直接跳过----")

@@ -94,3 +94,17 @@ class SidebarPage(BasePage):
                    "更多功能")
         self.wait_for_timeouts(1000)
         self.click(self.page.locator(f"li:has-text('{functions_name}')").last, f"{functions_name}按钮")
+
+    def get_device_name(self, name):
+        """
+         根据项目查询网关信息
+        Args:
+            name: 项目名称
+        """
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_role("button", name=" 展开"), "展开查询条件")
+        self.click(self.page.get_by_role("textbox", name="请输入设备名称"), "设备名称查询弹框")
+        self.input_data(self.page.get_by_role("textbox", name="请输入设备名称"), name, "输入设备名称")
+        self.click(self.page.get_by_role("button", name=" 收起"), "收起查询框")
+        self.wait_for_timeouts(1000)
+        self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")

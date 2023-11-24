@@ -9,6 +9,7 @@ from page.SideBar.SidebarPage import SidebarPage
 @allure.feature("设备管理-点表配置")
 class TestDevicePT:
     device_pt_name = "测试设设备-点表-点位"
+    divice_name = "测试主流程-新增设备"
 
     @pytest.fixture(scope="function", autouse=True)
     def global_init(self, page):
@@ -22,7 +23,8 @@ class TestDevicePT:
     def test_device_add_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_project_name("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
+        
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_add_device_pt(self.device_pt_name, "2")
 
@@ -31,7 +33,7 @@ class TestDevicePT:
     def test_device_get_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_get_device_pt(self.device_pt_name)
 
@@ -40,7 +42,7 @@ class TestDevicePT:
     def test_device_update_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_get_device_pt(self.device_pt_name)
         self.device_pt.device_update_device_pt(self.device_pt_name)
@@ -50,7 +52,7 @@ class TestDevicePT:
     def test_device_pt_send(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_pt_send()
 
@@ -59,7 +61,7 @@ class TestDevicePT:
     def test_device_delete_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_get_device_pt(self.device_pt_name)
         self.device_pt.device_delete_device_pt()
@@ -69,7 +71,7 @@ class TestDevicePT:
     def test_device_batch_addition_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_batch_addition_pt("121", "111", "2")
 
@@ -78,7 +80,7 @@ class TestDevicePT:
     def test_device_batch_update_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_batch_update_pt("112")
 
@@ -87,7 +89,7 @@ class TestDevicePT:
     def test_device_save_as_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_save_as_template("测试点表模板", "测试点表模板描述信息")
 
@@ -97,7 +99,7 @@ class TestDevicePT:
     def test_device_batch_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_delete_device_pt()
         self.device_pt.device_delete_device_pt()
@@ -107,7 +109,7 @@ class TestDevicePT:
     def test_device_yinyong_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_yinyong_template("默认引用模板")
 
@@ -116,7 +118,7 @@ class TestDevicePT:
     def test_device_template_download(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_template_download()
 
@@ -125,6 +127,6 @@ class TestDevicePT:
     def test_link_table(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.get_device_name(self.divice_name)
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.link_table()

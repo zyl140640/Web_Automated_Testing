@@ -15,6 +15,15 @@ class TestGateway:
         self.project = ProjectPage(page)
         self.gateway = GatewayPage(page)
 
+    @allure.title("网关-同步时钟")
+    @allure.description("测试同步时钟功能是否正常")
+    def test_lock_in_time(self):
+        self.sidebar.click_project_max()
+        self.sidebar.click_gateway()
+        self.sidebar.get_gateway_sn("714005F36924F9C7")
+        self.sidebar.click_more_functions("同步时钟")
+        self.gateway.lock_in_time()
+
     @allure.title("网关-参数读取")
     @allure.description("测试参数读取功能是否正常")
     def test_read_gateway(self):
@@ -50,15 +59,6 @@ class TestGateway:
         self.sidebar.get_gateway_sn("714005F36924F9C7")
         self.sidebar.click_more_functions("网络配置下发")
         self.gateway.network_send()
-
-    @allure.title("网关-同步时钟")
-    @allure.description("测试同步时钟功能是否正常")
-    def test_lock_in_time(self):
-        self.sidebar.click_project_max()
-        self.sidebar.click_gateway()
-        self.sidebar.get_gateway_sn("714005F36924F9C7")
-        self.sidebar.click_more_functions("同步时钟")
-        self.gateway.lock_in_time()
 
     @allure.title("网关-远程调试开关")
     @allure.description("测试远程调试开关功能是否正常")
