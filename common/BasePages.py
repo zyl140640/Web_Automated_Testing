@@ -12,11 +12,16 @@ from common.ZenTao_Api import add_bug
 
 
 class BasePage:
+    # 初始化函数，传入参数为Page类型
     def __init__(self, page: Page):
+        # 初始化locator为None
         self.locator = None
+        # 将传入的page赋值给self.page
         self.page = page
+        # 将logging赋值给self.logger
         self.logger = logging
 
+    # 定义go_url函数，用于访问指定url
     def go_url(self, url):
         try:
             with allure.step(f"访问网站:{url}"):
@@ -26,9 +31,6 @@ class BasePage:
             self.cut_out("网站未访问成功截图")
             self.logger.error(f"访问网站: [{url}]时，访问超时,报错内容{e}")
             raise e
-
-    def all_text(self, locator, text):
-        return self.page.get_attribute(locator, text)  # 获取元素文本
 
     def click(self, locator, text):
 
@@ -57,18 +59,20 @@ class BasePage:
         :param data: 要输入的内容
         :param text: 步骤名字，在Allure内显示, 效果：在[姓名输入框]内输入[张院龙]
         """
+        # 设置locator
         self.locator = locator
         try:
+            # 记录日志
             with allure.step(f"在{text}内输入数据: {data}"):
                 self.logger.info(f"在[{text}]内,输入数据: [{data}]")
+                # 输入数据
                 self.locator.fill(f"{data}")
         except Exception as e:
+            # 截图
             self.page.screenshot(path=f"auto/couout/{text}.png")
-            # self.cut_out(f"{text}---报错截图")
-            # self.page.screenshot(path=f"auto/couout/{text}.png")
-            # add_bug(f"Web自动化定位错误-报错操作: [输入] , 报错功能：{text}", "zhangyuanlong", "4", "4", "步骤暂无",
-            #         f"auto/couout/{text}.png")
+            # 记录日志
             self.logger.error(f"进行[{text}]操作时,元素未找到,报错内容{e}")
+            # 抛出异常
             raise e
 
     def cut_out(self, image_name):
@@ -80,9 +84,7 @@ class BasePage:
         with allure.step(f"截取{image_name}功能的结果图"):
             allure.attach(self.page.screenshot(timeout=3000), image_name, allure.attachment_type.PNG)
 
-    def path_video(self, name):
-        allure.attach(self.page.video.path(), name, attachment_type="WEBM")
-
+    # 定义一个函数，用于静态等待时间
     def wait_for_timeouts(self, time):
         """
          静态等待时间, 跟time.sleep一样
@@ -92,49 +94,81 @@ class BasePage:
             self.logger.info(f"等待[{time}]毫秒后执行下一步操作")
             self.page.wait_for_timeout(time)
 
+    # 定义一个断言结果的函数，用于断言结果是否符合预期
+    # 参数：self：表示当前对象；result：表示实际结果；pk：表示断言的方式；expected：表示预期结果；bug_api：表示禅道状态
     def asserts_result(self, result, pk, expected, bug_api="未调用提交接口"):
+        """
+        断言结果是否符合预期
+        :param self: 当前对象
+        :param result: 实际结果
+        :param pk: 断言的方式
+        :param expected: 预期结果
+        :param bug_api: 禅道状态
+        :return:
+        """
+        # 读取auto/config.yaml文件中的断言开关
         results = self.read_yaml("auto/config.yaml", "$..asserts_switch")
+        # 如果开关为true，则进行断言
         if results == "true":
+            # 如果pk为=，则断言结果是否与预期结果一致
             if pk == "=":
                 with allure.step("结果验证"):
                     assert result == expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}],禅道状态: {bug_api}"
                     self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
+            # 如果pk为!=，则断言结果是否与预期结果不一致
             elif pk == "!=":
                 with allure.step("结果验证"):
                     assert result != expected, f"验证失败实际结果与预期结果不符合,预期结果: [{expected}],实际结果: [{result}]"
                     self.logger.info(f"预期结果: [{expected}],实际结果: [{result}]")
+        # 如果开关为false，则不进行断言
         else:
             self.logger.info("未开启断言功能，不进行断言操作")
 
+    # 定义一个函数，用于获取指定元素的文本内容
     def get_text(self, locator, text):
+        # 设置locator
         self.locator = locator
         try:
+            # 使用allure.step函数，获取指定元素的文本内容
             with allure.step(f"获取{text}元素文本内容"):
                 texts = self.locator.inner_text()
+                # 打印获取的文本内容
                 self.logger.info(f"获取[{text}]元素文本内容,内容是[{texts}]")
+                # 返回获取的文本内容
                 return texts
         except Exception as e:
+            # 使用allure.step函数，获取指定元素的文本内容失败
             with allure.step(f"获取{text}元素文本内容失败"):
+                # 截图
                 self.page.screenshot(path=f"auto/couout/{text}.png")
+                # 截图
                 self.cut_out(f"{text}---报错截图")
+                # 打印获取文本内容操作时，元素未找到的报错信息
                 self.logger.error(f"获取{text}元素文本内容操作时,元素未找到,报错内容{e}")
+                # 返回报错信息
                 return "{text}步骤元素未找到"
 
+    # 定义一个函数，用于获取弹窗文本内容
     def get_alert(self, text):
 
+        # 读取auto/config.yaml文件中的get_alert_switch值
         result = self.read_yaml("auto/config.yaml", "$..get_alert_switch")
+        # 如果get_alert_switch值为true
         if result == "true":
             try:
+                # 获取弹窗文本内容
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
                     self.page.get_by_role("alert").wait_for()
                     texts = self.page.get_by_role("alert").first.inner_text()
                     self.logger.info(f"获取{text}-alert弹窗文本内容,内容是[{texts}]")
                     return texts
             except Exception as e:
+                # 如果获取弹窗文本内容操作时，元素未找到
                 with allure.step(f"获取{text}-alert弹窗文本内容"):
                     self.page.screenshot(path=f"auto/couout/{text}.png")
                     self.cut_out(f"{text}---报错截图")
                     self.page.screenshot(path=f"auto/couout/{text}.png")
+                    # 添加错误信息
                     add_bug(f"Web自动化定位错误-报错操作: [弹窗] , 报错功能：{text}", "zhangyuanlong", "4", "4",
                             "步骤暂无",
                             f"auto/couout/{text}.png")
@@ -180,31 +214,33 @@ class BasePage:
             self.logger.info(f"开始拦截: [{url}]接口信息")
             self.page.on('response', lambda response: self.on_response(response, url))
 
+    # 读取yaml文件，并返回json格式数据
     def read_yaml(self, path, json_path="null"):
-        """
-        # 读取YAML文件
-
-        Args:
-            path:
-            json_path:
-
-        Returns:
-
-        """
+        # 打开文件
         with open(path, 'r') as f:
+            # 读取文件内容
             data = yaml.safe_load(f)
-        # 返回读取到的全部内容
+        # 如果json_path为null
         if json_path == "null":
+            # 打印读取文件信息
             self.logger.info(f"读取文件名: [{path}] , 返回全部内容: [{data}]")
+            # 返回文件内容
             return data
         else:
+            # 使用jsonpath读取文件内容
             result = jsonpath(data, json_path)
+            # 获取读取的内容
             cleaned_result = result[0]
+            # 打印读取文件信息
             self.logger.info(f"读取文件名:[{path}] , 使用jsonpath读取[{json_path}]下的内容: [{cleaned_result}]")
+            # 返回读取的内容
             return cleaned_result
 
+    # 定义一个函数chandao，参数为self,text,steps
     def chandao(self, text, steps):
+        # 截图，并将图片保存到指定路径
         self.page.screenshot(path=f"auto/couout/{text}.png")
+        # 调用add_bug函数，传入参数
         add_bug(text, "zhangyuanlong", "3", "2",
                 steps,
                 f"auto/couout/{text}.png")
