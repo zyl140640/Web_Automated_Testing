@@ -32,7 +32,6 @@ class ScreenMonitoring(BasePage):
             self.wait_for_timeouts(3000)
             for i in range(1, 20):
                 self.logger.info(f"当前页数: [{m}],当前点击组态行数: [{i}]")
-                self.page.pause()
                 update = self.page.locator(
                     ".el-table__fixed-body-wrapper > .el-table__body > tbody > tr:nth-child({}) > .el-table_1_column_1 > .cell > .basicTableBtnBox > .el-icon-edit-outline".format(
                         i))
