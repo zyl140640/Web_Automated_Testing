@@ -41,7 +41,7 @@ class GatewayPage(BasePage):
         """
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
-        self.page.get_by_placeholder("请输入网关别名").fill("修改测试网关")
+        # self.page.get_by_placeholder("请输入网关别名").fill("修改测试网关")
         self.page.get_by_label("网关编辑窗口").get_by_role("spinbutton").fill("6")
         self.page.get_by_role("button", name="确 定").click()
         self.asserts_result(self.get_alert("网关管理-修改网关"), "=", "编辑网关成功，请及时下发信息")

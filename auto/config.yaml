@@ -6,7 +6,7 @@ formal_login:
 
 
 
-case_login:
+test_login:
   url: "http://192.168.110.210:9016/"
   cookies_url: "http://192.168.110.210:9016/"
   username: zhangyuanlong
@@ -15,10 +15,10 @@ case_login:
 
 
 
-tenantry_login:
-  url: "http://192.168.110.210:9016/login?id=888888"
-  cookies_url: "http://192.168.110.210:9016/"
-  username: root
+formal_root_login:
+  url: "https://cloud.yu-con.com"
+  cookies_url: "https://cloud.yu-con.com"
+  username: zhangyuanlong
   password: 123456
 
 

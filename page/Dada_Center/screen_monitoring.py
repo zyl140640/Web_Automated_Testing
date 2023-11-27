@@ -25,3 +25,29 @@ class ScreenMonitoring(BasePage):
         self.list_row(1)
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="删除"), "删除大屏监控")
+
+    def case_zutai(self):
+        for m in range(1, 92):
+            self.click(self.page.get_by_text(f"{m}", exact=True), f"点击第[{m}]页")
+            self.wait_for_timeouts(3000)
+            for i in range(1, 20):
+                self.logger.info(f"当前页数: [{m}],当前点击组态行数: [{i}]")
+                self.page.pause()
+                update = self.page.locator(
+                    ".el-table__fixed-body-wrapper > .el-table__body > tbody > tr:nth-child({}) > .el-table_1_column_1 > .cell > .basicTableBtnBox > .el-icon-edit-outline".format(
+                        i))
+                if update.count() != 0:
+                    with self.page.expect_popup() as page_info:
+                        # 记录日志
+                        update = self.page.locator(
+                            ".el-table__fixed-body-wrapper > .el-table__body > tbody > tr:nth-child({}) > .el-table_1_column_1 > .cell > .basicTableBtnBox > .el-icon-edit-outline".format(
+                                i))
+                        self.logger.info(f"当前组态[{i}]有编辑按钮，开始进行编辑保存操作")
+                        update.click()
+                        to_page = page_info.value
+                        to_page.wait_for_timeout(3000)
+                        to_page.get_by_role("button", name=" 保存").click()
+                        to_page.close()
+                        self.logger.info(f"保存成功,关闭页面")
+                else:
+                    self.logger.info(f"当前组态序列 {i}没有编辑按钮，进行跳过处理")
