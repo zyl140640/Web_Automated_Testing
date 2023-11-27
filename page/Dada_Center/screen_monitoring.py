@@ -28,7 +28,7 @@ class ScreenMonitoring(BasePage):
 
     def case_zutai(self):
         for m in range(1, 92):
-            self.click(self.page.get_by_text(f"{m}", exact=True), f"点击第[{m}]页")
+            self.click(self.page.locator("#app").get_by_text(f"{m}", exact=True), f"点击第[{m}]页")
             self.wait_for_timeouts(3000)
             for i in range(1, 20):
                 self.logger.info(f"当前页数: [{m}],当前点击组态行数: [{i}]")
@@ -46,8 +46,8 @@ class ScreenMonitoring(BasePage):
                         update.click()
                         to_page = page_info.value
                         to_page.wait_for_timeout(3000)
-                        to_page.get_by_role("button", name=" 保存").click()
+                        to_page.get_by_role("button", name=" 发布").click()
                         to_page.close()
-                        self.logger.info(f"保存成功,关闭页面")
+                        self.logger.info(f"发布成功,关闭页面")
                 else:
                     self.logger.info(f"当前组态序列 {i}没有编辑按钮，进行跳过处理")
