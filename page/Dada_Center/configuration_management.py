@@ -14,7 +14,7 @@ class ConfigurationManagement(BasePage):
         self.click(self.page.locator("li").filter(has_text="测试主流程项目"),"选择测试主流程项目")
         self.input_data(self.page.get_by_placeholder("请输入流程图名称"),f"{name}","流程图名称")
         self.click(self.page.get_by_role("button", name="确 定"),"确定保存组态")
-        self.asserts_result(self.page.get_by_role("alert").inner_text(), "=", "大屏配置保存成功")
+        self.asserts_result(self.page.get_by_role("alert").inner_text(), "=", "添加流程图成功")
 
     def get_configuration(self, project_name):
         """
@@ -30,7 +30,7 @@ class ConfigurationManagement(BasePage):
         """
         组态管理-删除组态
         """
-        self.wait_for_timeouts(1500)
-        self.click(self.page.get_by_role("cell", name="  ").locator("i").first, "删除-组态按钮")
-        self.wait_for_timeouts(1500)
+        self.wait_for_timeouts(1000)
+        self.click(self.page.locator("tr:nth-child(1) > .el-table_1_column_1 > .cell > .basicTableBtnBox > .el-icon-delete"), "删除-组态按钮")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"),"确定-删除组态")

@@ -34,8 +34,8 @@ class DeviceIdPage(BasePage):
         self.asserts_result(self.get_alert("点表管理-新增点表功能"), "=", "新增点位成功")
 
     def update_device_id(self):
-        self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("cell", name="   ").locator("i").nth(1), "编辑按钮")
+        self.wait_for_timeouts(2000)
         self.input_data(self.page.get_by_placeholder("请输入设备IP"), "192.180.1.1", "输入ip地址")
         self.input_data(self.page.get_by_placeholder("请输入端口"), "501", "输入端口号")
         self.wait_for_timeouts(1000)

@@ -16,9 +16,8 @@ class ScreenMonitoring(BasePage):
         self.asserts_result(page1.get_by_role("alert").inner_text(), "=", "大屏配置保存成功")
 
     def get_screen_monitoring(self, name):
-        self.click(self.page.get_by_placeholder("请输入所属租户"), "选择所属租户查询条件")
-        self.input_data(self.page.get_by_placeholder("请输入所属租户"), name, "选择所属租户查询条件")
-        self.click(self.page.locator("li").filter(has_text=f"{name}"), f"选择[{name}]")
+        self.click(self.page.get_by_placeholder("请输入", exact=True), "选择大屏名称查询条件")
+        self.input_data(self.page.get_by_placeholder("请输入", exact=True), f"{name}",f"输入大屏名称:{name}")
         self.click(self.page.get_by_role("button", name=" 查询"), "查询按钮")
 
     def delete_screen_monitoring(self):

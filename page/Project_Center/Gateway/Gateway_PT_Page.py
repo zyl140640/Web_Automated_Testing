@@ -40,9 +40,11 @@ class GatewayPTPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("cell", name="  ").locator("i").nth(1),
                    "编辑点位按钮")
+        self.wait_for_timeouts(1000)
         self.input_data(
             self.page.locator("div").filter(has_text=re.compile(r"^名称标识$")).get_by_role("textbox").first, f"{name}",
             "点位名称")
+        self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         self.asserts_result(self.get_alert("网关管理-点表配置-修改"), "=", "编辑点位成功，请及时下发点表")
 

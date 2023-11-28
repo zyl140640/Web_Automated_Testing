@@ -6,7 +6,7 @@ from page.SideBar.SidebarPage import SidebarPage
 
 
 @allure.feature("可视化管理")
-class TestScreenMonitoring:
+class TestConfiguration:
 
     @pytest.fixture(scope="function", autouse=True)
     def global_init(self, page):
