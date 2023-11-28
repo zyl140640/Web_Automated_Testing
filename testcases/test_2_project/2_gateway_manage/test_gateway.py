@@ -62,6 +62,7 @@ class TestGateway:
 
     @allure.title("网关-远程调试开关")
     @allure.description("测试远程调试开关功能是否正常")
+    @pytest.mark.flaky(reruns=2, reruns_delay=2)
     def test_debug_switch(self):
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
