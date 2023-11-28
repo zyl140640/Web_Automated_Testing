@@ -94,7 +94,7 @@ def read_yaml_json(path, json_path="null"):
     Returns:
 
     """
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding="utf-8") as f:
         data = yaml.safe_load(f)
     # 返回读取到的全部内容
     if json_path == "null":
@@ -106,3 +106,9 @@ def read_yaml_json(path, json_path="null"):
         cleaned_result = result[0]
         logging.info(f"读取文件名:[{path}] , 使用jsonpath读取[{json_path}]下的内容: [{cleaned_result}]")
         return cleaned_result
+
+
+def login_yaml(path):
+    with open(path, 'r', encoding="utf-8") as file:
+        data = json.load(file)
+    return data
