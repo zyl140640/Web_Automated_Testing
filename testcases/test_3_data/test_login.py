@@ -20,7 +20,6 @@ class TestMain:
             bs_init.logger.info("当前企业编码不为空，走当前账号企业登录页面")
             bs_init.logger.info(f"http://192.168.110.210:9016/login?id={args['Code']}")
             bs_init.go_url(f"http://192.168.110.210:9016/login?id={args['Code']}")
-            bs_init.wait_for_timeouts(3000)
             bs_init.input_data(page.get_by_placeholder("请输入用户名"), args['Code'], "输入账号信息")
             bs_init.input_data(page.get_by_placeholder("请输入登录密码"), "123456", "输入密码信息")
             drop_button = page.get_by_role("article").locator("form div").filter(
@@ -35,10 +34,10 @@ class TestMain:
             page.get_by_text("快速接入平台指引说明").wait_for()
             bs_init.logger.info("----存在首页弹窗----")
             page.get_by_label("Close", exact=True).click()
+            bs_init.logger.info("当前页面加载完毕,获取到项目式引导框，点击并关闭")
         else:
             bs_init.logger.info("当前企业编码为空，走默认登录页面")
             bs_init.go_url("http://192.168.110.210:9016/")
-            bs_init.wait_for_timeouts(3000)
             bs_init.input_data(page.get_by_placeholder("请输入用户名"), args['UserNO'], "输入账号信息")
             bs_init.input_data(page.get_by_placeholder("请输入登录密码"), "123456", "输入密码信息")
             drop_button = page.get_by_role("article").locator("form div").filter(
@@ -52,5 +51,6 @@ class TestMain:
             bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
             page.get_by_text("快速接入平台指引说明").wait_for()
             page.get_by_label("Close", exact=True).click()
+            bs_init.logger.info("当前页面加载完毕,获取到项目式引导框，点击并关闭")
 
 
