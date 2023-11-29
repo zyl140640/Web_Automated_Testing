@@ -39,8 +39,3 @@ class TestScreenMonitoring:
         self.screen_monitoring.delete_screen_monitoring()
 
 
-    #
-    # def test_case_zutai(self, page):
-    #     self.sidebar.click_data_max()
-    #     self.sidebar.click_configuration()
-    #     self.screen_monitoring.case_zutai()
