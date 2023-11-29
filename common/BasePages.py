@@ -244,3 +244,11 @@ class BasePage:
         add_bug(text, "zhangyuanlong", "3", "2",
                 steps,
                 f"auto/couout/{text}.png")
+
+    def login_alert(self):
+        try:
+            texts = self.page.get_by_role("alert").inner_text(timeout=3000)
+            return texts
+        except Exception as e:
+            print(e)
+            return "弹窗内容未找到"
