@@ -8,11 +8,11 @@ class DeviceIdPage(BasePage):
     def add_device_one(self):
         self.click(self.page.get_by_role("button", name="新增", exact=True), "新增点表按钮")
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator(
-            '//*[@id="app"]/div/div[2]/section/div[1]/div[5]/div[1]/div/div[2]/div[2]/div[1]/form/div/div[1]/div/div/div/div[1]/input'),
-            "新增点位-所属租户输入框")
-        self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li").filter(has_text="1115qi").nth(1), "选择1115qi")
+        # self.click(self.page.locator(
+        #     '//*[@id="app"]/div/div[2]/section/div[1]/div[5]/div[1]/div/div[2]/div[2]/div[1]/form/div/div[1]/div/div/div/div[1]/input'),
+        #     "新增点位-所属租户输入框")
+        # self.wait_for_timeouts(1000)
+        # self.click(self.page.locator("li").filter(has_text="1115qi").nth(1), "选择1115qi")
         self.click(self.page.get_by_role("dialog", name="新增点位").get_by_placeholder("请选择", exact=True).nth(2),
                    "选择协议")
         self.click(self.page.locator("li").filter(has_text="Modbus TCP").locator("span"), "选择Modbus TCP协议")

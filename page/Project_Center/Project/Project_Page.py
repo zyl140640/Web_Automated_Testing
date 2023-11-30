@@ -7,10 +7,9 @@ class ProjectPage(BasePage):
     def add_project(self, project, project_id, gateway_name, gateway_sn):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="新增"), "新增项目按钮")
-        self.click(self.page.get_by_label("新增项目").get_by_placeholder("请选择", exact=True), "所属租户")
-        self.wait_for_timeouts(2000)
-        self.click(self.page.locator("li").filter(has_text="1115qi").nth(1), "选择所属租户")
-
+        # self.click(self.page.get_by_label("新增项目").get_by_placeholder("请选择", exact=True), "所属租户")
+        # self.wait_for_timeouts(2000)
+        # self.click(self.page.locator("li").filter(has_text="1115qi").nth(1), "选择所属租户")
         self.input_data(self.page.get_by_label("新增项目").get_by_placeholder("请输入项目名称"), f"{project}",
                         "输入项目名称")
         self.input_data(self.page.get_by_placeholder("请输入项目编码"), f"{project_id}",

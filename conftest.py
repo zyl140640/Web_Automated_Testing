@@ -131,7 +131,6 @@ def init(page):
     if str(bs_init.page.url).find("login") != -1:
         bs_init.logger.info("cookies无效,进入登录步骤")
         bs_init.go_url(login_config['url'])
-        bs_init.wait_for_timeouts(3000)
         bs_init.input_data(page.get_by_placeholder("请输入用户名"), login_config['username'], "输入账号信息")
         bs_init.input_data(page.get_by_placeholder("请输入登录密码"), login_config['password'], "输入密码信息")
         drop_button = page.get_by_role("article").locator("form div").filter(
@@ -143,14 +142,13 @@ def init(page):
         page.mouse.move(mov_x, box['y'] + box['height'] / 2)
         page.mouse.up()
         bs_init.click(page.get_by_role("button", name="登 录"), "登录按钮")
-        bs_init.wait_for_timeouts(8000)
         page.context.storage_state(path="auto/cookies.json")
     else:
         bs_init.logger.info("cookies有效,跳过登录步骤")
-        bs_init.wait_for_timeouts(1000)
-    Dialog = page.get_by_text("快速接入平台指引说明").count()
-    if Dialog == 1:
+    try:
+        page.get_by_text("快速接入平台指引说明").wait_for()
         bs_init.logger.info("----存在首页弹窗----")
         page.get_by_label("Close", exact=True).click()
-    else:
+    except Exception as e:
+        print(e)
         bs_init.logger.info("----未存在弹窗直接跳过----")
