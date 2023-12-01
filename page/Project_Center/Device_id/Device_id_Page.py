@@ -22,7 +22,7 @@ class DeviceIdPage(BasePage):
     def add_device_id(self, name):
         self.click(self.page.get_by_role("button", name="添加点表"), "")
         self.input_data(self.page.locator("div").filter(has_text=re.compile(r"^名称从站号$")).get_by_role("textbox"),
-                        f"{name}", "")
+                        f"{name}", f"{name}")
         self.wait_for_timeouts(1000)
         self.input_data(self.page.locator(
             "div:nth-child(2) > div:nth-child(2) > .el-form-item > .el-form-item__content > .el-input > .el-input__inner"),

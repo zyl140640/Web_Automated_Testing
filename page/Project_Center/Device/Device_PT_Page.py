@@ -45,15 +45,13 @@ class DevicePTPage(BasePage):
 
     def device_delete_device_pt(self):
         """
-       删除点表配置点位信息
-       """
+               删除点表配置点位信息
+               """
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("cell", name="  ").locator("i").nth(2), "删除按钮")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确定"), "确定按钮")
-        self.wait_for_timeouts(1000)
-        result = self.get_text(self.page.get_by_role("alert"), "获取结果")
-        self.asserts_result(result, "=", "删除成功")
+        self.asserts_result(self.get_alert("网关管理-点表配置-删除"), "=", "删除成功")
 
     def device_get_device_pt(self, name):
         """
@@ -136,7 +134,7 @@ class DevicePTPage(BasePage):
         self.input_data(self.page.get_by_label("选择模板").get_by_placeholder("请选择", exact=True), f"{name}",
                         "输入模板名称")
         self.wait_for_timeouts(1000)
-        self.click(self.page.locator("li").filter(has_text="默认引用模板"), f"选择{name}")
+        self.click(self.page.locator("li").filter(has_text=f"{name}").first, f"选择{name}")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="确 定"), "确定按钮")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")
@@ -157,9 +155,7 @@ class DevicePTPage(BasePage):
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="关联点表"), "关联点表")
         self.wait_for_timeouts(1000)
-        self.click(
-            self.page.get_by_role("row", name="测试主流程项目-点表 1 Modbus TCP - - -").locator("label span").nth(1),
-            "勾选点表")
+        self.click(self.page.locator("div").filter(has_text="测试项目-点表").first, "勾选点表")
         self.wait_for_timeouts(1000)
         self.click(self.page.get_by_role("button", name="提交"), "提交关联")
         result = self.get_text(self.page.get_by_role("alert"), "获取保存为模板结果")

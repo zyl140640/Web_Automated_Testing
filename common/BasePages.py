@@ -217,7 +217,7 @@ class BasePage:
     # 读取yaml文件，并返回json格式数据
     def read_yaml(self, path, json_path="null"):
         # 打开文件
-        with open(path, 'r') as f:
+        with open(path, 'r',encoding="utf-8") as f:
             # 读取文件内容
             data = yaml.safe_load(f)
         # 如果json_path为null

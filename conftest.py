@@ -65,7 +65,7 @@ def context(
         )
 
     yield context
-    # If requst.node is missing rep_call, then some error happened during execution
+    # If request.node is missing rep_call, then some error happened during execution
     # that prevented teardown, but should still be counted as a failure
     failed = request.node.rep_call.failed if hasattr(request.node, "rep_call") else True
     if capture_trace:
@@ -145,8 +145,9 @@ def init(page):
         page.context.storage_state(path="auto/cookies.json")
     else:
         bs_init.logger.info("cookies有效,跳过登录步骤")
+    # page.wait_for_url("/dashboard")
     try:
-        page.get_by_text("快速接入平台指引说明").wait_for()
+        page.get_by_text("快速接入平台指引说明").wait_for(timeout=2000)
         bs_init.logger.info("----存在首页弹窗----")
         page.get_by_label("Close", exact=True).click()
     except Exception as e:

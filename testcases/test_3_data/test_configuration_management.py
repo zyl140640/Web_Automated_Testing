@@ -19,7 +19,7 @@ class TestConfiguration:
     def test_add_configuration(self):
         self.sidebar.click_data_max()
         self.sidebar.click_configuration()
-        self.configuration.add_configuration("自动化-测试组态管理")
+        self.configuration.add_configuration("自动化-测试组态管理", "测试项目-主流程")
 
     @allure.title("组态管理-查询")
     @allure.description("测试复制项目功能是否正常")
@@ -27,7 +27,7 @@ class TestConfiguration:
     def test_get_configuration(self):
         self.sidebar.click_data_max()
         self.sidebar.click_configuration()
-        self.configuration.get_configuration("测试主流程项目")
+        self.configuration.get_configuration("测试项目-主流程")
 
     @allure.title("组态管理-删除")
     @allure.description("测试复制项目功能是否正常")
@@ -35,6 +35,5 @@ class TestConfiguration:
     def test_delete_configuration(self):
         self.sidebar.click_data_max()
         self.sidebar.click_configuration()
-        self.configuration.get_configuration("测试主流程项目")
+        self.configuration.get_configuration("测试项目-主流程")
         self.configuration.delete_configuration()
-

@@ -1,0 +1,13 @@
+Project:
+  project_name: "测试项目-主流程"
+  project_gateway_name: "测试项目-项目-网关"
+  gateway_name: "测试项目-网关"
+  gateway_sn: ""
+  gateway_pt_value: "测试主流程-网关-点位"
+  device_name: "测试项目-设备"
+  device_id_name: "测试项目-点表"
+  device_pt_name: "测试设设备-点表-点位"
+  device_template_name: "测试项目-设备管理-点表模板"
+  Touch_screen: "触摸屏名称"
+  Configuration_name: "组态名称"
+  Screen_monitoring_name: "大屏名称"

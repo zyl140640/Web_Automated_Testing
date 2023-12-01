@@ -9,7 +9,6 @@ from page.SideBar.SidebarPage import SidebarPage
 @allure.feature("设备管理-点表配置")
 class TestDevicePT:
     device_pt_name = "测试设设备-点表-点位"
-    divice_name = "测试主流程-新增设备"
 
     @pytest.fixture(scope="function", autouse=True)
     def global_init(self, page):
@@ -17,42 +16,42 @@ class TestDevicePT:
         self.project = ProjectPage(page)
         self.sidebar = SidebarPage(page)
         self.device_pt = DevicePTPage(page)
+        self.read_yaml_data = self.sidebar.read_yaml("test_data/project_data.yaml")['Project']
 
     @allure.title("设备管理-点表配置-添加点位信息")
     @allure.description("测试添加点表-点位功能是否正常")
     def test_device_add_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
-        
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_add_device_pt(self.device_pt_name, "2")
+        self.device_pt.device_add_device_pt(self.read_yaml_data['device_pt_name'], "2")
 
     @allure.title("设备管理-点表配置-查询点位信息")
     @allure.description("测试查询点表-点位功能是否正常")
     def test_device_get_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_get_device_pt(self.device_pt_name)
+        self.device_pt.device_get_device_pt(self.read_yaml_data['device_pt_name'])
 
     @allure.title("设备管理-点表配置-修改点位信息")
     @allure.description("测试修改点表-点位功能是否正常")
     def test_device_update_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_get_device_pt(self.device_pt_name)
-        self.device_pt.device_update_device_pt(self.device_pt_name)
+        self.device_pt.device_get_device_pt(self.read_yaml_data['device_pt_name'])
+        self.device_pt.device_update_device_pt(self.read_yaml_data['device_pt_name'])
 
     @allure.title("设备管理-点表配置-点表下发")
     @allure.description("测试点表配置-点表下发功能是否正常")
     def test_device_pt_send(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_pt_send()
 
@@ -61,9 +60,9 @@ class TestDevicePT:
     def test_device_delete_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_get_device_pt(self.device_pt_name)
+        self.device_pt.device_get_device_pt(self.read_yaml_data['device_pt_name'])
         self.device_pt.device_delete_device_pt()
 
     @allure.title("设备管理-点表配置-批量新增")
@@ -71,7 +70,7 @@ class TestDevicePT:
     def test_device_batch_addition_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_batch_addition_pt("121", "111", "2")
 
@@ -80,7 +79,7 @@ class TestDevicePT:
     def test_device_batch_update_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_batch_update_pt("112")
 
@@ -89,17 +88,17 @@ class TestDevicePT:
     def test_device_save_as_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_save_as_template("测试点表模板", "测试点表模板描述信息")
 
     @allure.title("设备管理-点表配置-批量删除点位信息")
     @allure.description("测试批量删除点表-点位功能是否正常")
-    @pytest.mark.skip("不需要批量删除点位信息")
+    # @pytest.mark.skip("不需要批量删除点位信息")
     def test_device_batch_device_pt(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_delete_device_pt()
         self.device_pt.device_delete_device_pt()
@@ -109,16 +108,16 @@ class TestDevicePT:
     def test_device_yinyong_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
-        self.device_pt.device_yinyong_template("默认引用模板")
+        self.device_pt.device_yinyong_template("测试点表模板")
 
     @allure.title("设备管理-点表配置-模板下载")
     @allure.description("测试模板下载功能是否正常")
     def test_device_template_download(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.device_template_download()
 
@@ -127,6 +126,6 @@ class TestDevicePT:
     def test_link_table(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.sidebar.get_device_name(self.divice_name)
+        self.sidebar.get_device_name(self.read_yaml_data['device_name'])
         self.sidebar.click_more_functions("点表配置")
         self.device_pt.link_table()

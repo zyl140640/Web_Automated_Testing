@@ -15,25 +15,26 @@ class TestDeviceTableTemplate:
         self.device = DevicePage(page)
         self.tabletemplate = DeviceTableTemplatePage(page)
         self.project = ProjectPage(page)
+        self.read_yaml_data = self.sidebar.read_yaml("test_data/project_data.yaml")['Project']
 
     @allure.title("设备管理-点表模板-添加点表模板")
     @allure.description("测试添加点表模板-点位功能是否正常")
     def test_add_table_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.tabletemplate.add_table_template("测试设备-点表模板")
+        self.tabletemplate.add_table_template(self.read_yaml_data['device_template_name'])
 
     @allure.title("设备管理-点表模板-查询点表模板")
     @allure.description("测试查询点表模板-点位功能是否正常")
     def test_get_table_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.tabletemplate.get_table_template("测试设备-点表模板")
+        self.tabletemplate.get_table_template(self.read_yaml_data['device_template_name'])
 
     @allure.title("设备管理-点表模板-删除点表模板")
     @allure.description("测试删除点表模板-点位功能是否正常")
     def test_delete_table_template(self):
         self.sidebar.click_project_max()
         self.sidebar.click_device()
-        self.tabletemplate.get_table_template("测试设备-点表模板")
+        self.tabletemplate.get_table_template(self.read_yaml_data['device_template_name'])
         self.tabletemplate.delete_table_template()
