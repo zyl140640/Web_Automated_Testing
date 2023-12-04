@@ -14,7 +14,7 @@ class TestConfiguration:
         self.configuration = ConfigurationManagement(page)
 
     @allure.title("组态管理-新增")
-    @allure.description("测试复制项目功能是否正常")
+    @allure.description("测试新增组态功能是否正常")
     @allure.severity("critical")
     def test_add_configuration(self):
         self.sidebar.click_data_max()
@@ -22,7 +22,7 @@ class TestConfiguration:
         self.configuration.add_configuration("自动化-测试组态管理", "测试项目-主流程")
 
     @allure.title("组态管理-查询")
-    @allure.description("测试复制项目功能是否正常")
+    @allure.description("测试查询组态功能是否正常")
     @allure.severity("critical")
     def test_get_configuration(self):
         self.sidebar.click_data_max()
@@ -30,7 +30,7 @@ class TestConfiguration:
         self.configuration.get_configuration("测试项目-主流程")
 
     @allure.title("组态管理-删除")
-    @allure.description("测试复制项目功能是否正常")
+    @allure.description("测试删除组态功能是否正常")
     @allure.severity("critical")
     def test_delete_configuration(self):
         self.sidebar.click_data_max()
