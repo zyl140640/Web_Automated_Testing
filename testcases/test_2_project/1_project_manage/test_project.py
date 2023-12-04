@@ -24,6 +24,14 @@ class TestProject:
         self.sidebar.click_more_functions("复制")
         self.project.copy_project("Copy_不允许删除pro", f"{a}")
 
+    @allure.title("删除复制的项目信息")
+    @allure.description("测试删除项目功能是否正常")
+    @allure.severity("normal")
+    def test_main_detect_copy(self):
+        self.sidebar.click_project_max()
+        self.sidebar.click_project()
+        self.project.detect_project("Copy")
+
     @allure.title("上传项目材料")
     @allure.description("测试上传材料功能是否正常")
     @allure.severity("critical")
