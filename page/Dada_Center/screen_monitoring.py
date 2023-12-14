@@ -24,7 +24,7 @@ class ScreenMonitoring(BasePage):
         self.list_row(1)
         self.wait_for_timeouts(2000)
         self.click(self.page.get_by_role("button", name="删除"), "删除大屏监控")
-        self.click(self.page.get_by_role("button", name="确认"), "确认删除大屏监控")
+        self.click(self.page.get_by_role("button", name="确定"), "确定删除大屏监控")
 
     def case_zutai(self):
         for m in range(1, 92):
