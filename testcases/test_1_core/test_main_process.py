@@ -52,10 +52,11 @@ class TestMainProcess:
     @allure.description("测试创建网关功能是否正常")
     @allure.severity("critical")
     def test_main_add_gateway(self):
+        get_sn = random.randint(1000000000000000, 9999999999999999)
         self.sidebar.click_project_max()
         self.sidebar.click_gateway()
         self.gateway.add_gateway(self.read_yaml_data['project_name'], self.read_yaml_data['gateway_name'],
-                                 self.gateway_sn)
+                                 get_sn)
 
     @allure.title("修改网关信息")
     @allure.description("测试修改网关功能是否正常")
