@@ -124,7 +124,7 @@ def context(
 @pytest.fixture(scope="function", autouse=True)
 def init(page):
     bs_init = BasePage(page)
-    login_config = bs_init.read_yaml("auto/config.yaml", "$..formal_login")
+    login_config = bs_init.read_yaml("auto/config.yaml", "$..test_login")
     bs_init.logger.info(
         f"------环境地址: [{login_config['cookies_url']}], 登录账号信息: [{login_config['username']}], 登录密码信息: [{login_config['password']}]------")
     bs_init.go_url(login_config['cookies_url'])
@@ -147,7 +147,7 @@ def init(page):
         bs_init.logger.info("cookies有效,跳过登录步骤")
     # page.wait_for_url("/dashboard")
     try:
-        page.get_by_text("快速接入平台指引说明").wait_for(timeout=2000)
+        page.get_by_text("快速接入平台指引说明").wait_for(timeout=10000)
         bs_init.logger.info("----存在首页弹窗----")
         page.get_by_label("Close", exact=True).click()
     except Exception as e:
