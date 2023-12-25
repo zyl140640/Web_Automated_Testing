@@ -13,5 +13,5 @@ if __name__ == '__main__':
     #              'testcases/test_3_data/test_login.py'])
     # 等待3秒
     time.sleep(3)
-    # 生成Allure厕所报告
+    # 生成Allure测试报告
     os.system("allure generate ./temps -o ./reports --clean")

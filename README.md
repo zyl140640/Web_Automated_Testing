@@ -50,3 +50,10 @@
 >
 > `git config --global --unset https.proxy`
 
+
+
+#### 获取用例执行顺序-终端执行
+> `pytest --collect-only    `
+
+
+ 
